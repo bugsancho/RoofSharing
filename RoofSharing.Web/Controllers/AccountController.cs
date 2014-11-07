@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using RoofSharing.Data;
 using RoofSharing.Web.Models;
 using RoofSharing.Data.Models;
 
@@ -17,12 +18,12 @@ namespace RoofSharing.Web.Controllers
     public class AccountController : BaseController
     {
         private ApplicationUserManager _userManager;
-
-        public AccountController()
+        private const string DefaultProfilePictureUrl = "/Content/Images/Profile/default_profile_pic.jpg";
+        public AccountController(IRoofSharingData data) : base(data)
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IRoofSharingData data) : base(data)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -146,7 +147,8 @@ namespace RoofSharing.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            var model = new RegisterViewModel() { PictureUrl = DefaultProfilePictureUrl }; 
+            return View(model);
         }
 
         //
@@ -154,14 +156,23 @@ namespace RoofSharing.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase uploadedPicture)
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PictureUrl = model.PictureUrl };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    if (uploadedPicture != null)
+                    {
+                        var pictureUrl = "/Content/Images/Profile/" + user.Id + uploadedPicture.FileName.Substring(uploadedPicture.FileName.IndexOf('.'));
+                        uploadedPicture.SaveAs(Server.MapPath(pictureUrl));
+                        user.PictureUrl = pictureUrl;
+                        this.Data.Users.Update(user);
+                        this.Data.SaveChanges();
+                    }
+                        
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

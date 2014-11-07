@@ -15,9 +15,9 @@ namespace RoofSharing.Web.Controllers
 
         protected User CurrentUser { get; set; }
 
-        public BaseController() : this(new RoofSharingData(new RoofSharingDbContext()))
-        {
-        }
+        //public BaseController() : this(new RoofSharingData(new RoofSharingDbContext()))
+        //{
+        //}
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {

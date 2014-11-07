@@ -58,7 +58,7 @@
       <DependentUpon>201411031515552_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Repositories\EFRepository.cs" />
+    <Compile Include="Repositories\EntityFrameworkRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="RoofSharingData.cs" />
     <Compile Include="RoofSharingDbContext.cs" />

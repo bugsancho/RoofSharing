@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RoofSharing.Data;
 
 namespace RoofSharing.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController()
+       
+        public HomeController(IRoofSharingData data) : base(data)
         {
-
         }
+
         public ActionResult Index()
-        {
-            if (this.CurrentUser != null)
-            {
-                ViewBag.pic = this.CurrentUser.PictureUrl;
-            }
-            
+        { 
             return View();
         }
 

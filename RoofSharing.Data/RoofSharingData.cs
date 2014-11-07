@@ -39,7 +39,7 @@ namespace RoofSharing.Data
             var typeOfRepository = typeof(T);
             if (!this.repositories.ContainsKey(typeOfRepository))
             {
-                var newRepository = Activator.CreateInstance(typeof(EFRepository<T>), context);
+                var newRepository = Activator.CreateInstance(typeof(EntityFrameworkRepository<T>), context);
                 this.repositories.Add(typeOfRepository, newRepository);
             }
 
