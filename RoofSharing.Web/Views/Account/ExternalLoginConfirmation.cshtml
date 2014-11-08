@@ -10,7 +10,9 @@
     @Html.AntiForgeryToken()
 
     <h4>Association Form</h4>
+    @Html.ValidationSummary(false)
     @Html.Partial("_RegistrationPartial")
+    
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

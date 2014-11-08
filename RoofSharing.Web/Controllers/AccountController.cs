@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using RoofSharing.Data;
 using RoofSharing.Web.Models;
 using RoofSharing.Data.Models;
+using RoofSharing.Web.Helpers;
 
 namespace RoofSharing.Web.Controllers
 {
@@ -19,6 +20,7 @@ namespace RoofSharing.Web.Controllers
     {
         private ApplicationUserManager _userManager;
         private const string DefaultProfilePictureUrl = "/Content/Images/Profile/default_profile_pic.jpg";
+
         public AccountController(IRoofSharingData data) : base(data)
         {
         }
@@ -160,19 +162,23 @@ namespace RoofSharing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PictureUrl = model.PictureUrl };
+                string pictureUrl = model.PictureUrl;
+                if (uploadedPicture != null)
+                {
+                    try
+                    {
+                        pictureUrl = ImgurPictureUploader.HandlePostedPicture(uploadedPicture);
+                    }
+                    catch (Exception e)
+                    {
+                        ModelState.AddModelError("", e.Message);
+                        return View(model);
+                    }
+                }
+                var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PictureUrl = pictureUrl };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    if (uploadedPicture != null)
-                    {
-                        var pictureUrl = "/Content/Images/Profile/" + user.Id + uploadedPicture.FileName.Substring(uploadedPicture.FileName.IndexOf('.'));
-                        uploadedPicture.SaveAs(Server.MapPath(pictureUrl));
-                        user.PictureUrl = pictureUrl;
-                        this.Data.Users.Update(user);
-                        this.Data.SaveChanges();
-                    }
-                        
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -347,7 +353,7 @@ namespace RoofSharing.Web.Controllers
             
             string firstName = null;
             string lastName = null;
-            string profilePicUrl = null;
+            string profilePicUrl = DefaultProfilePictureUrl;
             var firstNameFbClaim = loginInfo.ExternalIdentity.Claims.FirstOrDefault(x => x.Type == "urn:facebook:first_name");
             if (firstNameFbClaim != null)
             {
@@ -403,21 +409,26 @@ namespace RoofSharing.Web.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
+
+                string pictureUrl = model.PictureUrl;
+                if (uploadedPicture != null)
+                {
+                    try
+                    {
+                        pictureUrl = ImgurPictureUploader.HandlePostedPicture(uploadedPicture);
+                    }
+                    catch (Exception e)
+                    {
+                        ModelState.AddModelError("uploadedPicture", e.Message);
+                        return View(model);
+                    }
+                }
               
-                var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PictureUrl = model.PictureUrl };
+                var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PictureUrl = pictureUrl };
                 var result = await UserManager.CreateAsync(user);               
                 
                 if (result.Succeeded)
                 {
-                    if (uploadedPicture != null)
-                    {
-                        var pictureUrl = "/Content/Images/Profile/" + user.Id + uploadedPicture.FileName.Substring(uploadedPicture.FileName.IndexOf('.'));
-                        uploadedPicture.SaveAs(Server.MapPath(pictureUrl));
-                        user.PictureUrl = pictureUrl;
-                        this.Data.Users.Update(user);
-                        this.Data.SaveChanges();
-                    }
-
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
