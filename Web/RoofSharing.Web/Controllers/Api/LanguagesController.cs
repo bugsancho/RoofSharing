@@ -20,12 +20,8 @@ namespace RoofSharing.Web.Controllers.Api
         }
 
         [HttpGet]
-        public IQueryable<Language> GetAllLanguages(string query = null)
+        public IQueryable<Language> GetAllLanguages()
         {
-            if (query != null)
-            {
-                return this.Data.Languages.All().Where(l => l.EnglishName.StartsWith(query));
-            }
             return this.Data.Languages.All();
         }
 
