@@ -28,6 +28,14 @@ namespace RoofSharing.Data
                 return this.GetRepository<User>();
             }
         }
+        public IRepository<Language> Languages
+        
+        {
+            get
+            {
+                return this.GetRepository<Language>();
+            }
+        }
 
         public int SaveChanges()
         {

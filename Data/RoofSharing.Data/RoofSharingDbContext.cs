@@ -21,5 +21,7 @@ namespace RoofSharing.Data
         {
             return new RoofSharingDbContext();
         }
+
+        public IDbSet<Language> Languages { get; set; }
     }
 }   

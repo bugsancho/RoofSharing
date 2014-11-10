@@ -9,7 +9,7 @@ namespace RoofSharing.Data.Models
 {
     public class Language
     {
-        [Required]
+        [StringLength(2, MinimumLength = 2)]
         [Key]
         public string Code { get; set; }
 

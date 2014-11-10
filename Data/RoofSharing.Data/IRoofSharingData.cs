@@ -9,7 +9,7 @@ namespace RoofSharing.Data
     public interface IRoofSharingData
     {
         IRepository<User> Users { get; }
-
+        IRepository<Language> Languages { get; }
         int SaveChanges();
     }
 }
