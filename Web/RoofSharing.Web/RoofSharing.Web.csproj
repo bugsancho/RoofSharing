@@ -49,6 +49,10 @@
       <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -124,9 +128,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -290,11 +291,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoofSharing.Data.Models\RoofSharing.Data.Models.csproj">
+    <ProjectReference Include="..\..\Data\RoofSharing.Data.Models\RoofSharing.Data.Models.csproj">
       <Project>{61919956-5e68-48e5-ad91-cb64eb7bccd2}</Project>
       <Name>RoofSharing.Data.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RoofSharing.Data\RoofSharing.Data.csproj">
+    <ProjectReference Include="..\..\Data\RoofSharing.Data\RoofSharing.Data.csproj">
       <Project>{acbb8951-15cf-418e-a9d6-49a1912284d6}</Project>
       <Name>RoofSharing.Data</Name>
     </ProjectReference>

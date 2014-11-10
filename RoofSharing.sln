@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{9B7BD6E0-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F9AE75CB-BB47-45B0-977B-997BDFDC774F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Web", "RoofSharing.Web\RoofSharing.Web.csproj", "{18A1B7B2-2516-403A-BFF3-411CA28B7F99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Web", "Web\RoofSharing.Web\RoofSharing.Web.csproj", "{18A1B7B2-2516-403A-BFF3-411CA28B7F99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Data", "RoofSharing.Data\RoofSharing.Data.csproj", "{ACBB8951-15CF-418E-A9D6-49A1912284D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Data", "Data\RoofSharing.Data\RoofSharing.Data.csproj", "{ACBB8951-15CF-418E-A9D6-49A1912284D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Data.Models", "RoofSharing.Data.Models\RoofSharing.Data.Models.csproj", "{61919956-5E68-48E5-AD91-CB64EB7BCCD2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Data.Models", "Data\RoofSharing.Data.Models\RoofSharing.Data.Models.csproj", "{61919956-5E68-48E5-AD91-CB64EB7BCCD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
