@@ -9,7 +9,6 @@ namespace RoofSharing.Web.Controllers
 {
     public class HomeController : BaseController
     {
-       
         public HomeController(IRoofSharingData data) : base(data)
         {
         }
@@ -29,6 +28,11 @@ namespace RoofSharing.Web.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Welcome()
+        { 
             return View();
         }
     }

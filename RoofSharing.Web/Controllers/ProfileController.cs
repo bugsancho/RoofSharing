@@ -7,6 +7,7 @@ using RoofSharing.Data;
 
 namespace RoofSharing.Web.Controllers
 {
+    [Authorize]
     public class ProfileController : BaseController
     {
         public ProfileController(IRoofSharingData data) : base(data)
@@ -17,6 +18,13 @@ namespace RoofSharing.Web.Controllers
         public ActionResult Index()
         {
             return View(CurrentUser);
+        }
+
+        [HttpGet]
+        public ActionResult CompleteProfile()
+        {
+
+            return View();
         }
     }
 }

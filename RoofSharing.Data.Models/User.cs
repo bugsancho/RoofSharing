@@ -24,5 +24,7 @@ namespace RoofSharing.Data.Models
         public string LastName { get; set; }
 
         public string PictureUrl { get; set; }
+
+        public ICollection<LanguageInfo> SpokenLanguages { get; set; }
     }
 }

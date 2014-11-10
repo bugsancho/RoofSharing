@@ -24,9 +24,9 @@ namespace RoofSharing.Web
                 "~/Scripts/respond.js"));
 
              bundles.Add(new ScriptBundle("~/bundles/bootstrap-theme").Include(
-                "~/Scripts/wow.js",
+                "~/Scripts/wow.min.js",
                 "~/Scripts/jquery.prettyPhoto.js",
-                "~/Scripts/jquery.isotope.js",
+                "~/Scripts/jquery.isotope.min.js",
                 "~/Scripts/main.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -37,13 +37,13 @@ namespace RoofSharing.Web
             bundles.Add(new StyleBundle("~/Content/css-theme").Include(
                 "~/Content/main.css",
                 "~/Content/font-awesome.css",
-                "~/Content/animate-min.css",
+                "~/Content/animate.min.css",
                 "~/Content/prettyPhoto.css",
                 "~/Content/responsive.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
