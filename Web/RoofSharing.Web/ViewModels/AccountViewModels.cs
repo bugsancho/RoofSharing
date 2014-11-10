@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using RoofSharing.Web.ViewModels;
 
-namespace RoofSharing.Web.Models
+namespace RoofSharing.Web.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {

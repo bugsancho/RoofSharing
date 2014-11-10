@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace RoofSharing.Web.Models
+namespace RoofSharing.Web.ViewModels
 {
     public class IndexViewModel
     {

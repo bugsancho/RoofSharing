@@ -10,11 +10,12 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using RoofSharing.Web.Models;
+using RoofSharing.Web.App_Start;
+using RoofSharing.Web.ViewModels;
 using RoofSharing.Data.Models;
 using RoofSharing.Data;
 
-namespace RoofSharing.Web
+namespace RoofSharing.Web.App_Start
 {
     public class EmailService : IIdentityMessageService
     {

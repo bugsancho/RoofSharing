@@ -9,9 +9,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RoofSharing.Data;
+using RoofSharing.Web.App_Start;
 using RoofSharing.Web.Infrastructure.Helpers;
-using RoofSharing.Web.Models;
 using RoofSharing.Data.Models;
+using RoofSharing.Web.ViewModels;
 
 namespace RoofSharing.Web.Controllers
 {
