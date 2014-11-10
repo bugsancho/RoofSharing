@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace RoofSharing.Web.Extensions
+namespace RoofSharing.Web.Infrastructure.Extensions
 {
     public static class HtmlHelperExtensions
     {

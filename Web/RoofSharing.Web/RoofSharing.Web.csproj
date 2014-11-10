@@ -186,13 +186,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
-    <Compile Include="Filters\WelcomePageFilter.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ImgurPictureUploader.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -298,6 +295,10 @@
     <ProjectReference Include="..\..\Data\RoofSharing.Data\RoofSharing.Data.csproj">
       <Project>{acbb8951-15cf-418e-a9d6-49a1912284d6}</Project>
       <Name>RoofSharing.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RoofSharing.Web.Infrastructure\RoofSharing.Web.Infrastructure.csproj">
+      <Project>{0acd2d88-0ada-4499-aa2b-260e013e055f}</Project>
+      <Name>RoofSharing.Web.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

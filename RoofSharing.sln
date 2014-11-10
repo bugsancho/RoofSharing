@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Data", "Data\Ro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Data.Models", "Data\RoofSharing.Data.Models\RoofSharing.Data.Models.csproj", "{61919956-5E68-48E5-AD91-CB64EB7BCCD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Web.Infrastructure", "RoofSharing.Web.Infrastructure\RoofSharing.Web.Infrastructure.csproj", "{0ACD2D88-0ADA-4499-AA2B-260E013E055F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{61919956-5E68-48E5-AD91-CB64EB7BCCD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61919956-5E68-48E5-AD91-CB64EB7BCCD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61919956-5E68-48E5-AD91-CB64EB7BCCD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ACD2D88-0ADA-4499-AA2B-260E013E055F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ACD2D88-0ADA-4499-AA2B-260E013E055F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ACD2D88-0ADA-4499-AA2B-260E013E055F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ACD2D88-0ADA-4499-AA2B-260E013E055F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +45,6 @@ Global
 		{18A1B7B2-2516-403A-BFF3-411CA28B7F99} = {F9AE75CB-BB47-45B0-977B-997BDFDC774F}
 		{ACBB8951-15CF-418E-A9D6-49A1912284D6} = {9B7BD6E0-CDED-4F8E-973E-3C962A3BD536}
 		{61919956-5E68-48E5-AD91-CB64EB7BCCD2} = {9B7BD6E0-CDED-4F8E-973E-3C962A3BD536}
+		{0ACD2D88-0ADA-4499-AA2B-260E013E055F} = {F9AE75CB-BB47-45B0-977B-997BDFDC774F}
 	EndGlobalSection
 EndGlobal
