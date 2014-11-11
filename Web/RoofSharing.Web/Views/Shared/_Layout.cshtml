@@ -9,18 +9,18 @@
         @Styles.Render()
         @Scripts.Render("~/bundles/modernizr")
 
-    	<!--This bundle was moved by the Telerik VS Extensions for compatibility reasons-->
-	@Scripts.Render("~/bundles/jquery")
-	<link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.common.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
-	<script src="@Url.Content("~/Scripts/kendo/2014.2.1008/jquery.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2014.2.1008/kendo.all.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2014.2.1008/kendo.aspnetmvc.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
-</head>
+        <!--This bundle was moved by the Telerik VS Extensions for compatibility reasons-->
+        @Scripts.Render("~/bundles/jquery")
+        <link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/kendo/2014.2.1008/jquery.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/kendo/2014.2.1008/kendo.all.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/kendo/2014.2.1008/kendo.aspnetmvc.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -34,13 +34,15 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Pages <i class="fa fa-angle-down"></i>
+                            </a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Profile","Index","Profile")</li>
-                                <li>@Html.ActionLink("Complete your profile", "CompleteProfile", "Profile")</li>
+                                <li>@Html.ActionLink("Profile", "Index", "Profile", new { area = "Profile" }, null)</li>
+                                <li>@Html.ActionLink("Complete your profile", "CompleteProfile", "Profile", new { area = "Profile" }, null)</li>
                             </ul>
                         </li>
                     </ul>
@@ -56,7 +58,6 @@
             </footer>
         </div>
 
-        
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/bundles/bootstrap-theme")
         @RenderSection("scripts", required: false)

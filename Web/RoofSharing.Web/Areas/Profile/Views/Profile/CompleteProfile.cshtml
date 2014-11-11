@@ -1,0 +1,28 @@
+﻿@model RoofSharing.Data.Models.User
+@{
+    ViewBag.Title = "CompleteProfile";
+}
+
+<h2>CompleteProfile</h2>
+<form method="post">
+
+    @(Html.Kendo()
+      .DropDownListFor(m => m.SpokenLanguages)
+      .Name("Language")
+      .DataValueField("Id")
+      .DataTextField("EnglishName")
+      .DataSource(source =>
+      {
+          source.Read(read =>
+          {
+              read.Action("get", "api/languages");
+          });
+      })
+      
+    )
+    <input type="submit" value="adadas" />
+    <div class="bla"></div>
+</form>
+@section Scripts{
+
+}

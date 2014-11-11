@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RoofSharing.Data;
+using RoofSharing.Web.Controllers;
 
-namespace RoofSharing.Web.Controllers
+namespace RoofSharing.Web.Areas.Profile.Controllers
 {
     [Authorize]
     public class ProfileController : BaseController
@@ -23,7 +24,12 @@ namespace RoofSharing.Web.Controllers
         [HttpGet]
         public ActionResult CompleteProfile()
         {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult CompleteProfile(object data)
+        {
             return View();
         }
     }

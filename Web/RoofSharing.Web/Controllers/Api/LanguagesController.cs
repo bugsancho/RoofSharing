@@ -1,4 +1,6 @@
-﻿using RoofSharing.Data;
+﻿using Kendo.Mvc.UI;
+using Kendo.Mvc.Extensions;
+using RoofSharing.Data;
 using RoofSharing.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -20,13 +22,17 @@ namespace RoofSharing.Web.Controllers.Api
         }
 
         [HttpGet]
-        public IQueryable<Language> GetAllLanguages()
+        public IQueryable<Language> GetAllLanguages(string text = null)
         {
+            if (text != null)
+            {
+                return this.Data.Languages.All().Where(l => l.EnglishName.Contains(text));
+            }
             return this.Data.Languages.All();
         }
 
         [HttpPost]
-        public void CreateLanguages(IEnumerable<Language> languages)
+        public void CreateLanguages(IEnumerable<Language> languages, string text)
         {
             foreach (var lang in languages)
             {
