@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using RoofSharing.Data.Models.Profile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace RoofSharing.Data.Models
         public string LastName { get; set; }
 
         public string PictureUrl { get; set; }
+
+        public virtual ProfileLocationInfo LocationInfo { get; set; }
 
         public ICollection<LanguageInfo> SpokenLanguages { get; set; }
     }

@@ -1,7 +1,7 @@
 ﻿/* Set padding to keep content from hitting the edges */
 .body-content
 {
-    padding-top: 100px;
+    padding-top: 10px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -20,4 +20,7 @@ select,
 textarea
 {
     max-width: 280px;
+}
+.wow{
+    opacity:0;
 }

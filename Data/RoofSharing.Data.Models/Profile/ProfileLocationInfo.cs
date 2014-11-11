@@ -10,7 +10,15 @@ namespace RoofSharing.Data.Models.Profile
 {
     public class ProfileLocationInfo
     {
-        [Key,ForeignKey("UserId")]
-        public string UserId { get; set; }
+        [Key,ForeignKey("User")]
+        public string Id { get; set; }
+
+        public string LocationName { get; set; }
+
+        public string Longitude { get; set; }
+
+        public string Latitude { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

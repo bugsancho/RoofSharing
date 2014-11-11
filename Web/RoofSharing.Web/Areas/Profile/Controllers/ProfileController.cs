@@ -21,16 +21,5 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
             return View(CurrentUser);
         }
 
-        [HttpGet]
-        public ActionResult CompleteProfile()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CompleteProfile(object data)
-        {
-            return View();
-        }
     }
 }

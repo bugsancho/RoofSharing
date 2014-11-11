@@ -1,4 +1,10 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-        @RenderBody()
+<ul class="nav nav-pills">
+    <li>@Html.ActionLink("Home", "Index", "Profile", new { area = "Profile" }, new { @class = "btn-success" })</li>
+    <li>@Html.ActionLink("Location", "Index", "Location", new { area = "Profile" }, new { @class = "btn-success" })</li>
+
+</ul>
+@RenderBody()
+@RenderSection("scripts", required: false)
