@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace RoofSharing.Data.Models.Profile
 {
-    public class ProfileLocationInfo
+    public class UserLocationInfo
     {
         [Key,ForeignKey("User")]
         public string Id { get; set; }
 
-        public string LocationName { get; set; }
+        public string Address { get; set; }
+
+        public string AdditionalInfo { get; set; }
 
         public string Longitude { get; set; }
 

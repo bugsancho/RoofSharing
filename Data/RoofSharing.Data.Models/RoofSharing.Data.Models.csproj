@@ -58,10 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PreferredGender.cs" />
+    <Compile Include="Profile\UserHousingInfo.cs" />
     <Compile Include="Language.cs" />
-    <Compile Include="LanguageInfo.cs" />
+    <Compile Include="LivingArrangement.cs" />
     <Compile Include="ProficiencyLevel.cs" />
-    <Compile Include="Profile\ProfileLocationInfo.cs" />
+    <Compile Include="Profile\UserLocationInfo.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

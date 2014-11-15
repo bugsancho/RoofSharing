@@ -18,7 +18,7 @@ namespace RoofSharing.Web.Controllers
 {
     [Authorize]
     public class AccountController : BaseController
-    {
+    { 
         private ApplicationUserManager _userManager;
         private const string DefaultProfilePictureUrl = "/Content/Images/Profile/default_profile_pic.jpg";
 

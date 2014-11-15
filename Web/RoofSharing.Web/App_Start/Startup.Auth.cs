@@ -62,7 +62,7 @@ namespace RoofSharing.Web
             x.Scope.Add("email");
             x.AppId = "309727269210918";
             x.AppSecret = "0ab08021c1ce48e1e88bb1e978f39a36";
-            x.Provider = new FacebookAuthenticationProvider()
+            x.Provider =  new  FacebookAuthenticationProvider()
             {
                 OnAuthenticated = async context =>
                 {

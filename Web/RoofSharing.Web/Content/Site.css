@@ -24,3 +24,6 @@ textarea
 .wow{
     opacity:0;
 }
+.form-control{
+    width:100%;
+}

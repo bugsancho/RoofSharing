@@ -1,4 +1,5 @@
-﻿using RoofSharing.Data.Models.Profile;
+﻿using RoofSharing.Data.Models;
+using RoofSharing.Data.Models.Profile;
 using RoofSharing.Web.Infrastructure.Mappings;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,20 @@ using System.Web;
 
 namespace RoofSharing.Web.Areas.Profile.ViewModels
 {
-    public class LocationViewModel : IMapFrom<ProfileLocationInfo>
+    public class LocationViewModel : IMapFrom<UserLocationInfo>
     {
         [Required]
-        [Display(Name = "Location")]
-        public string LocationName { get; set; }
+        [Display(Name = "Address")]
+        public string Address { get; set; }
 
         [Required]
         public string Longitude { get; set; }
 
         [Required]
         public string Latitude { get; set; }
+
+        [Display(Name = "Tell us more about your place")]
+        [UIHint("MultiLineText")]
+        public string AdditionalInfo { get; set; }
     }
 }

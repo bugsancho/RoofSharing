@@ -26,8 +26,9 @@ namespace RoofSharing.Data.Models
 
         public string PictureUrl { get; set; }
 
-        public virtual ProfileLocationInfo LocationInfo { get; set; }
+        public virtual UserLocationInfo LocationInfo { get; set; }
 
-        public ICollection<LanguageInfo> SpokenLanguages { get; set; }
+        public virtual UserHousingInfo HousingInfo { get; set; }
+
     }
 }

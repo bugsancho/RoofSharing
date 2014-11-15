@@ -19,32 +19,26 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
         public LocationController(IRoofSharingData data) : base(data)
         {
         }
-
-        // GET: Profile/Location
-        public ActionResult Index()
-        {
-            var location = Mapper.Map<LocationViewModel>(this.CurrentUser.LocationInfo);
-            return View(location);
-        }
         
-        public ActionResult Edit()
+        public ActionResult Update()
         {
             var location = Mapper.Map<LocationViewModel>(this.CurrentUser.LocationInfo);
             return View(location);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Edit(LocationViewModel locationInfo)
+        public ActionResult Update(LocationViewModel locationInfo)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var location = Mapper.Map<ProfileLocationInfo>(locationInfo);
+                    var location = Mapper.Map<UserLocationInfo>(locationInfo);
                     this.CurrentUser.LocationInfo = location;
                     this.Data.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index","Profile");
                 }
                 catch
                 {
