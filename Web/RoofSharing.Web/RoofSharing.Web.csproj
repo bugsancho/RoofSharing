@@ -210,6 +210,7 @@
     <Compile Include="Areas\Profile\ViewModels\HousingViewModel.cs" />
     <Compile Include="Areas\Profile\ViewModels\LocationViewModel.cs" />
     <Compile Include="Areas\Profile\ViewModels\PersonalityViewModel.cs" />
+    <Compile Include="Areas\Profile\ViewModels\ProfileSummaryViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -233,6 +234,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\Profile\0c790728-1c92-461d-a883-709572e7be72.jpg" />
+    <Content Include="Content\Images\Profile\33a9bfd8-89dd-4498-98c6-e886191a3a74.jpg" />
+    <Content Include="Content\Images\Profile\d076dd36-23de-4f82-99fd-be780de7ece1.JPG" />
+    <Content Include="Content\Images\Profile\default_profile_pic.jpg" />
+    <Content Include="Content\Images\Traveling-Big-blurred.jpg" />
     <Content Include="Content\kendo\2014.2.1008\Black\editor.png" />
     <Content Include="Content\kendo\2014.2.1008\Black\imagebrowser.png" />
     <Content Include="Content\kendo\2014.2.1008\Black\indeterminate.gif" />
@@ -485,6 +491,8 @@
     <Content Include="Areas\Profile\Views\Shared\EditorTemplates\BoolNullable.cshtml" />
     <Content Include="Areas\Profile\Views\Shared\EditorTemplates\MultiLineText.cshtml" />
     <Content Include="Areas\Profile\Views\Profile\Personality.cshtml" />
+    <Content Include="Content\Images\Profile\91e35e73-d3de-4481-b902-464ef126910a" />
+    <Content Include="Areas\Profile\Views\Shared\DisplayTemplates\StringWithDefaultValue.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

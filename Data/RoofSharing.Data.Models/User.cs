@@ -23,10 +23,12 @@ namespace RoofSharing.Data.Models
 
         [Required]
         [StringLength(50, MinimumLength = 2)]
+        [UIHint("StringWithDefaultValue")]
         public string FirstName { get; set; }
-
+         
         [Required]
         [StringLength(50, MinimumLength = 2)]
+        [UIHint("StringWithDefaultValue")]
         public string LastName { get; set; }
 
         [Required]

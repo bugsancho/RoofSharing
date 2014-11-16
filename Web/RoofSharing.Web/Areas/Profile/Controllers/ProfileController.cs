@@ -22,7 +22,8 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
         // GET: Profile
         public ActionResult Index()
         {
-            return View(CurrentUser);
+            var model = this.Data.Users.All().Where(u => u.Id == this.CurrentUser.Id).Project().To<ProfileSummaryViewModel>().FirstOrDefault();
+            return View(model);
         }
         
         [HttpGet]

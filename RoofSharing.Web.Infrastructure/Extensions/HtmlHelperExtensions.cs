@@ -1,18 +1,29 @@
 ﻿using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace RoofSharing.Web.Infrastructure.Extensions
 {
     public static class HtmlHelperExtensions
     {
-        public static MvcHtmlString Image(this HtmlHelper helper, string imgUrl, string alt, int? width = null, int? height = null)
+        public static MvcHtmlString Image(this HtmlHelper helper, string imgUrl, string alt, object htmlAttributes, int? width = null, int? height = null)
         {
+            var attrs = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+
             var tag = new TagBuilder("Img");
+
             tag.Attributes.Add("src", imgUrl);
             tag.Attributes.Add("alt", alt);
+
+            foreach (var attr in attrs)
+            {
+                tag.Attributes.Add(attr.Key, attr.Value.ToString());
+            }
+
             if (width != null)
             {
                 tag.Attributes.Add("width", width.ToString());
             }
+
             if (height != null)
             {
                 tag.Attributes.Add("height", height.ToString());
@@ -21,7 +32,7 @@ namespace RoofSharing.Web.Infrastructure.Extensions
             return new MvcHtmlString(tag.ToString());
         }
 
-        public static MvcHtmlString FacebookImage(this HtmlHelper helper, string imgUrl, string alt, int? width = null, int? height = null)
+        public static MvcHtmlString FacebookImage(this HtmlHelper helper, string imgUrl, string alt, object htmlAttributes, int? width = null, int? height = null)
         {
             if (width != null && height != null)
             {
@@ -35,7 +46,7 @@ namespace RoofSharing.Web.Infrastructure.Extensions
             {
                 imgUrl = imgUrl + "?height=" + height;
             }
-            return Image(helper, imgUrl, alt, width, height);
+            return Image(helper, imgUrl, alt, htmlAttributes, width, height);
         }
     }
 }
