@@ -14,8 +14,7 @@ namespace RoofSharing.Data.Models.Profile
         [Key,ForeignKey("User")]
         public string Id { get; set; }
 
-        public PreferredGender PreferredGender { get; set; }
-
+        public Gender? PreferredGender { get; set; }
         
         public bool? IsSmokingAllowed { get; set; }
 

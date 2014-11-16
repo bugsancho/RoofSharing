@@ -1,4 +1,5 @@
 ﻿using RoofSharing.Data.Models;
+using RoofSharing.Data.Models.Profile;
 using RoofSharing.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,14 @@ namespace RoofSharing.Data
             get
             {
                 return this.GetRepository<Language>();
+            }
+        }
+          public IRepository<PersonalityInfo> Personalities
+        
+        {
+            get
+            {
+                return this.GetRepository<PersonalityInfo>();
             }
         }
 

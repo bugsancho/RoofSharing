@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using RoofSharing.Data.Models.Profile;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -20,15 +21,21 @@ namespace RoofSharing.Data.Models
             return userIdentity;
         }
 
+        [Required]
+        [StringLength(50, MinimumLength = 2)]
         public string FirstName { get; set; }
 
+        [Required]
+        [StringLength(50, MinimumLength = 2)]
         public string LastName { get; set; }
 
+        [Required]
         public string PictureUrl { get; set; }
 
         public virtual UserLocationInfo LocationInfo { get; set; }
 
         public virtual UserHousingInfo HousingInfo { get; set; }
 
+        public virtual PersonalityInfo PersonalityInfo { get; set; }
     }
 }

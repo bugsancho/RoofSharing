@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RoofSharing.Data.Migrations;
+using RoofSharing.Data.Models.Profile;
 
 namespace RoofSharing.Data
 {
@@ -22,6 +23,10 @@ namespace RoofSharing.Data
             return new RoofSharingDbContext();
         }
 
-        public IDbSet<Language> Languages { get; set; }
+        public IDbSet<PersonalityInfo> Personalities { get; set; }
+
+        public IDbSet<UserLocationInfo> UserLocations { get; set; }
+
+        public IDbSet<UserHousingInfo> Houses { get; set; }
     }
 }   

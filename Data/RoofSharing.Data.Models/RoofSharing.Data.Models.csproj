@@ -58,7 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PreferredGender.cs" />
+    <Compile Include="Gender.cs" />
+    <Compile Include="Profile\PersonalityInfo.cs" />
     <Compile Include="Profile\UserHousingInfo.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="LivingArrangement.cs" />

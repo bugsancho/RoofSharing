@@ -5,10 +5,9 @@ using System.Text;
 
 namespace RoofSharing.Data.Models
 {
-    public enum PreferredGender
+    public enum Gender
     {
-        Any = 0,
-        Male = 1,
-        Female = 2
+        Male,
+        Female
     }
 }

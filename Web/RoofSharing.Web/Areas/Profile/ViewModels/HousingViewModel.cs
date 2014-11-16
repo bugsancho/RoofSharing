@@ -11,7 +11,8 @@ namespace RoofSharing.Web.Areas.Profile.ViewModels
 {
     public class HousingViewModel : IMapFrom<UserHousingInfo>
     {
-        public PreferredGender PreferredGender { get; set; }
+        [Display(Name="Preferred traveller gender")]
+        public Gender? PreferredGender { get; set; }
 
         [Display(Name = "Is Smoking Allowed?")]
         [UIHint("BoolNullable")]
