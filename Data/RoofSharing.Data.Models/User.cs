@@ -32,7 +32,7 @@ namespace RoofSharing.Data.Models
         [Required]
         public string PictureUrl { get; set; }
 
-        public virtual UserLocationInfo LocationInfo { get; set; }
+        public virtual LocationInfo LocationInfo { get; set; }
 
         public virtual UserHousingInfo HousingInfo { get; set; }
 

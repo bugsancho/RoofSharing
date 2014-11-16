@@ -9,11 +9,15 @@ using System.Web;
 
 namespace RoofSharing.Web.Areas.Profile.ViewModels
 {
-    public class LocationViewModel : IMapFrom<UserLocationInfo>
+    public class LocationViewModel : IMapFrom<LocationInfo>
     {
         [Required]
         [Display(Name = "Address")]
         public string Address { get; set; }
+
+        public string Country { get; set; }
+
+        public string City { get; set; }
 
         [Required]
         public string Longitude { get; set; }

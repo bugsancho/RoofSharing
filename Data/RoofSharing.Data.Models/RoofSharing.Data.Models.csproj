@@ -64,7 +64,7 @@
     <Compile Include="Language.cs" />
     <Compile Include="LivingArrangement.cs" />
     <Compile Include="ProficiencyLevel.cs" />
-    <Compile Include="Profile\UserLocationInfo.cs" />
+    <Compile Include="Profile\LocationInfo.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

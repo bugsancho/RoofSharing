@@ -25,7 +25,7 @@ namespace RoofSharing.Data
 
         public IDbSet<PersonalityInfo> Personalities { get; set; }
 
-        public IDbSet<UserLocationInfo> UserLocations { get; set; }
+        public IDbSet<LocationInfo> UserLocations { get; set; }
 
         public IDbSet<UserHousingInfo> Houses { get; set; }
     }

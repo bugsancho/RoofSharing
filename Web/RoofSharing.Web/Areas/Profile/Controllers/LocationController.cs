@@ -34,7 +34,7 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
             {
                 try
                 {
-                    var location = Mapper.Map<UserLocationInfo>(locationInfo);
+                    var location = Mapper.Map<LocationInfo>(locationInfo);
                     this.CurrentUser.LocationInfo = location;
                     this.Data.SaveChanges();
 

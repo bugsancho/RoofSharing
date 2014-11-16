@@ -8,5 +8,7 @@
     <li>@Html.ActionLink("Housing", "Update", "Housing", new { area = "Profile" }, new { @class = "btn-sm btn-success" })</li>
     <li>@Html.ActionLink("Personality", "Personality", "Profile", new { area = "Profile" }, new { @class = "btn-sm btn-success" })</li>
 </ul>
-@RenderBody()
+<div class="wow fadeIn">
+    @RenderBody()
+</div>
 @RenderSection("scripts", required: false)

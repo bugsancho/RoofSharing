@@ -33,7 +33,7 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
             PersonalityViewModel viewModel = null;
             if (model.FirstOrDefault() == null)
             {
-                viewModel = new PersonalityViewModel();
+                viewModel = new PersonalityViewModel() { FirstName = this.CurrentUser.FirstName, LastName = this.CurrentUser.LastName };
             }
             else
             {

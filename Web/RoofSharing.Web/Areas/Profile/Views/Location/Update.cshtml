@@ -25,6 +25,23 @@
             </div>
 
             <div class="form-group">
+                @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(model => model.AdditionalInfo, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-5">
                     @Html.EditorFor(model => model.AdditionalInfo, new { htmlAttributes = new { @class = "form-control" } })
@@ -32,7 +49,6 @@
                 </div>
 
             </div>
-
         </div>
         <div class="col-md-4">
             @if (Model != null && Model.Longitude != null && Model.Latitude != null)
@@ -67,9 +83,23 @@
         $(function () {
             var input = document.getElementById('Address');
             var autocomplete = new google.maps.places.Autocomplete(input);
-            
+    
             google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 var place = autocomplete.getPlace();
+                console.log(place)
+                for (var i = place.address_components.length - 1; i >= 0; i--) {
+                    var component = place.address_components[i];
+                    //console.log(component)
+                    if (component && component.types && component.types.indexOf('country') !== -1) {
+                        $('#Country').val(component.long_name);
+                        continue;
+                    }
+                    if (component && component.types && component.types.indexOf('locality') !== -1) {
+                        $('#City').val(component.long_name);
+                        continue;
+                    }
+                }
+    
                 var latitude = place.geometry.location.lat();
                 var longitude = place.geometry.location.lng();
     
