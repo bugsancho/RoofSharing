@@ -12,12 +12,13 @@ namespace RoofSharing.Data
 {
     public class RoofSharingData : IRoofSharingData
     {
-        private DbContext context;
+        public DbContext Context { get; private set; }
+
         private IDictionary<Type, object> repositories;
 
         public RoofSharingData(DbContext context)
         {
-            this.context = context;
+            this.Context = context;
             this.repositories = new Dictionary<Type, object>();
         }
 
@@ -29,6 +30,7 @@ namespace RoofSharing.Data
                 return this.GetRepository<User>();
             }
         }
+
         public IRepository<Language> Languages
         
         {
@@ -37,7 +39,8 @@ namespace RoofSharing.Data
                 return this.GetRepository<Language>();
             }
         }
-          public IRepository<PersonalityInfo> Personalities
+
+        public IRepository<PersonalityInfo> Personalities
         
         {
             get
@@ -48,7 +51,7 @@ namespace RoofSharing.Data
 
         public int SaveChanges()
         {
-            return this.context.SaveChanges();
+            return this.Context.SaveChanges();
         }
 
         private IRepository<T> GetRepository<T>() where T : class
@@ -56,7 +59,7 @@ namespace RoofSharing.Data
             var typeOfRepository = typeof(T);
             if (!this.repositories.ContainsKey(typeOfRepository))
             {
-                var newRepository = Activator.CreateInstance(typeof(EntityFrameworkRepository<T>), context);
+                var newRepository = Activator.CreateInstance(typeof(EntityFrameworkRepository<T>), Context);
                 this.repositories.Add(typeOfRepository, newRepository);
             }
 

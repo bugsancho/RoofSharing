@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Data.Models", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Web.Infrastructure", "RoofSharing.Web.Infrastructure\RoofSharing.Web.Infrastructure.csproj", "{0ACD2D88-0ADA-4499-AA2B-260E013E055F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Common", "RoofSharing.Common\RoofSharing.Common.csproj", "{BE6BDC44-D3F3-4A0A-9B56-D2C60BC52CC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{0ACD2D88-0ADA-4499-AA2B-260E013E055F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ACD2D88-0ADA-4499-AA2B-260E013E055F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ACD2D88-0ADA-4499-AA2B-260E013E055F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE6BDC44-D3F3-4A0A-9B56-D2C60BC52CC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE6BDC44-D3F3-4A0A-9B56-D2C60BC52CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE6BDC44-D3F3-4A0A-9B56-D2C60BC52CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE6BDC44-D3F3-4A0A-9B56-D2C60BC52CC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

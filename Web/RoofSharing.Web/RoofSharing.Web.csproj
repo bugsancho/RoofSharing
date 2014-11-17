@@ -204,6 +204,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\Base\AdminController.cs" />
+    <Compile Include="Areas\Administration\Controllers\Base\KendoGridAdminController.cs" />
     <Compile Include="Areas\Profile\Controllers\HousingController.cs" />
     <Compile Include="Areas\Profile\Controllers\LocationController.cs" />
     <Compile Include="Areas\Profile\ProfileAreaRegistration.cs" />
@@ -218,6 +221,7 @@
     <Compile Include="Controllers\Api\LanguagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Areas\Profile\Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\TripsController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -226,6 +230,7 @@
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Trip\PlanTripViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.min.css" />
@@ -493,6 +498,9 @@
     <Content Include="Areas\Profile\Views\Profile\Personality.cshtml" />
     <Content Include="Content\Images\Profile\91e35e73-d3de-4481-b902-464ef126910a" />
     <Content Include="Areas\Profile\Views\Shared\DisplayTemplates\StringWithDefaultValue.cshtml" />
+    <Content Include="Areas\Profile\Views\Shared\_ProfileSummary.cshtml" />
+    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -817,9 +825,15 @@
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Views\Shared\_BlankLayout.cshtml" />
+    <Content Include="Views\Trips\Plan.cshtml" />
+    <Content Include="Views\Trips\Matches.cshtml" />
+    <Content Include="Views\Shared\_ProfileSummary.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\StringWithDefaultValue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administration\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -836,6 +850,10 @@
     <ProjectReference Include="..\..\Data\RoofSharing.Data\RoofSharing.Data.csproj">
       <Project>{acbb8951-15cf-418e-a9d6-49a1912284d6}</Project>
       <Name>RoofSharing.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RoofSharing.Common\RoofSharing.Common.csproj">
+      <Project>{be6bdc44-d3f3-4a0a-9b56-d2c60bc52cc4}</Project>
+      <Name>RoofSharing.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\RoofSharing.Web.Infrastructure\RoofSharing.Web.Infrastructure.csproj">
       <Project>{0acd2d88-0ada-4499-aa2b-260e013e055f}</Project>

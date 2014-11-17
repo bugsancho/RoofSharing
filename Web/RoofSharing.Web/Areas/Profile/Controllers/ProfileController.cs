@@ -23,7 +23,7 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
         public ActionResult Index()
         {
             var model = this.Data.Users.All().Where(u => u.Id == this.CurrentUser.Id).Project().To<ProfileSummaryViewModel>().FirstOrDefault();
-            return View(model);
+            return View("Index", null, this.CurrentUser.Id);
         }
         
         [HttpGet]
@@ -67,6 +67,16 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
             }
             
             return View(personalityInfo);
+        }
+
+        public ActionResult ProfileSummary(string userId)
+        {
+            var user = this.Data.Users.All().Where(u => u.Id == userId).Project().To<ProfileSummaryViewModel>().FirstOrDefault();
+            if (user == null)
+            {
+                return HttpNotFound("User with that Id could not be found!");
+            }
+            return PartialView("_ProfileSummary", user);
         }
     }
 }

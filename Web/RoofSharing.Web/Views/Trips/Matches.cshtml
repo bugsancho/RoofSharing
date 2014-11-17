@@ -1,0 +1,9 @@
+﻿@model IEnumerable<string>
+
+@{
+    foreach (var userId in Model)
+    {
+        Html.RenderAction("ProfileSummary", "Profile", new { userId = userId });
+    }
+    
+}
