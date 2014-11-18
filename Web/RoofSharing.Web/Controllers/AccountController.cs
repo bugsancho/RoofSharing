@@ -13,6 +13,7 @@ using RoofSharing.Web.App_Start;
 using RoofSharing.Web.Infrastructure.Helpers;
 using RoofSharing.Data.Models;
 using RoofSharing.Web.ViewModels;
+using RoofSharing.Data.Models.Profile;
 
 namespace RoofSharing.Web.Controllers
 {
@@ -177,6 +178,9 @@ namespace RoofSharing.Web.Controllers
                     }
                 }
                 var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PictureUrl = pictureUrl };
+                user.LocationInfo = new LocationInfo();
+                user.HousingInfo = new UserHousingInfo();
+                user.PersonalityInfo = new PersonalityInfo();
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

@@ -18,6 +18,23 @@ namespace RoofSharing.Data
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<RoofSharingDbContext, Configuration>());
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                        .HasOptional(f => f.LocationInfo)
+                        .WithRequired(s => s.User)
+                        .WillCascadeOnDelete(true);
+            modelBuilder.Entity<User>()
+                        .HasOptional(f => f.HousingInfo)
+                        .WithRequired(s => s.User)
+                        .WillCascadeOnDelete(true);
+            modelBuilder.Entity<User>()
+                        .HasOptional(f => f.PersonalityInfo)
+                        .WithRequired(s => s.User)
+                        .WillCascadeOnDelete(true);
+            base.OnModelCreating(modelBuilder);
+        }
+
         public static RoofSharingDbContext Create()
         {
             return new RoofSharingDbContext();
@@ -29,4 +46,4 @@ namespace RoofSharing.Data
 
         public IDbSet<UserHousingInfo> Houses { get; set; }
     }
-}   
+}

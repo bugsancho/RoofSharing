@@ -207,6 +207,11 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\AdminController.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\KendoGridAdminController.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersHousingController.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersLocationController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\BaseUserAdminViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\UserHousingAdminViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\UserLocationAdminViewModel.cs" />
     <Compile Include="Areas\Profile\Controllers\HousingController.cs" />
     <Compile Include="Areas\Profile\Controllers\LocationController.cs" />
     <Compile Include="Areas\Profile\ProfileAreaRegistration.cs" />
@@ -501,6 +506,11 @@
     <Content Include="Areas\Profile\Views\Shared\_ProfileSummary.cshtml" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administration\Views\UsersLocation\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\UsersHousing\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\UserHousingAdminViewModel.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\BoolNullable.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -833,7 +843,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
