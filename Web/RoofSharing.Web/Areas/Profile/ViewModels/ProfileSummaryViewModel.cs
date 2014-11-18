@@ -24,7 +24,7 @@ namespace RoofSharing.Web.Areas.Profile.ViewModels
         public string LastName { get; set; }
 
         [UIHint("StringWithDefaultValue")]
-        public string Address { get; set; }
+        public string City { get; set; }
 
         [UIHint("StringWithDefaultValue")]
         [Display(Name = "Phone Number")]
@@ -39,7 +39,7 @@ namespace RoofSharing.Web.Areas.Profile.ViewModels
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<User, ProfileSummaryViewModel>()
-                         .ForMember(m => m.Address, opt => opt.MapFrom(t => t.LocationInfo.Address));
+                         .ForMember(m => m.City, opt => opt.MapFrom(t => t.LocationInfo.City));
         }
     }
 }

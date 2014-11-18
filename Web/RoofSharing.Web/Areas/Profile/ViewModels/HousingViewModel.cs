@@ -16,28 +16,33 @@ namespace RoofSharing.Web.Areas.Profile.ViewModels
 
         [Display(Name = "Is Smoking Allowed?")]
         [UIHint("BoolNullable")]
+        [UIHint("StringWithDefaultValue")]
         public bool? IsSmokingAllowed { get; set; }
 
         [Display(Name = "Are pets allowed?")]
         [UIHint("BoolNullable")]
+        [UIHint("StringWithDefaultValue")]
         public bool? ArePetsAllowed { get; set; }
 
-        [Display(Name = "Do you have pets?")]
+        [Display(Name = "Have pets?")]
         [UIHint("BoolNullable")]
+        [UIHint("StringWithDefaultValue")]
         public bool? HavePets { get; set; }
 
         [Display(Name = "Are rooms shared?")]
         [UIHint("BoolNullable")]
+        [UIHint("StringWithDefaultValue")]
         public bool? AreRoomsShared { get; set; }
 
-        [Display(Name = "Is your place wheelchair accessible?")]
+        [Display(Name = "Is wheelchair accessible?")]
         [UIHint("BoolNullable")]
+        [UIHint("StringWithDefaultValue")]
         public bool? WheelChairAccessible { get; set; }
         
-        [Display(Name = "How many available beds are there?")]
+        [Display(Name = "Available beds")]
         public int? NumberOfAvailableBeds { get; set; }
 
-        [Display(Name = "Tell us more about your house")]
+        [Display(Name = "Additional Info")]
         [UIHint("MultiLineText")]
         public string AdditionalInfo { get; set; }
     }

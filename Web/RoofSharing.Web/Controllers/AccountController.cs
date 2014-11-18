@@ -430,6 +430,9 @@ namespace RoofSharing.Web.Controllers
                 }
               
                 var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PictureUrl = pictureUrl };
+                user.LocationInfo = new LocationInfo();
+                user.HousingInfo = new UserHousingInfo();
+                user.PersonalityInfo = new PersonalityInfo();
                 var result = await UserManager.CreateAsync(user);               
                 
                 if (result.Succeeded)

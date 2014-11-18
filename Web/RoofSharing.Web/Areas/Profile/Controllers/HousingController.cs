@@ -52,5 +52,14 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
                 return View(model);
             }
         }
+
+        [Authorize]
+        [ChildActionOnly]
+        public ActionResult HousingProfile(string userId)
+        {
+            var user = this.Data.Users.All().Where(u => u.Id == userId).Select(u => u.HousingInfo).Project().To<HousingViewModel>().FirstOrDefault();
+
+            return PartialView("~/Areas/Profile/Views/Shared/_HousingProfile.cshtml", user);
+        }
     }
 }

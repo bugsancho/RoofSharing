@@ -38,7 +38,7 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
                     this.CurrentUser.LocationInfo = location;
                     this.Data.SaveChanges();
 
-                    return RedirectToAction("Index","Profile");
+                    return RedirectToAction("Index", "Profile");
                 }
                 catch
                 {
@@ -47,6 +47,15 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
             }
 
             return View(locationInfo);
+        }
+
+        [Authorize]
+        [ChildActionOnly]
+        public ActionResult LocationProfile(string userId)
+        {
+            var user = this.Data.Users.All().Where(u => u.Id == userId).Select(u => u.LocationInfo).Project().To<LocationViewModel>().FirstOrDefault();
+
+            return PartialView("~/Areas/Profile/Views/Shared/_LocationProfile.cshtml", user);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@using RoofSharing.Web.Infrastructure.Extensions
-
+@using Microsoft.AspNet.Identity
 @model RoofSharing.Web.Areas.Profile.ViewModels.ProfileSummaryViewModel
 <div class="panel-heading resume-heading">
     <div class="row">
@@ -20,24 +20,31 @@
                         <strong>@Html.DisplayNameFor(x => x.LastName): </strong>@Html.DisplayFor(x => x.LastName)
                     </li>
                     <li class="list-group-item">
-                        <strong>@Html.DisplayNameFor(x => x.Address): </strong>@Html.DisplayFor(x => x.Address) asdasd
+                        <strong>@Html.DisplayNameFor(x => x.City): </strong>@Html.DisplayFor(x => x.City) 
                     </li>
                     <li class="list-group-item">
-                        <i class="fa fa-phone"></i> @Html.DisplayFor(x => x.PhoneNumber) asdad
+                        <i class="fa fa-phone"></i> @Html.DisplayFor(x => x.PhoneNumber)
                     </li>
                     <li class="list-group-item">
                         <i class="fa fa-envelope"></i> @Html.DisplayFor(x => x.Email)
                     </li>
 
-                    <li class="list-group-item">
-                        @{
-                            Html.RenderAction("FriendPartial", "Friends", new
-                            {
-                                area = string.Empty,
-                                userId = Model.Id
-                            });
-                        }  
-                    </li>
+                   
+                    @{
+                        if (Model.Id != User.Identity.GetUserId())
+                        {
+                            @:<li class="list-group-item">
+
+
+                                Html.RenderAction("FriendPartial", "Friends", new
+                                {
+                                    area = string.Empty,
+                                    userId = Model.Id
+                                });
+                             @:</li>
+                        }
+                    }
+
                 </ul>
             </div>
         </div>

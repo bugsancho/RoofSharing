@@ -215,6 +215,7 @@
     <Compile Include="Areas\Administration\ViewModels\UserLocationAdminViewModel.cs" />
     <Compile Include="Areas\Profile\Controllers\HousingController.cs" />
     <Compile Include="Areas\Profile\Controllers\LocationController.cs" />
+    <Compile Include="Areas\Profile\Controllers\PersonalityController.cs" />
     <Compile Include="Areas\Profile\ProfileAreaRegistration.cs" />
     <Compile Include="Areas\Profile\ViewModels\HousingViewModel.cs" />
     <Compile Include="Areas\Profile\ViewModels\LocationViewModel.cs" />
@@ -505,7 +506,7 @@
     <Content Include="Areas\Profile\Views\Shared\EditorTemplates\Bool.cshtml" />
     <Content Include="Areas\Profile\Views\Shared\EditorTemplates\BoolNullable.cshtml" />
     <Content Include="Areas\Profile\Views\Shared\EditorTemplates\MultiLineText.cshtml" />
-    <Content Include="Areas\Profile\Views\Profile\Personality.cshtml" />
+    <Content Include="Areas\Profile\Views\Personality\Update.cshtml" />
     <Content Include="Content\Images\Profile\91e35e73-d3de-4481-b902-464ef126910a" />
     <Content Include="Areas\Profile\Views\Shared\DisplayTemplates\StringWithDefaultValue.cshtml" />
     <Content Include="Areas\Profile\Views\Shared\_ProfileSummary.cshtml" />
@@ -517,6 +518,9 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\UserHousingAdminViewModel.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\BoolNullable.cshtml" />
     <Content Include="Areas\Administration\Views\AdminHome\Index.cshtml" />
+    <Content Include="Areas\Profile\Views\Shared\_HousingProfile.cshtml" />
+    <Content Include="Areas\Profile\Views\Shared\_LocationProfile.cshtml" />
+    <Content Include="Areas\Profile\Views\Shared\_PersonalityProfile.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
