@@ -17,7 +17,7 @@ namespace RoofSharing.Web.Areas.Profile.ViewModels
         
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "yyyy-MM-dd")]
         [Range(typeof(DateTime), "01/01/1900", "01/01/2000")]
         public DateTime? BirthDate { get; set; }
 
@@ -32,18 +32,19 @@ namespace RoofSharing.Web.Areas.Profile.ViewModels
         public string LastName { get; set; }
 
         [UIHint("MultiLineText")]
+        [UIHint("StringWithDefaultValue")]
         public string Hobbies { get; set; }
 
         [UIHint("MultiLineText")]
-        [DefaultValue("this is cool!")]
+        [UIHint("StringWithDefaultValue")]
         public string Interests { get; set; }
 
         [UIHint("MultiLineText")]
-        [DefaultValue("this is cool!")]
+        [UIHint("StringWithDefaultValue")]
         public string Education { get; set; }
 
         [UIHint("MultiLineText")]
-        [DefaultValue("this is cool!")]
+        [UIHint("StringWithDefaultValue")]
         public string Occupation { get; set; }
 
         public void CreateMappings(IConfiguration configuration)

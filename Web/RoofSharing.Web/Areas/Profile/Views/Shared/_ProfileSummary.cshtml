@@ -1,5 +1,6 @@
 ﻿@using RoofSharing.Web.Infrastructure.Extensions
 @using Microsoft.AspNet.Identity
+
 @model RoofSharing.Web.Areas.Profile.ViewModels.ProfileSummaryViewModel
 <div class="panel-heading resume-heading">
     <div class="row">
@@ -8,9 +9,9 @@
                 <figure>
                     @Html.FacebookImage(Model.PictureUrl, "Profile Picture", new { @class = "img-circle img-responsive" }, 300, 300)
                 </figure>
-
+            
             </div>
-
+            
             <div class="col-xs-12 col-sm-8">
                 <ul class="list-group">
                     <li class="list-group-item">
@@ -20,7 +21,7 @@
                         <strong>@Html.DisplayNameFor(x => x.LastName): </strong>@Html.DisplayFor(x => x.LastName)
                     </li>
                     <li class="list-group-item">
-                        <strong>@Html.DisplayNameFor(x => x.City): </strong>@Html.DisplayFor(x => x.City) 
+                        <strong>@Html.DisplayNameFor(x => x.City): </strong>@Html.DisplayFor(x => x.City)
                     </li>
                     <li class="list-group-item">
                         <i class="fa fa-phone"></i> @Html.DisplayFor(x => x.PhoneNumber)
@@ -29,22 +30,27 @@
                         <i class="fa fa-envelope"></i> @Html.DisplayFor(x => x.Email)
                     </li>
 
-                   
+                    
                     @{
                         if (Model.Id != User.Identity.GetUserId())
                         {
-                            @:<li class="list-group-item">
-
-
-                                Html.RenderAction("FriendPartial", "Friends", new
-                                {
-                                    area = string.Empty,
-                                    userId = Model.Id
-                                });
-                             @:</li>
+                        @:<li class="list-group-item">
+                            Html.RenderAction("FriendPartial", "Friends", new
+                            {
+                                area = string.Empty,
+                                userId = Model.Id
+                            });
+                            
+                            
+                            
+                        @:</li>
                         }
                     }
-
+                    <li class="list-group-item">
+                        @Html.ActionLink("Profile", "Index", "Profile", new { area = "Profile", userId = Model.Id }, new { @class = "btn btn-default" })
+                    </li>
+                   
+                    
                 </ul>
             </div>
         </div>

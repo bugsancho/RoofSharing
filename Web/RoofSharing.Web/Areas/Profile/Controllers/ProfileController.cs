@@ -20,13 +20,30 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
         }
 
         // GET: Profile
-        public ActionResult Index()
+        public ActionResult Index(string userId = null)
         {
-            var model = this.Data.Users.All().Where(u => u.Id == this.CurrentUser.Id).Project().To<ProfileSummaryViewModel>().FirstOrDefault();
-            return View("Index", null, this.CurrentUser.Id);
+            bool fullProfileAllowed = false;
+            string currentUserId = this.CurrentUser.Id;
+            string id = currentUserId;
+            if (userId != null)
+            {
+                fullProfileAllowed = this.Data.Friendships.All().Any(f => (f.FromUserId == currentUserId && f.ToUserId == userId) || (f.ToUserId == currentUserId && f.FromUserId == userId));
+                id = userId;
+            }
+            else
+            {
+                fullProfileAllowed = true;
+            }
+            var model = new ProfileInfoModel()
+            {
+                FullProfileAllowed = fullProfileAllowed || userId == currentUserId,
+                Id = id
+            };
+            
+
+            //var model = this.Data.Users.All().Where(u => u.Id == queryUserId).Project().To<ProfileSummaryViewModel>().FirstOrDefault();
+            return View("Index", null, model);
         }
-        
-        
 
         [ChildActionOnly]
         public ActionResult ProfileSummary(string userId)

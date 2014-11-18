@@ -1,6 +1,6 @@
 ﻿@using RoofSharing.Web.Infrastructure.Extensions
 
-@model string
+@model RoofSharing.Web.Areas.Profile.ViewModels.ProfileInfoModel
 
 @{
     ViewBag.Title = "Index";
@@ -13,25 +13,29 @@
             <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
                 <div class="panel panel-default">
                     @{
-                        Html.RenderAction("ProfileSummary", "Profile", new { userId = Model });
+                       
+                            Html.RenderAction("ProfileSummary", "Profile", new { userId = Model.Id });
+                            
+                        if (Model.FullProfileAllowed)
+                        {
+                            
+                            @:<div class="bs-callout bs-callout-danger">
+    
+                                Html.RenderAction("HousingProfile", "Housing", new { userId = Model.Id });
+                                
+                                @:</div>
+                            @:<div class="bs-callout bs-callout-danger">
+                            
+                                Html.RenderAction("LocationProfile", "Location", new { userId = Model.Id });
+                        
+                                @:</div>
+    
+                            @:<div class="bs-callout bs-callout-danger">
+    
+                                Html.RenderAction("PersonalityProfile", "Personality", new { userId = Model.Id });
+                                @:</div>
+                        }
                     }
-                    <div class="bs-callout bs-callout-danger">
-                        @{
-                            Html.RenderAction("HousingProfile", "Housing", new { userId = Model });
-                        }
-                    </div>
-                    <div class="bs-callout bs-callout-danger">
-                        @{
-                            Html.RenderAction("LocationProfile", "Location", new { userId = Model });
-                        }
-                    </div>
-
-                    <div class="bs-callout bs-callout-danger">
-                        @{
-                            Html.RenderAction("PersonalityProfile", "Personality", new { userId = Model });
-                        }
-                    </div>
-
                 </div>
 
             </div>
