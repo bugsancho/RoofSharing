@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace RoofSharing.Data.Models
 {
-    public enum FriendshipStatus
+    public enum FriendshipStatusType
     {
         None,
         Pending,
-        Friends,
-        Denied
+        Friends
     }
 }

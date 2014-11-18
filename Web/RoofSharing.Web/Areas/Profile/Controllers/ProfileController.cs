@@ -69,6 +69,7 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
             return View(personalityInfo);
         }
 
+        [ChildActionOnly]
         public ActionResult ProfileSummary(string userId)
         {
             var user = this.Data.Users.All().Where(u => u.Id == userId).Project().To<ProfileSummaryViewModel>().FirstOrDefault();

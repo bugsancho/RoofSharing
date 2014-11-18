@@ -40,6 +40,15 @@ namespace RoofSharing.Data
             }
         }
 
+         public IRepository<Friendship> Friendships
+        
+        {
+            get
+            {
+                return this.GetRepository<Friendship>();
+            }
+        }
+
         public IRepository<PersonalityInfo> Personalities
         
         {

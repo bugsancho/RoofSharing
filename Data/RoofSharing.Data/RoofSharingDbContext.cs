@@ -32,6 +32,18 @@ namespace RoofSharing.Data
                         .HasOptional(f => f.PersonalityInfo)
                         .WithRequired(s => s.User)
                         .WillCascadeOnDelete(true);
+
+             modelBuilder.Entity<Friendship>()
+                        .HasRequired(c => c.FromUser)
+                        .WithMany()
+                        .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Friendship>()
+                        .HasRequired(s => s.ToUser)
+                        .WithMany()
+                        .WillCascadeOnDelete(false);
+
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -43,6 +55,8 @@ namespace RoofSharing.Data
         public IDbSet<PersonalityInfo> Personalities { get; set; }
 
         public IDbSet<LocationInfo> UserLocations { get; set; }
+
+        public IDbSet<Friendship> Friendships { get; set; }
 
         public IDbSet<UserHousingInfo> Houses { get; set; }
     }

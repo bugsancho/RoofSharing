@@ -13,6 +13,8 @@ namespace RoofSharing.Data
 
         IRepository<Language> Languages { get; }
 
+        IRepository<Friendship> Friendships { get; }
+
         IRepository<PersonalityInfo> Personalities { get; }
 
         DbContext Context { get; }

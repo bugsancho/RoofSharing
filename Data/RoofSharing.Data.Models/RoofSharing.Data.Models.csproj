@@ -58,7 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FriendshipStatus.cs" />
+    <Compile Include="Friendship.cs" />
+    <Compile Include="FriendshipStatusType.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Profile\PersonalityInfo.cs" />
     <Compile Include="Profile\UserHousingInfo.cs" />
