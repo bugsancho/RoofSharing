@@ -1,7 +1,11 @@
-﻿@model IEnumerable<string>
+﻿@model RoofSharing.Web.ViewModels.Trip.TripMatchViewModel
 
+@(Html.BeginForm()){
+
+@Html.HiddenFor(x => x.City)
+}
 @{
-    foreach (var userId in Model)
+    foreach (var userId in Model.Ids)
     {
         Html.RenderAction("ProfileSummary", "Profile", new { userId = userId });
     }

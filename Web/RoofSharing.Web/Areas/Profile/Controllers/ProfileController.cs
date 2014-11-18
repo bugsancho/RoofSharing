@@ -76,7 +76,7 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
             {
                 return HttpNotFound("User with that Id could not be found!");
             }
-            return PartialView("_ProfileSummary", user);
+            return PartialView("~/Areas/Profile/Views/Shared/_ProfileSummary.cshtml", user);
         }
     }
 }

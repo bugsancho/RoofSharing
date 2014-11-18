@@ -1,9 +1,9 @@
 ﻿@using RoofSharing.Web.Infrastructure.Extensions
+
 @{
     const string ControllerName = "UsersHousing";
     ViewBag.Title = ControllerName;
 }
 <h2>@ViewBag.Title</h2>
-@(Html.FullFeaturedGrid<RoofSharing.Web.Areas.Administration.ViewModels.UserHousingAdminViewModel>(ControllerName, m => m.Id).Resizable(x => x.Columns(true)))
-
-
+@(Html.FullFeaturedGrid<RoofSharing.Web.Areas.Administration.ViewModels.UserHousingAdminViewModel>(ControllerName, m => m.Id)
+)

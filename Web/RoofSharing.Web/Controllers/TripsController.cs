@@ -42,16 +42,17 @@ namespace RoofSharing.Web.Controllers
             return View(model);
         }
         
-        public ActionResult Matches()
+        public ActionResult Matches(PlanTripViewModel tripInfo)
         {
-            var tripInfo = this.TempData[PlannedTripViewModelName] as PlanTripViewModel;
-            if (tripInfo == null)
+            if (tripInfo == null || !ModelState.IsValid)
             {
                 ModelState.AddModelError(string.Empty, "Please tell us first about your trip!");
                 return RedirectToAction("Plan");
             }
-            var matches = this.Data.Users.All().Where(u => u.LocationInfo.City == tripInfo.City && u.Id != this.CurrentUser.Id).Select(u => u.Id);
-            return View(matches);
+            var model = new TripMatchViewModel { City = tripInfo.City };
+            model.Ids = this.Data.Users.All().Where(u => u.LocationInfo.City == tripInfo.City && u.Id != this.CurrentUser.Id).Select(u => u.Id);
+
+            return View(model);
         }
     }
 }

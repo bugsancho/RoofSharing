@@ -38,15 +38,11 @@
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                         <li>@Html.ActionLink("Plan Your Trip", "Plan", "Trips", new { area = "" }, null)</li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Pages <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Profile", "Index", "Profile", new { area = "Profile" }, null)</li>
-                                <li>@Html.ActionLink("Complete your profile", "CompleteProfile", "Profile", new { area = "Profile" }, null)</li>
-                            </ul>
-                        </li>
+                        <li>@Html.ActionLink("Profile", "Index", "Profile", new { area = "Profile" }, null)</li>
+                        @if (User.IsInRole(RoofSharing.Common.GlobalConstants.AdminRoleName))
+                        {
+                                                    <li>@Html.ActionLink("Admin", "Index", "AdminHome", new { area = "Administration" }, null)</li>
+                        }
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

@@ -1,7 +1,18 @@
 ﻿@using RoofSharing.Web.Infrastructure.Extensions
+
 @{
     const string ControllerName = "UsersLocation";
     ViewBag.Title = ControllerName;
 }
 <h2>@ViewBag.Title</h2>
-@(Html.FullFeaturedGrid<RoofSharing.Web.Areas.Administration.ViewModels.UserLocationAdminViewModel>(ControllerName, m => m.Id))
+@(Html.FullFeaturedGrid<RoofSharing.Web.Areas.Administration.ViewModels.UserLocationAdminViewModel>(ControllerName, m => m.Id, col =>
+{
+    col.Bound(c => c.Id);
+    col.Bound(c => c.FirstName);
+    col.Bound(c => c.LastName);
+    col.Bound(c => c.City);
+    col.Bound(c => c.Country);
+    col.Bound(c => c.Address);
+    col.Command(c => c.Edit());
+    col.Command(c => c.Destroy());
+}))

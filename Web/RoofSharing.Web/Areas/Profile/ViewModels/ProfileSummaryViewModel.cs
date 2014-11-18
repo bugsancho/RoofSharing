@@ -12,19 +12,22 @@ namespace RoofSharing.Web.Areas.Profile.ViewModels
 {
     public class ProfileSummaryViewModel : IMapFrom<User>, IHaveCustomMappings
     {
+
+        public string Id { get; set; }
+
         [UIHint("StringWithDefaultValue")]
-        [Display(Name="First Name")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
          
         [UIHint("StringWithDefaultValue")]
-        [Display(Name="Last Name")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [UIHint("StringWithDefaultValue")]
         public string Address { get; set; }
 
         [UIHint("StringWithDefaultValue")]
-        [Display(Name="Phone Number")]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
         [UIHint("StringWithDefaultValue")]
