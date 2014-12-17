@@ -62,7 +62,7 @@ namespace RoofSharing.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IRoofSharingData>().To<RoofSharingData>().WithConstructorArgument("context", new RoofSharingDbContext());
+             kernel.Bind<IRoofSharingData>().To<RoofSharingData>().WithConstructorArgument("context", new RoofSharingDbContext());
         }        
     }
 }
