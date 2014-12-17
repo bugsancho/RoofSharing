@@ -58,6 +58,15 @@ namespace RoofSharing.Data
             }
         }
 
+           public IRepository<HostInvitation> Invitations
+        
+        {
+            get
+            {
+                return this.GetRepository<HostInvitation>();
+            }
+        }
+
         public int SaveChanges()
         {
             return this.Context.SaveChanges();

@@ -19,7 +19,7 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
         {
         }
 
-        // GET: Profile
+        [HttpGet]
         public ActionResult Index(string userId = null)
         {
             bool fullProfileAllowed = false;
@@ -27,7 +27,7 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
             string id = currentUserId;
             if (userId != null)
             {
-                fullProfileAllowed = this.Data.Friendships.All().Any(f => (f.FromUserId == currentUserId && f.ToUserId == userId) || (f.ToUserId == currentUserId && f.FromUserId == userId));
+                fullProfileAllowed = this.Data.Friendships.All().Any(f => ((f.FromUserId == currentUserId && f.ToUserId == userId) || (f.ToUserId == currentUserId && f.FromUserId == userId)) && f.Status == RoofSharing.Data.Models.FriendshipStatusType.Friends);
                 id = userId;
             }
             else
@@ -40,14 +40,15 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
                 Id = id
             };
             
-
             //var model = this.Data.Users.All().Where(u => u.Id == queryUserId).Project().To<ProfileSummaryViewModel>().FirstOrDefault();
             return View("Index", null, model);
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 60)]
+        
         public ActionResult ProfileSummary(string userId)
-        {
+        { 
             var user = this.Data.Users.All().Where(u => u.Id == userId).Project().To<ProfileSummaryViewModel>().FirstOrDefault();
             if (user == null)
             {

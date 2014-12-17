@@ -17,13 +17,12 @@ namespace RoofSharing.Web.Filters
             {
                 var responseCookie = new HttpCookie(BeenHereBeforeCookieName, "true");
                 filterContext.HttpContext.Response.Cookies.Set(responseCookie);
-                filterContext.HttpContext.Response.RedirectToRoute(new { controller = "Home", action = "Welcome" });
+                filterContext.HttpContext.Response.RedirectToRoute(new { controller = "Home", action = "Welcome", area = string.Empty });
             }
         }
 
         public void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            
         }
     }
 }

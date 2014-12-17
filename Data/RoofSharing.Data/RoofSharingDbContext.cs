@@ -43,6 +43,16 @@ namespace RoofSharing.Data
                         .WithMany()
                         .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<HostInvitation>()
+                        .HasRequired(s => s.Host)
+                        .WithMany()
+                        .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<HostInvitation>()
+                        .HasRequired(s => s.Guest)
+                        .WithMany()
+                        .WillCascadeOnDelete(false);
+
 
             base.OnModelCreating(modelBuilder);
         }
@@ -59,5 +69,7 @@ namespace RoofSharing.Data
         public IDbSet<Friendship> Friendships { get; set; }
 
         public IDbSet<UserHousingInfo> Houses { get; set; }
+
+        public IDbSet<HostInvitation> Invitations { get; set; }
     }
 }

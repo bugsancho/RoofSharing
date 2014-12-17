@@ -4,33 +4,18 @@ using RoofSharing.Data.Models.Profile;
 using RoofSharing.Web.Infrastructure.Mappings;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace RoofSharing.Web.Areas.Profile.ViewModels
+namespace RoofSharing.Web.Areas.Administration.ViewModels
 {
-    public class PersonalityViewModel : IMapFrom<PersonalityInfo>, IHaveCustomMappings
+    public class UserPersonalityAdminViewModel : BaseUserAdminViewModel, IMapFrom<User>, IHaveCustomMappings
     {
-        public Gender? Gender { get; set; }
-        
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "yyyy-MM-dd")]
-        [Range(typeof(DateTime), "01/01/1900", "01/01/2000")]
         public DateTime? BirthDate { get; set; }
-
-        [Required]
-        [Display(Name = "First Name")]
-        [StringLength(50, MinimumLength = 2)]
-        public string FirstName { get; set; }
-
-        [Required]
-        [Display(Name = "Last Name")]
-        [StringLength(50, MinimumLength = 2)]
-        public string LastName { get; set; }
-
+        
         [UIHint("MultiLineText")]
         [UIHint("StringWithDefaultValue")]
         public string Hobbies { get; set; }
@@ -49,9 +34,14 @@ namespace RoofSharing.Web.Areas.Profile.ViewModels
 
         public void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<PersonalityInfo, PersonalityViewModel>()
-                         .ForMember(m => m.FirstName, opt => opt.MapFrom(t => t.User.FirstName))
-                         .ForMember(m => m.LastName, opt => opt.MapFrom(t => t.User.LastName));
+            configuration.CreateMap<User, UserPersonalityAdminViewModel>()
+                         .ForMember(m => m.BirthDate, opt => opt.MapFrom(t => t.PersonalityInfo.BirthDate))
+                         .ForMember(m => m.Education, opt => opt.MapFrom(t => t.PersonalityInfo.Education))
+                         .ForMember(m => m.Occupation, opt => opt.MapFrom(t => t.PersonalityInfo.Occupation))
+                         .ForMember(m => m.Interests, opt => opt.MapFrom(t => t.PersonalityInfo.Interests))
+                         .ForMember(m => m.Hobbies, opt => opt.MapFrom(t => t.PersonalityInfo.Hobbies));
+            ;
+            configuration.CreateMap<PersonalityInfo, UserPersonalityAdminViewModel>().ReverseMap();
         }
     }
 }

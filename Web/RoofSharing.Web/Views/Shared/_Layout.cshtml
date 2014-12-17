@@ -49,6 +49,10 @@
             </div>
         </div>
         <div class="container body-content ">
+            @if (ViewData["Error"] != null)
+            {
+                            <div>@ViewData["Error"]</div>
+            }
             @RenderBody()
             <hr />
             <footer>
@@ -61,4 +65,5 @@
         @Scripts.Render("~/bundles/jqueryajax")
         @RenderSection("scripts", required: false)
     </body>
+
 </html>

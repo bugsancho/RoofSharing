@@ -17,6 +17,8 @@ namespace RoofSharing.Data
 
         IRepository<PersonalityInfo> Personalities { get; }
 
+        IRepository<HostInvitation> Invitations { get; }
+
         DbContext Context { get; }
 
         int SaveChanges();

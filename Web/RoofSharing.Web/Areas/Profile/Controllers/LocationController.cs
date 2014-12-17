@@ -10,6 +10,7 @@ using AutoMapper.QueryableExtensions;
 using AutoMapper.Mappers;
 using System.Web.Mvc;
 using AutoMapper;
+using RoofSharing.Web.Infrastructure.ValidationAttributes;
 
 namespace RoofSharing.Web.Areas.Profile.Controllers
 {
@@ -20,6 +21,7 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
         {
         }
         
+        [HttpGet]
         public ActionResult Update()
         {
             var location = Mapper.Map<LocationViewModel>(this.CurrentUser.LocationInfo);
@@ -49,8 +51,8 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
             return View(locationInfo);
         }
 
-        [Authorize]
         [ChildActionOnly]
+        [OutputCache(Duration = 60)]
         public ActionResult LocationProfile(string userId)
         {
             var user = this.Data.Users.All().Where(u => u.Id == userId).Select(u => u.LocationInfo).Project().To<LocationViewModel>().FirstOrDefault();

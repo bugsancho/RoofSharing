@@ -61,6 +61,7 @@
     <Compile Include="Friendship.cs" />
     <Compile Include="FriendshipStatusType.cs" />
     <Compile Include="Gender.cs" />
+    <Compile Include="HostInvitation.cs" />
     <Compile Include="Profile\PersonalityInfo.cs" />
     <Compile Include="Profile\UserHousingInfo.cs" />
     <Compile Include="Language.cs" />

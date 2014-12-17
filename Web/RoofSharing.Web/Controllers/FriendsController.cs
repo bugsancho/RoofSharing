@@ -24,14 +24,13 @@ namespace RoofSharing.Web.Controllers
         {
             return View();
         }
-
-        [Authorize]
+        
         public ActionResult FriendPartial(string userId)
         {
             var friendship = this.GetFriendshipViewModel(userId);
             return PartialView("_FriendPartial", friendship);
         }
-
+        
         [Authorize]
         [AjaxPost]
         public ActionResult AddFriend(string userId)

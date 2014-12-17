@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using AutoMapper;
+using RoofSharing.Web.Infrastructure.ValidationAttributes;
 
 namespace RoofSharing.Web.Areas.Profile.Controllers
 {
@@ -53,8 +54,8 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
             }
         }
 
-        [Authorize]
         [ChildActionOnly]
+        [OutputCache(Duration = 60)]
         public ActionResult HousingProfile(string userId)
         {
             var user = this.Data.Users.All().Where(u => u.Id == userId).Select(u => u.HousingInfo).Project().To<HousingViewModel>().FirstOrDefault();
