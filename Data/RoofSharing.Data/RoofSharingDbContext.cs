@@ -15,6 +15,7 @@ namespace RoofSharing.Data
     {
         public RoofSharingDbContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
+            // Database.SetInitializer(new DropCreateDatabaseAlways<RoofSharingDbContext>());
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<RoofSharingDbContext, Configuration>());
         }
 
@@ -33,7 +34,7 @@ namespace RoofSharing.Data
                         .WithRequired(s => s.User)
                         .WillCascadeOnDelete(true);
 
-             modelBuilder.Entity<Friendship>()
+            modelBuilder.Entity<Friendship>()
                         .HasRequired(c => c.FromUser)
                         .WithMany()
                         .WillCascadeOnDelete(false);
@@ -52,7 +53,6 @@ namespace RoofSharing.Data
                         .HasRequired(s => s.Guest)
                         .WithMany()
                         .WillCascadeOnDelete(false);
-
 
             base.OnModelCreating(modelBuilder);
         }
