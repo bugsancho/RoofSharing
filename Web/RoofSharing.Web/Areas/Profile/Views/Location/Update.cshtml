@@ -1,0 +1,113 @@
+﻿@model RoofSharing.Web.Areas.Profile.ViewModels.LocationViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Tell us where do you live!</h2>
+<p>
+    <i>*Note:</i> This info will only be visible to people you approve!
+</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="form-horizontal col-md-8">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.AdditionalInfo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.AdditionalInfo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AdditionalInfo, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            @if (Model != null && Model.Longitude != null && Model.Latitude != null)
+            {
+                            <img id="address-map" src="https://maps.googleapis.com/maps/api/staticmap?markers=color:red|@Model.Latitude,@Model.Longitude&zoom=16&size=300x200" alt="Address Map" />
+            }
+            else
+            {
+                <img id="address-map" />
+            }
+        </div>
+        @Html.HiddenFor(model => model.Latitude)
+        @Html.HiddenFor(model => model.Longitude)
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-warning" />
+            </div>
+        </div>
+
+    </div>
+}
+
+
+<div>
+    @Html.ActionLink("Back", "Index", "Profile", null, new { @class = "btn btn-info" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
+    <script>
+        $(function () {
+            var input = document.getElementById('Address');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+    
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var place = autocomplete.getPlace();
+                console.log(place)
+                for (var i = place.address_components.length - 1; i >= 0; i--) {
+                    var component = place.address_components[i];
+                    //console.log(component)
+                    if (component && component.types && component.types.indexOf('country') !== -1) {
+                        $('#Country').val(component.long_name);
+                        continue;
+                    }
+                    if (component && component.types && component.types.indexOf('locality') !== -1) {
+                        $('#City').val(component.long_name);
+                        continue;
+                    }
+                }
+    
+                var latitude = place.geometry.location.lat();
+                var longitude = place.geometry.location.lng();
+    
+                $('#Latitude').val(latitude);
+                $('#Longitude').val(longitude);
+                $('#address-map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?markers=color:red|' + latitude + ',' + longitude + '&zoom=16&size=300x200')
+            });
+        })
+    </script>
+    
+}

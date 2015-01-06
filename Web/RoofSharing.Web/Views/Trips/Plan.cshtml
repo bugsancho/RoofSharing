@@ -1,0 +1,79 @@
+﻿@model RoofSharing.Web.ViewModels.Trip.PlanTripViewModel
+
+@{
+    ViewBag.Title = "Plan";
+}
+
+<h2>Where would you like to go?</h2>
+
+@using (Html.BeginForm("Matches", "Trips")) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal well">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+        @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+        @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+        </div>
+        </div>
+
+        <div class="form-group">
+        @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+        </div>
+        </div>
+
+        <div class="form-group">
+        @Html.LabelFor(model => model.NumberOfCompanions, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+        @Html.EditorFor(model => model.NumberOfCompanions, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.NumberOfCompanions, "", new { @class = "text-danger" })
+        </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Find Hosts" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script>
+        $(function () {
+            var input = document.getElementById('City');
+            var options = {
+                types: ['(cities)']
+            };
+            var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var place = autocomplete.getPlace();
+                
+                for (var i = place.address_components.length - 1; i >= 0; i--) {
+                    var component = place.address_components[i];
+                    if (component && component.types && component.types.indexOf('locality') !== -1) {
+                        $('#City').val(component.long_name);
+                        break;
+                    }
+                }
+            });
+        })
+    </script>
+}

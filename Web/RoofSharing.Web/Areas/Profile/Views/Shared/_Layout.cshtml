@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Review Your Profile Info</h2>
+<ul class="nav nav-pills">
+    <li>@Html.ActionLink("Home", "Index", "Profile", new { area = "Profile" }, new { @class = "btn-sm btn-success" })</li>
+    <li>@Html.ActionLink("Location", "Update", "Location", new { area = "Profile" }, new { @class = "btn-sm btn-success" })</li>
+    <li>@Html.ActionLink("Housing", "Update", "Housing", new { area = "Profile" }, new { @class = "btn-sm btn-success" })</li>
+    <li>@Html.ActionLink("Personality", "Update", "Personality", new { area = "Profile" }, new { @class = "btn-sm btn-success" })</li>
+</ul>
+<div class="wow fadeIn">
+    @RenderBody()
+</div>
+@RenderSection("scripts", required: false)

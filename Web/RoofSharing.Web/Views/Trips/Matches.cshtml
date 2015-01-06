@@ -1,0 +1,22 @@
+﻿@model RoofSharing.Web.ViewModels.Trip.TripMatchViewModel
+
+@{
+    foreach (var userId in Model.Ids)
+    {
+    @:<div class="well">
+        Html.RenderAction("ProfileSummary", "Profile", new { userId = userId });
+        using (Html.BeginForm("Invite", "Host", new { area = string.Empty }, FormMethod.Get, new { }))
+        {
+                    <input type="hidden" name="city" value="@Model.City" />
+                    <input type="hidden" name="userId" value="@userId" />
+                    <input type="submit" value="Send Host Invitation" class="btn btn-danger"/>
+        }
+        @:    </div>
+    }
+    if (Model.Ids.Count() == 0)
+    {
+            <h2>Sorry, We couldn't find any hosts in that area!</h2>
+            @Html.ActionLink("Try Another Criteria", "Plan", "Trips", new { area = "" }, new {@class="btn btn-warning" })
+    }
+
+}
