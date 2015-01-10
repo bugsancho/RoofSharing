@@ -30,7 +30,7 @@ namespace RoofSharing.Web.Areas.Profile.ViewModels
         [UIHint("StringWithDefaultValue")]
         public string Latitude { get; set; }
 
-        [Display(Name = "Tell us more about your place")]
+        [Display(Name = "Tell us more about the location of your house")]
         [UIHint("MultiLineText")]
         [UIHint("StringWithDefaultValue")]
         public string AdditionalInfo { get; set; }

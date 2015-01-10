@@ -662,6 +662,7 @@
     <Content Include="Scripts\wow.min.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Shared\EditorTemplates\BoolNullable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
