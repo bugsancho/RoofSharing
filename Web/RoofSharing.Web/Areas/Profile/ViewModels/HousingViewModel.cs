@@ -26,7 +26,6 @@ namespace RoofSharing.Web.Areas.Profile.ViewModels
 
         [Display(Name = "Have pets?")]
         [UIHint("BoolNullable")]
-        [UIHint("StringWithDefaultValue")]
         public bool? HavePets { get; set; }
 
         [Display(Name = "Are rooms shared?")]
