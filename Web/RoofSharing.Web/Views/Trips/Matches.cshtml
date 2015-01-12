@@ -1,22 +1,65 @@
 ﻿@model RoofSharing.Web.ViewModels.Trip.TripMatchViewModel
+<div class="row">
+    <div class="col-md-8">
+        @{
+            foreach (var userId in Model.Ids)
+            {
+            @:            <div class="well">
+                Html.RenderAction("ProfileSummary", "Profile", new { userId = userId });
+                using (Html.BeginForm("Invite", "Host", new { area = string.Empty }, FormMethod.Get, new { }))
+                {
+                                    <input type="hidden" name="city" value="@Model.City" />
+                                    <input type="hidden" name="userId" value="@userId" />
+                                    <input type="submit" value="Send Host Invitation" class="btn btn-danger" />
+                }
+                @:            </div>
+            }
+            if (Model.Ids.Count() == 0)
+            {
+                            <h2>Sorry, We couldn't find any hosts in that area!</h2>
+                            @Html.ActionLink("Try Another Criteria", "Plan", "Trips", new { area = "" }, new { @class = "btn btn-warning" })
+            }
 
-@{
-    foreach (var userId in Model.Ids)
-    {
-    @:<div class="well">
-        Html.RenderAction("ProfileSummary", "Profile", new { userId = userId });
-        using (Html.BeginForm("Invite", "Host", new { area = string.Empty }, FormMethod.Get, new { }))
-        {
-                    <input type="hidden" name="city" value="@Model.City" />
-                    <input type="hidden" name="userId" value="@userId" />
-                    <input type="submit" value="Send Host Invitation" class="btn btn-danger"/>
         }
-        @:    </div>
-    }
-    if (Model.Ids.Count() == 0)
-    {
-            <h2>Sorry, We couldn't find any hosts in that area!</h2>
-            @Html.ActionLink("Try Another Criteria", "Plan", "Trips", new { area = "" }, new {@class="btn btn-warning" })
-    }
 
-}
+    </div>
+
+
+</div>
+
+    <div class="row">
+        <div class="user-card col-md-8 ">
+            <div class="col-md-2">
+                <img alt="Profile Picture" height="100" src="https://graph.facebook.com/1004993102851557/picture?width=100&amp;height=100" width="100">
+            </div>
+            <div class="com-md-10">
+
+                <h5 class="">Alexander Todorov</h5>
+            </div>
+        </div>
+</div>
+
+<div class="user-card ">
+    <div class="row">
+        <div class="col-md-3">
+            <img alt="Profile Picture" height="100" src="https://graph.facebook.com/1004993102851557/picture?width=100&amp;height=100" width="100">
+        </div>
+        <div class="com-md-9">
+
+            <h5>Alexander Todorov</h5>
+        </div>
+    </div>
+</div>
+
+<div class="user-card ">
+    <div class="row">
+        <div class="col-md-3">
+            <img alt="Profile Picture" height="100" src="https://graph.facebook.com/1004993102851557/picture?width=100&amp;height=100" width="100">
+        </div>
+        <div class="com-md-9">
+
+            <h5>Alexander Todorov</h5>
+        </div>
+    </div>
+</div>
+
