@@ -24,6 +24,8 @@ namespace RoofSharing.Data.Models.Profile
         [StringLength(500)]
         public string Interests { get; set; }
 
+        public string TagLine { get; set; }
+
         [StringLength(500)]
         public string Education { get; set; }
 

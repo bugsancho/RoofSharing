@@ -8,8 +8,6 @@ namespace RoofSharing.Web.ViewModels.Host
 {
     public class HostInviteInputViewModel
     {
-        [Required]
-        public string City { get; set; }
 
         [Required]
         public string UserId { get; set; }

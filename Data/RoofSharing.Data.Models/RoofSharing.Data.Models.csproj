@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcceptingGuestsStatusType.cs" />
     <Compile Include="Friendship.cs" />
     <Compile Include="FriendshipStatusType.cs" />
     <Compile Include="Gender.cs" />

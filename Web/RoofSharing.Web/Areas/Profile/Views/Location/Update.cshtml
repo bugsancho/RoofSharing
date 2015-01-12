@@ -78,7 +78,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
     <script>
         $(function () {
             var input = document.getElementById('Address');
@@ -86,7 +85,6 @@
     
             google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 var place = autocomplete.getPlace();
-                console.log(place)
                 for (var i = place.address_components.length - 1; i >= 0; i--) {
                     var component = place.address_components[i];
                     //console.log(component)

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using RoofSharing.Data;
 using RoofSharing.Web.ViewModels.Trip;
+using AutoMapper.QueryableExtensions;
 
 namespace RoofSharing.Web.Controllers
 {
@@ -49,10 +50,9 @@ namespace RoofSharing.Web.Controllers
                 ModelState.AddModelError(string.Empty, "Please tell us first about your trip!");
                 return RedirectToAction("Plan");
             }
-            var model = new TripMatchViewModel { City = tripInfo.City };
-            model.Ids = this.Data.Users.All().Where(u => u.LocationInfo.City == tripInfo.City && u.Id != this.CurrentUser.Id).Select(u => u.Id);
+            var results = this.Data.Users.All().Where(u => u.LocationInfo.City == tripInfo.SearchedCity && u.Id != this.CurrentUser.Id).Project().To<UserCardViewModel>().ToList();
 
-            return View(model);
+            return View(results);
         }
     }
 }

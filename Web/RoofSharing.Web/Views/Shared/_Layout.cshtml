@@ -56,7 +56,7 @@
                                     @using (Html.BeginForm("Matches", "Trips", new { area = "" }, FormMethod.Post, null))
                                     {
                                                                             @Html.AntiForgeryToken()
-                                                                            <input type="hidden"   name="City" id="City"/>
+    <input type="hidden" name="SearchedCity" id="SearchedCity" />
                                                                             <input type="search" id="location" placeholder="Where would you like to go?">
                                                                             <button class="search-btn" type="submit">
                                                                                 <i class="fa fa-search"></i>
@@ -101,7 +101,7 @@
                         for (var i = place.address_components.length - 1; i >= 0; i--) {
                             var component = place.address_components[i];
                             if (component && component.types && component.types.indexOf('locality') !== -1) {
-                                $('#City').val(component.long_name);
+                                $('#SearchedCity').val(component.long_name);
                                 break;
                             }
                         }

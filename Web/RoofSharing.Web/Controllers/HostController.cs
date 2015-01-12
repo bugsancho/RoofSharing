@@ -31,7 +31,6 @@ namespace RoofSharing.Web.Controllers
 
                 var model = new HostInviteViewModel()
                 {
-                    City = input.City,
                     HostId = input.UserId,
                     HostNames = hostNames
                 };

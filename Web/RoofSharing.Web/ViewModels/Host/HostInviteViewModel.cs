@@ -13,9 +13,6 @@ namespace RoofSharing.Web.ViewModels.Host
     public class HostInviteViewModel : IMapFrom<HostInvitation>, IHaveCustomMappings
     {
         [Required]
-        public string City { get; set; }
-
-        [Required]
         public string HostId { get; set; }
         
         [Display(Name = "Host Names")]

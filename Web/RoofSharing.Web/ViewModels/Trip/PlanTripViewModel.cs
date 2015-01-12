@@ -10,7 +10,7 @@ namespace RoofSharing.Web.ViewModels.Trip
     public class PlanTripViewModel
     {
         [Required]
-        public string City { get; set; }
+        public string SearchedCity { get; set; }
         //[DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
         //[DateTimeCombinedValidation("EndDate")]

@@ -1,65 +1,78 @@
-﻿@model RoofSharing.Web.ViewModels.Trip.TripMatchViewModel
-<div class="row">
-    <div class="col-md-8">
-        @{
-            foreach (var userId in Model.Ids)
-            {
-            @:            <div class="well">
-                Html.RenderAction("ProfileSummary", "Profile", new { userId = userId });
-                using (Html.BeginForm("Invite", "Host", new { area = string.Empty }, FormMethod.Get, new { }))
-                {
-                                    <input type="hidden" name="city" value="@Model.City" />
-                                    <input type="hidden" name="userId" value="@userId" />
-                                    <input type="submit" value="Send Host Invitation" class="btn btn-danger" />
-                }
-                @:            </div>
-            }
-            if (Model.Ids.Count() == 0)
-            {
-                            <h2>Sorry, We couldn't find any hosts in that area!</h2>
-                            @Html.ActionLink("Try Another Criteria", "Plan", "Trips", new { area = "" }, new { @class = "btn btn-warning" })
-            }
+﻿@using RoofSharing.Web.Infrastructure.Extensions
 
-        }
-
-    </div>
+@model IEnumerable<RoofSharing.Web.ViewModels.Trip.UserCardViewModel>
 
 
-</div>
+@{
+    if (Model.Count() == 0)
+    {
+        <h1 class="classic-title">Sorry, We couldn't find any hosts in that area!</h1>
+        <img src="http://www.thescanpost.lu/wp/wp-content/uploads/2014/12/emotes-face-sad-icon-415x260.png" alt="" />
+    }
+    else
+    {
+            <h1 class="classic-title">We found @Model.Count() hosts in that area!</h1>
+           
+    }
+    
+    foreach (var user in Model)
+    {
 
-    <div class="row">
-        <div class="user-card col-md-8 ">
-            <div class="col-md-2">
-                <img alt="Profile Picture" height="100" src="https://graph.facebook.com/1004993102851557/picture?width=100&amp;height=100" width="100">
+    
+            <div class="row">
+                <div class="user-card col-md-8 ">
+                    <div class="col-md-2">
+                        @Html.FacebookImage(user.PictureUrl, "Profile Picture", null, 100, 100)
+                    </div>
+                    <div class="com-md-10">
+                        <h2 class="pull-right text-danger">@user.AcceptingGuestsStatus</h2>
+                        <a href="#">
+                            <h2 class="">@user.Names</h2>
+                        </a>
+
+                        <div>
+                            <i class="fa fa-map-marker icon-small"></i> @user.Location
+                        </div>
+                        <em>@user.Tagline</em>
+                        <div class="pull-right">
+                            @using (Html.BeginForm("Invite", "Host", new { area = string.Empty }, FormMethod.Get, null))
+                            {
+                                                            <input type="hidden" name="userId" value="@user.Id" />
+                                                            <input type="submit" value="Ask To Host" class="btn btn-danger" />
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="com-md-10">
+    }
 
-                <h5 class="">Alexander Todorov</h5>
-            </div>
-        </div>
+
+}
+
+@*<div class="row">
+<div class="user-card col-md-8 ">
+<div class="col-md-2">
+<img alt="Profile Picture" height="100" src="https://graph.facebook.com/1004993102851557/picture?width=100&amp;height=100" width="100">
 </div>
+<div class="com-md-10">
+<h2 class="pull-right text-danger">Maybe Accepting Guests</h2>
+<a href="#">
+<h2 class="">Alexander Todorov</h2>
+</a>
 
-<div class="user-card ">
-    <div class="row">
-        <div class="col-md-3">
-            <img alt="Profile Picture" height="100" src="https://graph.facebook.com/1004993102851557/picture?width=100&amp;height=100" width="100">
-        </div>
-        <div class="com-md-9">
-
-            <h5>Alexander Todorov</h5>
-        </div>
-    </div>
+<div>
+<i class="fa fa-map-marker icon-small"></i> Sofia, Bulgaria
 </div>
-
-<div class="user-card ">
-    <div class="row">
-        <div class="col-md-3">
-            <img alt="Profile Picture" height="100" src="https://graph.facebook.com/1004993102851557/picture?width=100&amp;height=100" width="100">
-        </div>
-        <div class="com-md-9">
-
-            <h5>Alexander Todorov</h5>
-        </div>
-    </div>
+<em>Come travel with me</em>
+<div class="pull-right">
+@using (Html.BeginForm("Invite", "Host", new { area = string.Empty }, FormMethod.Get, null))
+{
+<input type="hidden" name="city" value="@Model" />
+<input type="hidden" name="userId" value="" />
+<input type="submit" value="Ask To Host" class="btn btn-danger" />
+}
 </div>
+</div>
+</div>
+</div>*@
 
