@@ -9,17 +9,7 @@
         @Styles.Render("~/Content/margo-theme")
 
         <link rel="stylesheet" type="text/css" href="~/Content/colors/red.css" title="red" media="screen" />
-        @*<link rel="stylesheet" type="text/css" href="~/Content/colors/jade.css" title="jade" media="screen" />
-        <link rel="stylesheet" type="text/css" href="~/Content/colors/blue.css" title="blue" media="screen" />
-        <link rel="stylesheet" type="text/css" href="~/Content/colors/beige.css" title="beige" media="screen" />
-        <link rel="stylesheet" type="text/css" href="~/Content/colors/cyan.css" title="cyan" media="screen" />
-        <link rel="stylesheet" type="text/css" href="~/Content/colors/green.css" title="green" media="screen" />
-        <link rel="stylesheet" type="text/css" href="~/Content/colors/orange.css" title="orange" media="screen" />
-        <link rel="stylesheet" type="text/css" href="~/Content/colors/peach.css" title="peach" media="screen" />
-        <link rel="stylesheet" type="text/css" href="~/Content/colors/pink.css" title="pink" media="screen" />
-        <link rel="stylesheet" type="text/css" href="~/Content/colors/purple.css" title="purple" media="screen" />
-        <link rel="stylesheet" type="text/css" href="~/Content/colors/sky-blue.css" title="sky-blue" media="screen" />
-        <link rel="stylesheet" type="text/css" href="~/Content/colors/yellow.css" title="yellow" media="screen" />*@
+        
         @Styles.Render()
         @RenderSection("styles", required: false)
         @Scripts.Render("~/bundles/modernizr")
@@ -49,14 +39,13 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                            <li>@Html.ActionLink("Plan Your Trip", "Plan", "Trips", new { area = "" }, null)</li>
                             <li>@Html.ActionLink("Profile", "Index", "Profile", new { area = "Profile" }, null)</li>
                             <li>
                                 <div class=" widget-search">
                                     @using (Html.BeginForm("Matches", "Trips", new { area = "" }, FormMethod.Post, null))
                                     {
                                                                             @Html.AntiForgeryToken()
-    <input type="hidden" name="SearchedCity" id="SearchedCity" />
+                                                                            <input type="hidden" name="SearchedCity" id="SearchedCity" />
                                                                             <input type="search" id="location" placeholder="Where would you like to go?">
                                                                             <button class="search-btn" type="submit">
                                                                                 <i class="fa fa-search"></i>
