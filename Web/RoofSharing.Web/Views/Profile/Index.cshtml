@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="tabs-section">
+
+    <ul class="nav nav-tabs">
+        <li >@Html.ActionLink("Location", "UpdateLocation", "Profile", new { area = "" }, new { data_toggle = "tabajax", data_target = "#Location-tab" })</li>
+        <li>@Html.ActionLink("Housing", "UpdateHouse", "Profile", new { area = "" }, new { data_toggle = "tabajax", data_target = "#Housing-tab" })</li>
+        <li>@Html.ActionLink("Personality", "UpdatePersonality", "Profile", new { area = "" }, new { data_toggle = "tabajax", data_target = "#Personality-tab" })</li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade" id="Location-tab"></div>
+        <div class="tab-pane fade" id="Housing-tab"></div>
+        <div class="tab-pane fade" id="Personality-tab"></div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>       
+
+        $('[data-toggle="tabajax"]').click(function (e) {
+            var $this = $(this),
+                loadurl = $this.attr('href'),
+                targ = $this.attr('data-target');
+
+            $.get(loadurl, function (data) {
+                $(targ).html(data);
+            });
+
+            $this.tab('show');
+            return false;
+        });
+
+        $(function () {
+            $('[data-target="#Location-tab"]').click();
+        })
+    </script>
+}

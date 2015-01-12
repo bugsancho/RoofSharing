@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace RoofSharing.Web.Areas.Profile.ViewModels
+namespace RoofSharing.Web.ViewModels.Profile
 {
     public class ProfileInfoModel
     {

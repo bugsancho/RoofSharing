@@ -1,6 +1,5 @@
 ﻿using RoofSharing.Data;
 using RoofSharing.Data.Models.Profile;
-using RoofSharing.Web.Areas.Profile.ViewModels;
 using RoofSharing.Web.Controllers;
 using System;
 using System.Collections.Generic;
@@ -10,6 +9,7 @@ using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using AutoMapper;
 using RoofSharing.Web.Infrastructure.ValidationAttributes;
+using RoofSharing.Web.ViewModels.Profile;
 
 namespace RoofSharing.Web.Areas.Profile.Controllers
 {
@@ -34,7 +34,7 @@ namespace RoofSharing.Web.Areas.Profile.Controllers
                 viewModel = model.Project().To<HousingViewModel>().FirstOrDefault();
             }
             
-            return View(viewModel);
+            return PartialView(viewModel);
         }
 
         [Authorize]

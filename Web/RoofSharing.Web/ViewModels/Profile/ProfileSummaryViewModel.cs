@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace RoofSharing.Web.Areas.Profile.ViewModels
+namespace RoofSharing.Web.ViewModels.Profile
 {
     public class ProfileSummaryViewModel : IMapFrom<User>, IHaveCustomMappings
     {

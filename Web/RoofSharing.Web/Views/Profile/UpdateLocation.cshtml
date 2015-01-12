@@ -1,4 +1,4 @@
-﻿@model RoofSharing.Web.Areas.Profile.ViewModels.LocationViewModel
+﻿@model RoofSharing.Web.ViewModels.Profile.LocationViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -69,43 +69,40 @@
         </div>
 
     </div>
+    
+    
 }
-
-
 <div>
     @Html.ActionLink("Back", "Index", "Profile", null, new { @class = "btn btn-info" })
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(function () {
-            var input = document.getElementById('Address');
-            var autocomplete = new google.maps.places.Autocomplete(input);
-    
-            google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                var place = autocomplete.getPlace();
-                for (var i = place.address_components.length - 1; i >= 0; i--) {
-                    var component = place.address_components[i];
-                    //console.log(component)
-                    if (component && component.types && component.types.indexOf('country') !== -1) {
-                        $('#Country').val(component.long_name);
-                        continue;
-                    }
-                    if (component && component.types && component.types.indexOf('locality') !== -1) {
-                        $('#City').val(component.long_name);
-                        continue;
-                    }
+<script>
+    $(function () {
+        var input = document.getElementById('Address');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+            var place = autocomplete.getPlace();
+            for (var i = place.address_components.length - 1; i >= 0; i--) {
+                var component = place.address_components[i];
+                //console.log(component)
+                if (component && component.types && component.types.indexOf('country') !== -1) {
+                    $('#Country').val(component.long_name);
+                    continue;
                 }
-    
-                var latitude = place.geometry.location.lat();
-                var longitude = place.geometry.location.lng();
-    
-                $('#Latitude').val(latitude);
-                $('#Longitude').val(longitude);
-                $('#address-map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?markers=color:red|' + latitude + ',' + longitude + '&zoom=16&size=300x200')
-            });
-        })
-    </script>
-    
-}
+                if (component && component.types && component.types.indexOf('locality') !== -1) {
+                    $('#City').val(component.long_name);
+                    continue;
+                }
+            }
+
+            var latitude = place.geometry.location.lat();
+            var longitude = place.geometry.location.lng();
+
+            $('#Latitude').val(latitude);
+            $('#Longitude').val(longitude);
+            $('#address-map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?markers=color:red|' + latitude + ',' + longitude + '&zoom=16&size=300x200')
+        });
+    })
+</script>
+

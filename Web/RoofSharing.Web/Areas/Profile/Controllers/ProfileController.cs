@@ -5,10 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using RoofSharing.Data;
 using RoofSharing.Web.Controllers;
-using RoofSharing.Web.Areas.Profile.ViewModels;
 using AutoMapper.QueryableExtensions;
 using RoofSharing.Data.Models.Profile;
 using AutoMapper;
+using RoofSharing.Web.ViewModels.Profile;
 
 namespace RoofSharing.Web.Areas.Profile.Controllers
 {
