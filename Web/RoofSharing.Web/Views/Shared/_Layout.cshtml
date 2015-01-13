@@ -39,7 +39,13 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                            <li>@Html.ActionLink("Profile", "Index", "Profile", new { area = "" }, null)</li>
+                            <li class="drop">
+                                @Html.ActionLink("Profile", "Index", "Profile", new { area = "" }, null)
+                                <ul class="dropdown">
+                                    <li>@Html.ActionLink("Profile", "Index", "Profile", new { area = "" }, null)</li>
+                                    <li>@Html.ActionLink("Update", "Update", "Profile", new { area = "" }, null)</li>
+                                </ul>
+                            </li>
                             <li>
                                 <div class=" widget-search">
                                     @using (Html.BeginForm("Matches", "Trips", new { area = "" }, FormMethod.Post, null))
@@ -59,6 +65,7 @@
                                                             <li>@Html.ActionLink("Admin", "Index", "AdminHome", new { area = "Administration" }, null)</li>
                             }
                         </ul>
+
                         @Html.Partial("_LoginPartial")
                     </div>
                 </div>

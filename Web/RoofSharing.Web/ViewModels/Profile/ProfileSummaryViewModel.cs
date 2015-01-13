@@ -15,22 +15,22 @@ namespace RoofSharing.Web.ViewModels.Profile
 
         public string Id { get; set; }
 
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
          
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string City { get; set; }
 
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Email { get; set; }
 
         [Required]

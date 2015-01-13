@@ -32,19 +32,19 @@ namespace RoofSharing.Web.ViewModels.Profile
         public string LastName { get; set; }
 
         [UIHint("MultiLineText")]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Hobbies { get; set; }
 
         [UIHint("MultiLineText")]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Interests { get; set; }
 
         [UIHint("MultiLineText")]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Education { get; set; }
 
         [UIHint("MultiLineText")]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Occupation { get; set; }
 
         public void CreateMappings(IConfiguration configuration)

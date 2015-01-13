@@ -217,11 +217,6 @@
     <Compile Include="Areas\Administration\ViewModels\UserHousingAdminViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\UserLocationAdminViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\UserPersonalityAdminViewModel.cs" />
-    <Compile Include="Areas\Profile\Controllers\HousingController.cs" />
-    <Compile Include="Areas\Profile\Controllers\LocationController.cs" />
-    <Compile Include="Areas\Profile\Controllers\PersonalityController.cs" />
-    <Compile Include="Areas\Profile\Controllers\ProfileController.cs" />
-    <Compile Include="Areas\Profile\ProfileAreaRegistration.cs" />
     <Compile Include="ViewModels\Profile\HousingViewModel.cs" />
     <Compile Include="ViewModels\Profile\LocationViewModel.cs" />
     <Compile Include="ViewModels\Profile\PersonalityViewModel.cs" />
@@ -694,7 +689,7 @@
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Shared\EditorTemplates\BoolNullable.cshtml" />
-    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -703,11 +698,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Profile\ViewModels\" />
-    <Folder Include="Areas\Profile\Views\Housing\" />
-    <Folder Include="Areas\Profile\Views\Location\" />
-    <Folder Include="Areas\Profile\Views\Personality\" />
-    <Folder Include="Areas\Profile\Views\Update\" />
     <Folder Include="Views\Friends\" />
   </ItemGroup>
   <ItemGroup>
@@ -724,31 +714,11 @@
     <Content Include="Views\Profile\UpdateHouse.cshtml" />
     <Content Include="Views\Profile\UpdateLocation.cshtml" />
     <Content Include="Views\Profile\UpdatePersonality.cshtml" />
-    <Content Include="Areas\Profile\Views\Profile\Index.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\DisplayTemplates\StringWithDefaultValue.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\Bool.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\BoolNullable.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\Currency.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\Date.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\DateTime.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\Email.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\Integer.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\MultiLineText.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\Number.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\Password.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\String.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\Time.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\EditorTemplates\Url.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\View.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\_HousingProfile.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\_LocationProfile.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\_PersonalityProfile.cshtml" />
-    <Content Include="Areas\Profile\Views\Shared\_ProfileSummary.cshtml" />
-    <Content Include="Areas\Profile\Views\web.config" />
-    <Content Include="Areas\Profile\Views\_ViewStart.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\_HousingProfile.cshtml" />
+    <Content Include="Views\Profile\_LocationProfile.cshtml" />
+    <Content Include="Views\Profile\_PersonalityProfile.cshtml" />
+    <Content Include="Views\Profile\_ProfileSummary.cshtml" />
     <Content Include="Content\Images\Profile\91e35e73-d3de-4481-b902-464ef126910a" />
     <Content Include="Content\kendo\2014.2.1008\images\kendoui.ttf" />
     <Content Include="Content\kendo\2014.2.1008\images\kendoui.woff" />
@@ -896,7 +866,7 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\StringWithDefaultValue.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ObjectWithDefaultValue.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Currency.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />

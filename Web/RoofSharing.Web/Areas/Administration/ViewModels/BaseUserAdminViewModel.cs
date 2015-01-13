@@ -13,12 +13,12 @@ namespace RoofSharing.Web.Areas.Administration.ViewModels
         
         [Required]
         [StringLength(50, MinimumLength = 2)]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string FirstName { get; set; }
          
         [Required]
         [StringLength(50, MinimumLength = 2)]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string LastName { get; set; }
     }
 }

@@ -17,19 +17,19 @@ namespace RoofSharing.Web.Areas.Administration.ViewModels
         public DateTime? BirthDate { get; set; }
         
         [UIHint("MultiLineText")]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Hobbies { get; set; }
 
         [UIHint("MultiLineText")]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Interests { get; set; }
 
         [UIHint("MultiLineText")]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Education { get; set; }
 
         [UIHint("MultiLineText")]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Occupation { get; set; }
 
         public void CreateMappings(IConfiguration configuration)

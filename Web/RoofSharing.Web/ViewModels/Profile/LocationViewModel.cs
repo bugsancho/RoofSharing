@@ -13,26 +13,26 @@ namespace RoofSharing.Web.ViewModels.Profile
     {
         [Required]
         [Display(Name = "Address")]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Address { get; set; }
 
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Country { get; set; }
 
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string City { get; set; }
 
         [Required]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Longitude { get; set; }
 
         [Required]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string Latitude { get; set; }
 
         [Display(Name = "Tell us more about the location of your house")]
         [UIHint("MultiLineText")]
-        [UIHint("StringWithDefaultValue")]
+        [UIHint("ObjectWithDefaultValue")]
         public string AdditionalInfo { get; set; }
     }
 }
