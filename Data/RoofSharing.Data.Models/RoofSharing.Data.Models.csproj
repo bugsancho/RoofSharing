@@ -72,6 +72,7 @@
     <Compile Include="Profile\PersonalityInfo.cs" />
     <Compile Include="Profile\UserHousingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublicTrip.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -245,7 +245,9 @@
     <Compile Include="ViewModels\Host\HostInviteViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\Trip\PlanTripViewModel.cs" />
+    <Compile Include="ViewModels\Trip\PublicTripViewModel.cs" />
     <Compile Include="ViewModels\Trip\UserCardViewModel.cs" />
+    <Compile Include="ViewModels\Account\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.min.css" />
@@ -690,6 +692,9 @@
     <Content Include="Web.config" />
     <Content Include="Views\Shared\EditorTemplates\BoolNullable.cshtml" />
     <Content Include="Views\Profile\Update.cshtml" />
+    <Content Include="Views\Trips\CreatePublicTrip.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PublicTripViewModel.cshtml" />
+    <Content Include="Views\Trips\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

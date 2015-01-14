@@ -40,7 +40,7 @@ namespace RoofSharing.Data
             }
         }
 
-         public IRepository<Friendship> Friendships
+        public IRepository<Friendship> Friendships
         
         {
             get
@@ -58,12 +58,22 @@ namespace RoofSharing.Data
             }
         }
 
-           public IRepository<HostInvitation> Invitations
+        public IRepository<HostInvitation> Invitations
         
         {
             get
             {
                 return this.GetRepository<HostInvitation>();
+            }
+        }
+
+
+        public IRepository<PublicTrip> PublicTrips
+        
+        {
+            get
+            {
+                return this.GetRepository<PublicTrip>();
             }
         }
 

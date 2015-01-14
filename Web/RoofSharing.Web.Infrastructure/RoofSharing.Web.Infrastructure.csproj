@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\KendoHelpers.cs" />
     <Compile Include="Filters\WelcomePageFilter.cs" />
     <Compile Include="Helpers\ImgurPictureUploader.cs" />

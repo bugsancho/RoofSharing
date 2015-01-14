@@ -1,0 +1,48 @@
+﻿@model RoofSharing.Web.ViewModels.Trip.PublicTripViewModel
+
+@{
+    ViewBag.Title = "Create Public Trip";
+}
+<h2 class="classic-title">Plan your own trip!</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.EditorForModel()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $("#participants-container").popover({
+                                                     title: 'Select participants!',
+                                                     content: "You can only select people that have approved you as a friend!",
+                                                     trigger: 'hover'
+                                                 });
+        });
+
+        function startDateChanged() {
+            var startDateDatepicker = $("#StartDate").data("kendoDatePicker");
+            var endDateDateicker = $("#EndDate").data("kendoDatePicker");
+            endDateDateicker.min(startDateDatepicker.value());
+        }
+
+        function onAdditionalData() {
+            return {
+                text: $("#Participants").data("kendoMultiSelect").input.val()
+            };
+        }
+    </script>
+}

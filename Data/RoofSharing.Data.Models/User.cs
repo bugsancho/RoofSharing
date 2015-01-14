@@ -13,6 +13,8 @@ namespace RoofSharing.Data.Models
 {
     public class User : IdentityUser
     {
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -39,5 +41,6 @@ namespace RoofSharing.Data.Models
         public virtual UserHousingInfo HousingInfo { get; set; }
 
         public virtual PersonalityInfo PersonalityInfo { get; set; }
+
     }
 }

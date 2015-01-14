@@ -19,6 +19,8 @@ namespace RoofSharing.Data
 
         IRepository<HostInvitation> Invitations { get; }
 
+        IRepository<PublicTrip> PublicTrips { get; }
+
         DbContext Context { get; }
 
         int SaveChanges();

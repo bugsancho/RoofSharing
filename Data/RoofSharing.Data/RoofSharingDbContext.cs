@@ -71,5 +71,7 @@ namespace RoofSharing.Data
         public IDbSet<UserHousingInfo> Houses { get; set; }
 
         public IDbSet<HostInvitation> Invitations { get; set; }
+
+        public IDbSet<PublicTrip> PublicTrips { get; set; }
     }
 }

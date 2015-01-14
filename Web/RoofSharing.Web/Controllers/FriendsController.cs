@@ -8,6 +8,8 @@ using RoofSharing.Data.Models;
 using RoofSharing.Web.ViewModels;
 using RoofSharing.Web.ViewModels.Friends;
 using RoofSharing.Web.Infrastructure.ValidationAttributes;
+using AutoMapper.QueryableExtensions;
+using RoofSharing.Web.ViewModels.Account;
 
 namespace RoofSharing.Web.Controllers
 {
@@ -39,7 +41,7 @@ namespace RoofSharing.Web.Controllers
             friendship.Status = FriendshipStatusType.Pending;
             friendship.FromUserId = this.CurrentUser.Id;
             friendship.ToUserId = userId;
-            this.Data.SaveChanges();
+            var a = this.Data.SaveChanges();
 
             this.TempData[UserFriendshipName] = friendship;
 
@@ -100,6 +102,21 @@ namespace RoofSharing.Web.Controllers
             return this.FriendPartial(userId);
         }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult GetFriendList()
+        {
+            var friendIds = this.Data.Friendships.All()
+                                .Where(fr => fr.Status == FriendshipStatusType.Friends &&
+                                             (fr.ToUserId == this.CurrentUser.Id || fr.FromUserId == this.CurrentUser.Id))
+                                .Select(fr => fr.FromUserId == this.CurrentUser.Id ? fr.ToUserId : fr.FromUserId);
+
+            var friends = this.Data.Users.All()
+                              .Where(user => friendIds.Contains(user.Id)).Project().To<UserViewModel>();
+
+            return Json(friends, JsonRequestBehavior.AllowGet);
+        }
+
         private Friendship GetFriendship(string userId)
         {
             var friendship = this.TempData[UserFriendshipName] as Friendship;
@@ -117,6 +134,10 @@ namespace RoofSharing.Web.Controllers
                         Status = FriendshipStatusType.None
                     };
 
+                    //this.CurrentUser.Friendships.Add(friendship);
+                    //this.Data.Users.All().Where(us => us.Id == userId).FirstOrDefault().Friendships.Add(friendship);
+                    ////        this.CurrentUser.Friendships.Add(friendship);
+                    ////this.Data.Users.Find(userId).Friendships.Add(friendship);
                     this.Data.Friendships.Add(friendship);
                 }
             }

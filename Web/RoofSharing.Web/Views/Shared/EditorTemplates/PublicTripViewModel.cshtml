@@ -1,0 +1,69 @@
+﻿@model RoofSharing.Web.ViewModels.Trip.PublicTripViewModel
+
+@Html.HiddenFor(model => model.HostId)
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-group">
+    @Html.LabelFor(model => model.StartPoint, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.StartPoint, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.StartPoint, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.EndPoint, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.EndPoint, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.EndPoint, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.Kendo().DatePickerFor(model => model.StartDate).Min(DateTime.Now).Events(e => e.Change("startDateChanged")).Min(DateTime.Now).Value(DateTime.Now.AddDays(1))
+        @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.Kendo().DatePickerFor(model => model.EndDate).HtmlAttributes(new { htmlAttributes = new { @class = "form-control" } }).Min(DateTime.Now).Value(DateTime.Now.AddDays(2))
+        @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Participants, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-3" id="participants-container" rel="popover" data-trigger="hover">
+        @(Html.Kendo()
+              .MultiSelectFor(x => x.Participants)
+              .DataTextField("Names")
+              .AutoBind(false)
+              .DataValueField("Id")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetFriendList", "Friends")
+                          .Data("onAdditionalData");
+                      
+                  })
+                        .ServerFiltering(true);
+              })
+              .Value(Model.Participants)
+        )
+        @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+    </div>
+</div>
+

@@ -32,11 +32,19 @@ textarea
     z-index: 10000 !important;
 }
 
-.user-card
+.border-shadow
 {
-    background-color: #fff;
     box-shadow: 0 3px 10px rgba(0,0,0,.23),0 3px 10px rgba(0,0,0,.16);
+}
+.padding-right{
+    padding-right: 10px;
+}
+
+.margin-btm-md{
     margin-bottom: 20px;
+}
+.margin-left-md{
+    margin-left:50px;
 }
 
 .widget-search

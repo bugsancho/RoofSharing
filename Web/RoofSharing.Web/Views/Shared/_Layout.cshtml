@@ -71,9 +71,13 @@
                 </div>
             </div>
             <div class="container body-content ">
-                @if (ViewData["Error"] != null)
+                @if (ViewData[RoofSharing.Common.GlobalConstants.ErrorMessage] != null)
                 {
-                                    <div>@ViewData["Error"]</div>
+                                    <div class="alert alert-danger" >@ViewData[RoofSharing.Common.GlobalConstants.ErrorMessage]</div>
+                }
+                @if (ViewData[RoofSharing.Common.GlobalConstants.SuccessMessage ] != null)
+                {
+                    <div class="alert alert-success">@ViewData[RoofSharing.Common.GlobalConstants.SuccessMessage]</div>
                 }
                 @RenderBody()
 
