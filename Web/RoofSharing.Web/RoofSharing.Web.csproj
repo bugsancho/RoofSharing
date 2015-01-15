@@ -512,6 +512,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\count-to.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
@@ -692,9 +693,10 @@
     <Content Include="Web.config" />
     <Content Include="Views\Shared\EditorTemplates\BoolNullable.cshtml" />
     <Content Include="Views\Profile\Update.cshtml" />
-    <Content Include="Views\Trips\CreatePublicTrip.cshtml" />
+    <Content Include="Views\Trips\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\PublicTripViewModel.cshtml" />
     <Content Include="Views\Trips\View.cshtml" />
+    <Content Include="Views\Trips\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

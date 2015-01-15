@@ -22,8 +22,14 @@ namespace RoofSharing.Web.ViewModels.Trip
         public string StartPoint { get; set; }
 
         [Required]
+        public string StartPointCity { get; set; }
+
+        [Required]
         [Display(Name = "Destination")]
         public string EndPoint { get; set; }
+
+        [Required]
+        public string EndPointCity { get; set; }
         
         [DateTimeCombinedValidation("EndDate")]
         [Required]

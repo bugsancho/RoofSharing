@@ -2,6 +2,9 @@
 
 var $ = jQuery.noConflict();
 
+
+
+
 // Page Loader
 $(window).load(function () {
     "use strict";
@@ -456,33 +459,33 @@ $(document).ready(function ($) {
 	/*	Tooltips & Fit Vids & Parallax & Text Animations
 	/*----------------------------------------------------*/
 	
-	$("body").fitVids();
+	//$("body").fitVids();
 	
-	$('.itl-tooltip').tooltip();
+	//$('.itl-tooltip').tooltip();
 	
-	$('.bg-parallax').each(function() {
-		$(this).parallax("30%", 0.2);
-	});
+	//$('.bg-parallax').each(function() {
+	//	$(this).parallax("30%", 0.2);
+	//});
 	
-	$('.tlt').textillate({
-		loop: true,
-		in: {
-			effect: 'fadeInUp',
-			delayScale: 2,
-			delay: 50,
-			sync: false,
-			shuffle: false,
-			reverse: true,
-		},
-		out: {
-			effect: 'fadeOutUp',
-			delayScale: 2,
-			delay: 50,
-			sync: false,
-			shuffle: false,
-			reverse: true,
-		},
-	});
+	//$('.tlt').textillate({
+	//	loop: true,
+	//	in: {
+	//		effect: 'fadeInUp',
+	//		delayScale: 2,
+	//		delay: 50,
+	//		sync: false,
+	//		shuffle: false,
+	//		reverse: true,
+	//	},
+	//	out: {
+	//		effect: 'fadeOutUp',
+	//		delayScale: 2,
+	//		delay: 50,
+	//		sync: false,
+	//		shuffle: false,
+	//		reverse: true,
+	//	},
+	//});
 	
 	
 	

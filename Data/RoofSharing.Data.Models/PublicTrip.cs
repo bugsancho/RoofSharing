@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,13 @@ namespace RoofSharing.Data.Models
 
         public string StartPoint { get; set; }
 
+        [Required]
+        public string StartPointCity { get; set; }
+
         public string EndPoint { get; set; }
+
+        [Required]
+        public string EndPointCity { get; set; }
 
         public DateTime StartDate { get; set; }
 

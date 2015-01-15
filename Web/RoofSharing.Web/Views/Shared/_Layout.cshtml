@@ -21,9 +21,12 @@
         <script src="@Url.Content("~/Scripts/kendo/2014.2.1008/kendo.all.min.js")"></script>
         <script src="@Url.Content("~/Scripts/kendo/2014.2.1008/kendo.aspnetmvc.min.js")"></script>
         <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+        <script src="/Scripts/custom.js"></script>
+
         <meta name="description" content="Roof sharing" />
     </head>
-    <body >
+    <body>
         <div id="container" class="boxed-page">
             <header></header>
             <div class="navbar navbar-default navbar-fixed-top">
@@ -44,6 +47,13 @@
                                 <ul class="dropdown">
                                     <li>@Html.ActionLink("Profile", "Index", "Profile", new { area = "" }, null)</li>
                                     <li>@Html.ActionLink("Update", "Update", "Profile", new { area = "" }, null)</li>
+                                </ul>
+                            </li>
+                            <li class="drop">
+                                @Html.ActionLink("Trips", "Index", "Trips", new { area = "" }, null)
+                                <ul class="dropdown">
+                                    <li>@Html.ActionLink("Profile", "Index", "Trips", new { area = "" }, null)</li>
+                                    <li>@Html.ActionLink("Create", "Create", "Trips", new { area = "" }, null)</li>
                                 </ul>
                             </li>
                             <li>
@@ -71,13 +81,23 @@
                 </div>
             </div>
             <div class="container body-content ">
-                @if (ViewData[RoofSharing.Common.GlobalConstants.ErrorMessage] != null)
+                @if (TempData[RoofSharing.Common.GlobalConstants.ErrorMessage] != null)
                 {
-                                    <div class="alert alert-danger" >@ViewData[RoofSharing.Common.GlobalConstants.ErrorMessage]</div>
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        @TempData[RoofSharing.Common.GlobalConstants.ErrorMessage]
+                                    </div>
                 }
-                @if (ViewData[RoofSharing.Common.GlobalConstants.SuccessMessage ] != null)
+                @if (TempData[RoofSharing.Common.GlobalConstants.SuccessMessage] != null)
                 {
-                    <div class="alert alert-success">@ViewData[RoofSharing.Common.GlobalConstants.SuccessMessage]</div>
+                                    <div class="alert alert-success alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        @TempData[RoofSharing.Common.GlobalConstants.SuccessMessage]
+                                    </div>
                 }
                 @RenderBody()
 
@@ -86,27 +106,8 @@
             @Scripts.Render("~/bundles/bootstrap-theme")
             @Scripts.Render("~/bundles/jqueryajax")
 
-            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
             <script>
-                $(function () {
-                    var input = document.getElementById('location');
-                    var options = {
-                        types: ['(cities)']
-                    };
-                    var autocomplete = new google.maps.places.Autocomplete(input, options);
-
-                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                        var place = autocomplete.getPlace();
-
-                        for (var i = place.address_components.length - 1; i >= 0; i--) {
-                            var component = place.address_components[i];
-                            if (component && component.types && component.types.indexOf('locality') !== -1) {
-                                $('#SearchedCity').val(component.long_name);
-                                break;
-                            }
-                        }
-                    });
-                })
+                $(getGoogleAutocomplete('location', '#SearchedCity'));    
             </script>
             @RenderSection("scripts", required: false)
 
@@ -190,7 +191,7 @@
                             <div class="col-md-6">
                                 <p>
                                     &copy; 2014 Roofsharing - All Rights Reserved
-                                    <a href="http://github.com/bugsancho">Bugsancho</a>
+                                    <a href="http://github.com/bugsancho">Bugsancho (Alexander Todorov)</a>
                                 </p>
                             </div>
                             <div class="col-md-6">
