@@ -8,6 +8,7 @@ using RoofSharing.Web.Infrastructure.ValidationAttributes;
 using RoofSharing.Web.ViewModels.Account;
 using RoofSharing.Web.ViewModels.Friends;
 using Roofsharing.Services.Common.Notifiers;
+using Roofsharing.Services.Notifiers;
 
 namespace RoofSharing.Web.Controllers
 {
@@ -18,7 +19,6 @@ namespace RoofSharing.Web.Controllers
         public FriendsController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
-
 
         // GET: Friends
         public ActionResult Index()

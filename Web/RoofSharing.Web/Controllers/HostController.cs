@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using RoofSharing.Common;
+using Roofsharing.Services.Notifiers;
 
 namespace RoofSharing.Web.Controllers
 {

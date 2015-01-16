@@ -1,12 +1,18 @@
 ﻿namespace Roofsharing.Services.Common.Friends
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public interface IFriendsService
     {
+        void AddFriend(string currentUserId, string targetUserId);
+
+        void CandelFriendRequest(string currentUserId, string targetUserId);
+
+        void CancelFriendship(string currentUserId, string targetUserId);
+
+        void DenyFriendship(string currentUserId, string targetUserId);
+
+        void AcceptFriend(string currentUserId, string targetUserId);
     }
 }

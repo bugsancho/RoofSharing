@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofSharing.Web", "Web\Roof
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{62FF9A3F-0994-472D-8758-3AD05A781F69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roofsharing.Services.Common", "Services\Roofsharing.Services.Common\Roofsharing.Services.Common.csproj", "{2D74FF2E-9D27-4A16-B487-02B501BFE289}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roofsharing.Services", "Services\Roofsharing.Services.Common\Roofsharing.Services.csproj", "{2D74FF2E-9D27-4A16-B487-02B501BFE289}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

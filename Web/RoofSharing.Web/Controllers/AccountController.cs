@@ -12,9 +12,9 @@ using RoofSharing.Data;
 using RoofSharing.Web.App_Start;
 using RoofSharing.Web.Infrastructure.Helpers;
 using RoofSharing.Data.Models;
-using Roofsharing.Services.Common.Notifiers;
 using RoofSharing.Web.ViewModels;
 using RoofSharing.Data.Models.Profile;
+using Roofsharing.Services.Notifiers;
 
 namespace RoofSharing.Web.Controllers
 {

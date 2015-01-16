@@ -5,6 +5,7 @@ using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using RoofSharing.Web.Infrastructure.SignalR;
 using Roofsharing.Services.Common.Notifiers;
+using Roofsharing.Services.Notifiers;
 
 namespace RoofSharing.Web.Hubs
 {

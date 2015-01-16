@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
+using Roofsharing.Services.Common.Notifiers;
 
-namespace Roofsharing.Services.Common.Notifiers
+namespace Roofsharing.Services.Notifiers
 {
     public interface INotifierService
     {

@@ -4,7 +4,7 @@
     using RoofSharing.Common;
     using RoofSharing.Data;
     using RoofSharing.Web.Controllers;
-    using Roofsharing.Services.Common.Notifiers;
+    using Roofsharing.Services.Notifiers;
 
     [Authorize(Roles = GlobalConstants.AdminRoleName)]
     public abstract class AdminController : BaseController

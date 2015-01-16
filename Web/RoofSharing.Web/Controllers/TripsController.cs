@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RoofSharing.Data;
-using Roofsharing.Services.Common.Notifiers;
 using RoofSharing.Web.ViewModels.Trip;
 using AutoMapper.QueryableExtensions;
 using AutoMapper;
 using RoofSharing.Data.Models;
 using RoofSharing.Web.ViewModels.Account;
 using RoofSharing.Common;
+using Roofsharing.Services.Notifiers;
 
 namespace RoofSharing.Web.Controllers
 {

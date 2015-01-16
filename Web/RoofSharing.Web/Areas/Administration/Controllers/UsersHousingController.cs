@@ -12,7 +12,7 @@ using RoofSharing.Web.Areas.Administration.ViewModels;
 using Kendo.Mvc.UI;
 using RoofSharing.Data.Models;
 using RoofSharing.Data.Models.Profile;
-using Roofsharing.Services.Common.Notifiers;
+using Roofsharing.Services.Notifiers;
 
 namespace RoofSharing.Web.Areas.Administration.Controllers
 {

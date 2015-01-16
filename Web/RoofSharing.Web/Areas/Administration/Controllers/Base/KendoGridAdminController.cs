@@ -7,7 +7,7 @@
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
     using RoofSharing.Data;
-    using Roofsharing.Services.Common.Notifiers;
+    using Roofsharing.Services.Notifiers;
 
     public abstract class KendoGridAdminController : AdminController
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{2D74FF2E-9D27-4A16-B487-02B501BFE289}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Roofsharing.Services.Common</RootNamespace>
-    <AssemblyName>Roofsharing.Services.Common</AssemblyName>
+    <RootNamespace>Roofsharing.Services</RootNamespace>
+    <AssemblyName>Roofsharing.Services</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,10 +39,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Friends\FriendshipService.cs" />
     <Compile Include="Friends\IFriendsService.cs" />
     <Compile Include="Notifiers\INotifierService.cs" />
     <Compile Include="Notifiers\NotificationMessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\RoofSharing.Data.Models\RoofSharing.Data.Models.csproj">
+      <Project>{c7981eed-e956-4a3d-803f-b79da763492e}</Project>
+      <Name>RoofSharing.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\RoofSharing.Data\RoofSharing.Data.csproj">
+      <Project>{5fb9f6b7-c280-4c0e-b4aa-1a5979e31a51}</Project>
+      <Name>RoofSharing.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

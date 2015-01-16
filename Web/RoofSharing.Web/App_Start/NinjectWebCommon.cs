@@ -13,7 +13,7 @@ namespace RoofSharing.Web.App_Start
     using Microsoft.AspNet.SignalR.Hubs;
     using Microsoft.AspNet.SignalR.Infrastructure;
     using RoofSharing.Web.Infrastructure.SignalR;
-    using Roofsharing.Services.Common.Notifiers;
+    using Roofsharing.Services.Notifiers;
 
     public static class NinjectWebCommon 
     {
