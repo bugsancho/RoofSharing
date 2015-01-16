@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Friends\IFriendsService.cs" />
     <Compile Include="Notifiers\INotifierService.cs" />
     <Compile Include="Notifiers\NotificationMessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

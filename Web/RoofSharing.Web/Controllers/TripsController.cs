@@ -26,28 +26,6 @@ namespace RoofSharing.Web.Controllers
             return View();
         }
         
-        //public ActionResult Matches(string city = null, int page = 1)
-        //{
-        //    var users = this.Data.Users.All();
-        //    List<UserCardViewModel> results;
-        //    if (!string.IsNullOrEmpty(city))
-        //    {
-        //        users = users.Where(user => user.LocationInfo.City == city);
-        //    }
-
-        //    users = users.Where(user => user.Id != this.CurrentUser.Id);
-
-        //    ViewBag.Pages = Math.Ceiling((double)users.Count() / PageSize);
-
-        //    results = users.OrderBy(x => x.Id)
-        //                   .Skip((page - 1) * PageSize)
-        //                   .Take(PageSize)
-        //                   .Project()
-        //                   .To<UserCardViewModel>()
-        //                   .ToList();
-            
-        //    return View(results);
-        //}
 
         [Authorize]
         [HttpGet]

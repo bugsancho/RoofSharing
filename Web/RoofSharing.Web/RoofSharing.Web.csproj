@@ -712,6 +712,7 @@
     <Content Include="Views\Shared\EditorTemplates\PublicTripViewModel.cshtml" />
     <Content Include="Views\Trips\View.cshtml" />
     <Content Include="Views\Trips\Edit.cshtml" />
+    <Content Include="Views\Shared\_UserHostCardPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -909,7 +910,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Host\Browse.cshtml" />
-    <Content Include="Views\Trips\Plan.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>

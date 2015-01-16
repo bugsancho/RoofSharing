@@ -1,4 +1,5 @@
 ﻿@using RoofSharing.Web.ViewModels.Friends
+
 @model  RoofSharing.Web.ViewModels.Friends.FriendshipStatusViewModel
 @{
     string actionName = "AddFriend";
@@ -15,11 +16,11 @@
             break;
         case RoofSharing.Web.ViewModels.Friends.FriendshipStatusTypeViewModel.AwaitingTheirResponse:
             actionName = "CancelFriendRequest";
-            displayName = "Cancel Friendship Request";
+            displayName = "Cancel Friend Request";
             break;
         case RoofSharing.Web.ViewModels.Friends.FriendshipStatusTypeViewModel.AwaitingMyResponse:
-             actionName = "AcceptFriend";
-            displayName = "Accept Friendship Request";
+            actionName = "AcceptFriend";
+            displayName = "Accept Friend Request";
             break;
         default:
             break;
@@ -32,14 +33,14 @@
         InsertionMode = InsertionMode.ReplaceWith,
         UpdateTargetId = "Friend_" + Model.UserId
     }, new { @class = "btn btn-default" })
-
+    
     @if (Model.Status == FriendshipStatusTypeViewModel.AwaitingMyResponse)
     {
-        @Ajax.ActionLink("Deny Friend Request", "DenyFriend", "Friends", new { userId = Model.UserId, area = string.Empty }, new AjaxOptions()
-    {
-        HttpMethod = "POST",
-        InsertionMode = InsertionMode.ReplaceWith,
-        UpdateTargetId = "Friend_" + Model.UserId
-    }, new { @class = "btn btn-default" })
+            @Ajax.ActionLink("Deny Friend Request", "DenyFriend", "Friends", new { userId = Model.UserId, area = string.Empty }, new AjaxOptions()
+            {
+                HttpMethod = "POST",
+                InsertionMode = InsertionMode.ReplaceWith,
+                UpdateTargetId = "Friend_" + Model.UserId
+            }, new { @class = "btn btn-default" })
     }
 </div>

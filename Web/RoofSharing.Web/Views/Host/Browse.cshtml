@@ -5,7 +5,7 @@
 
 @{
 
-    ViewBag.Title = "Host ";
+    ViewBag.Title = "Available Hosts";
     if (Model.Count() == 0)
     {
         <h1 class="classic-title">Sorry, We couldn't find any hosts in that area!</h1>
@@ -13,8 +13,7 @@
     }
     else
     {
-            <h1 class="classic-title">These ARE the host you are looking for! </h1>
-
+        <h1 class="classic-title">These ARE the hosts you are looking for! </h1>
     }
 
     <div class="row">
@@ -22,44 +21,24 @@
         <div class="col-md-8 ">
             @foreach (var user in Model)
             {
-                            <div class="row border-shadow margin-btm-md padding-right">
-
-                                <div class="col-md-2">
-                                    @Html.FacebookImage(user.PictureUrl, "Profile Picture", null, 100, 100)
-                                </div>
-                                <div class="com-md-9">
-                                    <h2 class="pull-right text-danger">@user.AcceptingGuestsStatus</h2>
-                                    <a href="#">
-                                        <h2 class="">@Html.ActionLink(user.Names, "Index", "Profile", new { area = "", userId = user.Id }, new { })</h2>
-                                    </a>
-
-                                    <div>
-                                        <i class="fa fa-map-marker icon-small"></i> @user.Location
-                                    </div>
-                                    <em>@user.Tagline</em>
-                                    <div class="pull-right">
-                                        @using (Html.BeginForm("Invite", "Host", new { area = string.Empty }, FormMethod.Get, null))
-                                        {
-                                                                                    <input type="hidden" name="userId" value="@user.Id" />
-                                                                                    <input type="submit" value="Ask To Host" class="btn btn-danger" />
-                                        }
-                                    </div>
-                                </div>
-                            </div>
+                Html.RenderPartial("_UserHostCardPartial", user);
             }
         </div>
 
         <div class=" col-md-3 border-shadow margin-left-md">
             <h2 class="classic-title">Or plan a public trip</h2>
-            You could
+            You could 
         </div>
 
     </div>
-    <div class="row">
+    <div class="row margin-btm-md">
         @for (int i = 1; i <= ViewBag.Pages; i++)
-        {
-                    @Html.ActionLink(i.ToString(), "Browse", "Host", new { page = i, city = Request.QueryString["city"] }, new { @class = "btn btn-default" })
+        { 
+                    @Html.ActionLink(i.ToString(), "Browse", "Host", new { page = i, city = Request.QueryString["city"] }, new { @class = "btn btn-danger" })
         }
     </div>
-    
+
+}
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryajax")
 }

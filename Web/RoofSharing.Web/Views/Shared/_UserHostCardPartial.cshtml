@@ -1,0 +1,38 @@
+﻿@using RoofSharing.Web.Infrastructure.Extensions
+
+@model RoofSharing.Web.ViewModels.Host.UserCardViewModel
+
+<div class="row border-shadow margin-btm-md padding-right">
+
+    <div class="col-md-2">
+        @Html.FacebookImage(Model.PictureUrl, "Profile Picture", null, 100, 100)
+    </div>
+    <div class="com-md-9">
+        <h2 class="pull-right text-danger">@Model.AcceptingGuestsStatus.DisplayName()</h2>
+        <a href="#">
+            <h2 class="">@Html.ActionLink(Model.Names, "Index", "Profile", new { area = "", userId = Model.Id }, new { })</h2>
+        </a>
+
+        <div>
+            <i class="fa fa-map-marker icon-small"></i>@Html.DisplayFor(model => model.Location)
+        </div>
+        <em> @Html.DisplayFor(model => model.Tagline)</em>
+        <div class="pull-right">
+            @if (User.Identity.IsAuthenticated)
+            {
+                Html.RenderAction("FriendPartial", "Friends", new
+                {
+                    area = string.Empty,
+                    userId = Model.Id
+                });
+            }
+        </div>
+        <div class="pull-right">
+            @using (Html.BeginForm("Invite", "Host", new { area = string.Empty }, FormMethod.Get, null))
+            {
+                            <input type="hidden" name="userId" value="@Model.Id" />
+                            <input type="submit" value="Ask To Host" class="btn btn-danger" />
+            }
+        </div>
+    </div>
+</div>

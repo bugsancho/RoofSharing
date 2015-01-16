@@ -24,6 +24,22 @@ $(function () {
     // Declare a proxy to reference the hub.
     var notifier = $.connection.signalRNotifierServiceHub;
     // Create a function that the hub can call to broadcast messages.
+
+    var opts = toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "10000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
     notifier.client.errorMessage = function (msg) {
         toastr.error(msg);
     }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
+using RoofSharing.Common;
 
 namespace RoofSharing.Web.Controllers
 {
@@ -29,7 +30,10 @@ namespace RoofSharing.Web.Controllers
                 users = users.Where(user => user.LocationInfo.City == city);
             }
 
-            users = users.Where(user => user.Id != this.CurrentUser.Id);
+            if (this.HttpContext.User.Identity.IsAuthenticated)
+            {
+                users = users.Where(user => user.Id != this.CurrentUser.Id);
+            }
 
             ViewBag.Pages = Math.Ceiling((double)users.Count() / PageSize);
 
@@ -45,11 +49,17 @@ namespace RoofSharing.Web.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult Invite(HostInviteInputViewModel input)
+        public ActionResult Invite(string userId)
         {
+            if (userId == this.CurrentUser.Id)
+            {
+                ViewData[GlobalConstants.ErrorMessage] = "You cannot send a host invitation to yourself!";
+                return RedirectToAction("Browse");
+            }
+
             if (ModelState.IsValid)
             {
-                var hostNames = this.Data.Users.All().Where(u => u.Id == input.UserId).Select(x => x.FirstName + " " + x.LastName).FirstOrDefault();
+                var hostNames = this.Data.Users.All().Where(u => u.Id == userId).Select(x => x.FirstName + " " + x.LastName).FirstOrDefault();
                 if (hostNames == null)
                 {
                     return HttpNotFound();
@@ -57,12 +67,13 @@ namespace RoofSharing.Web.Controllers
 
                 var model = new HostInviteViewModel()
                 {
-                    HostId = input.UserId,
+                    HostId = userId,
                     HostNames = hostNames
                 };
                 return View(model);
             }
-            return RedirectToAction("Plan", "Trips", null);
+
+            return RedirectToAction("Browse");
         }
 
         [Authorize]
@@ -70,6 +81,12 @@ namespace RoofSharing.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Invite(HostInviteViewModel input)
         {
+            if (input.HostId == this.CurrentUser.Id)
+            {
+                ViewData[GlobalConstants.ErrorMessage] = "You cannot send a host invitation to yourself!";
+                return RedirectToAction("Browse");
+            }
+
             if (ModelState.IsValid)
             {
                 var invite = Mapper.Map<HostInvitation>(input);
@@ -77,8 +94,13 @@ namespace RoofSharing.Web.Controllers
                 this.Data.Invitations.Add(invite);
                 this.Data.SaveChanges();    
 
+                string hostUserName = this.Data.Users.All().Where(x => x.Id == input.HostId).Select(x => x.UserName).FirstOrDefault();
+                this.Notifier.Notify(string.Format("{0} has sent you a request to host them!", this.CurrentUser.FirstName + " " + this.CurrentUser.LastName), NotificationMessageType.Info, hostUserName);
+                ViewData[GlobalConstants.SuccessMessage] = "You have successfully sent a host invitation to " + hostUserName;
+
                 return RedirectToAction("Index", "Home", new { area = string.Empty });
             }
+            
             return View(input);
         }
 
