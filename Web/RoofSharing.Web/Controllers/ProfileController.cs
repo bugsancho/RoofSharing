@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using RoofSharing.Data;
-using Roofsharing.Services.Common.Notifiers;
-using RoofSharing.Web.ViewModels.Profile;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using RoofSharing.Data;
 using RoofSharing.Data.Models.Profile;
+using RoofSharing.Web.ViewModels.Profile;
+using Roofsharing.Services.Common.Notifiers;
 
 namespace RoofSharing.Web.Controllers
 {
@@ -141,30 +139,28 @@ namespace RoofSharing.Web.Controllers
             return View(personalityInfo);
         }
 
-
-         public ActionResult HousingProfile(string userId)
+        public ActionResult HousingProfile(string userId)
         {
             var user = this.Data.Users.All().Where(u => u.Id == userId).Select(u => u.HousingInfo).Project().To<HousingViewModel>().FirstOrDefault();
 
             return PartialView("~/Views/Profile/_HousingProfile.cshtml", user);
         }
 
-         public ActionResult LocationProfile(string userId)
+        public ActionResult LocationProfile(string userId)
         {
             var user = this.Data.Users.All().Where(u => u.Id == userId).Select(u => u.LocationInfo).Project().To<LocationViewModel>().FirstOrDefault();
 
             return PartialView("~/Views/Profile/_LocationProfile.cshtml", user);
         }
 
-          public ActionResult PersonalityProfile(string userId)
+        public ActionResult PersonalityProfile(string userId)
         {
             var user = this.Data.Users.All().Where(u => u.Id == userId).Select(u => u.PersonalityInfo).Project().To<PersonalityViewModel>().FirstOrDefault();
 
             return PartialView("~/Views/Profile/_PersonalityProfile.cshtml", user);
         }
 
-
-         [HttpGet]
+        [HttpGet]
         public ActionResult Index(string userId = null)
         {
             bool fullProfileAllowed = false;

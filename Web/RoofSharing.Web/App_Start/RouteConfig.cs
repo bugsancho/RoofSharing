@@ -16,7 +16,6 @@ namespace RoofSharing.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                namespaces: new [] {"RoofSharing.Web.Controllers"},
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

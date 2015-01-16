@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace RoofSharing.Web.ViewModels.Trip
+namespace RoofSharing.Web.ViewModels.Host
 {
     public class UserCardViewModel : IMapFrom<User>, IHaveCustomMappings
     {

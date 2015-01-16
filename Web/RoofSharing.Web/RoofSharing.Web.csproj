@@ -253,7 +253,7 @@
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\Trip\PlanTripViewModel.cs" />
     <Compile Include="ViewModels\Trip\PublicTripViewModel.cs" />
-    <Compile Include="ViewModels\Trip\UserCardViewModel.cs" />
+    <Compile Include="ViewModels\Host\UserCardViewModel.cs" />
     <Compile Include="ViewModels\Account\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -908,7 +908,7 @@
     <Content Include="Views\Shared\_FriendPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Trips\Matches.cshtml" />
+    <Content Include="Views\Host\Browse.cshtml" />
     <Content Include="Views\Trips\Plan.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />

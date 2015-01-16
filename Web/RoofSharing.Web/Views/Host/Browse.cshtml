@@ -1,6 +1,6 @@
 ﻿@using RoofSharing.Web.Infrastructure.Extensions
 
-@model IEnumerable<RoofSharing.Web.ViewModels.Trip.UserCardViewModel>
+@model IEnumerable<RoofSharing.Web.ViewModels.Host.UserCardViewModel>
 
 
 @{
@@ -13,7 +13,7 @@
     }
     else
     {
-            <h1 class="classic-title">We found @Model.Count() hosts in that area!</h1>
+            <h1 class="classic-title">These ARE the host you are looking for! </h1>
 
     }
 
@@ -51,38 +51,15 @@
 
         <div class=" col-md-3 border-shadow margin-left-md">
             <h2 class="classic-title">Or plan a public trip</h2>
-           You could 
+            You could
         </div>
 
     </div>
-    
+    <div class="row">
+        @for (int i = 1; i <= ViewBag.Pages; i++)
+        {
+                    @Html.ActionLink(i.ToString(), "Browse", "Host", new { page = i, city = Request.QueryString["city"] }, new { @class = "btn btn-default" })
+        }
+    </div>
     
 }
-
-@*<div class="row">
-<div class="user-card col-md-8 ">
-<div class="col-md-2">
-<img alt="Profile Picture" height="100" src="https://graph.facebook.com/1004993102851557/picture?width=100&amp;height=100" width="100">
-</div>
-<div class="com-md-10">
-<h2 class="pull-right text-danger">Maybe Accepting Guests</h2>
-<a href="#">
-<h2 class="">Alexander Todorov</h2>
-</a>
-
-<div>
-<i class="fa fa-map-marker icon-small"></i> Sofia, Bulgaria
-</div>
-<em>Come travel with me</em>
-<div class="pull-right">
-@using (Html.BeginForm("Invite", "Host", new { area = string.Empty }, FormMethod.Get, null))
-{
-<input type="hidden" name="city" value="@Model" />
-<input type="hidden" name="userId" value="" />
-<input type="submit" value="Ask To Host" class="btn btn-danger" />
-}
-</div>
-</div>
-</div>
-</div>*@
-

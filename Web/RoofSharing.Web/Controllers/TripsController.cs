@@ -16,8 +16,6 @@ namespace RoofSharing.Web.Controllers
 {
     public class TripsController : BaseController
     {
-
-        
         public TripsController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
@@ -27,38 +25,29 @@ namespace RoofSharing.Web.Controllers
         {
             return View();
         }
-
-        [Authorize]
-        [HttpGet]
-        public ActionResult Plan()
-        {
-            return View();
-        }
-
-        [Authorize]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Plan(PlanTripViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Matches");
-            }
-            return View(model);
-        }
         
-        //TODO refactor to single string. Rename to searchCriteria
-        public ActionResult Matches(PlanTripViewModel tripInfo)
-        {
-            if (tripInfo == null || !ModelState.IsValid)
-            {
-                ModelState.AddModelError(string.Empty, "Please tell us first about your trip!");
-                return RedirectToAction("Plan");
-            }
-            var results = this.Data.Users.All().Where(u => u.LocationInfo.City == tripInfo.SearchedCity && u.Id != this.CurrentUser.Id).Project().To<UserCardViewModel>().ToList();
+        //public ActionResult Matches(string city = null, int page = 1)
+        //{
+        //    var users = this.Data.Users.All();
+        //    List<UserCardViewModel> results;
+        //    if (!string.IsNullOrEmpty(city))
+        //    {
+        //        users = users.Where(user => user.LocationInfo.City == city);
+        //    }
 
-            return View(results);
-        }
+        //    users = users.Where(user => user.Id != this.CurrentUser.Id);
+
+        //    ViewBag.Pages = Math.Ceiling((double)users.Count() / PageSize);
+
+        //    results = users.OrderBy(x => x.Id)
+        //                   .Skip((page - 1) * PageSize)
+        //                   .Take(PageSize)
+        //                   .Project()
+        //                   .To<UserCardViewModel>()
+        //                   .ToList();
+            
+        //    return View(results);
+        //}
 
         [Authorize]
         [HttpGet]
@@ -66,8 +55,7 @@ namespace RoofSharing.Web.Controllers
         {
             var model = new PublicTripViewModel()
             {
-                HostId = this.CurrentUser.Id,
-                StartPoint = this.CurrentUser.LocationInfo.City
+                HostId = this.CurrentUser.Id
             };
             return View(model);
         }
@@ -84,7 +72,7 @@ namespace RoofSharing.Web.Controllers
             if (ModelState.IsValid)
             {
                 var trip = Mapper.Map<PublicTrip>(model);
-                if (participants.Count != 0)
+                if (participants != null && participants.Count != 0)
                 {
                     trip.Participants = this.Data.Users.All().Where(user => participants.Contains(user.Id)).ToList();
                 }
@@ -104,7 +92,7 @@ namespace RoofSharing.Web.Controllers
             var trip = this.Data.PublicTrips.All().Where(tr => tr.Id == id).Project().To<PublicTripViewModel>().FirstOrDefault();
             if (trip == null)
             {
-                throw new HttpException(400, "Invalid Trip Id!");
+                return HttpNotFound("Invalid Trip Id!");
             }
             return View(trip);
         }
@@ -149,7 +137,10 @@ namespace RoofSharing.Web.Controllers
                 }
                 Mapper.Map(model, trip);
                 
-                trip.Participants = this.Data.Users.All().Where(user => participants.Contains(user.Id)).ToList();
+                if (participants != null && participants.Count != 0)
+                {
+                    trip.Participants = this.Data.Users.All().Where(user => participants.Contains(user.Id)).ToList();
+                }
 
                 this.Data.SaveChanges();
                 TempData[GlobalConstants.SuccessMessage] = "Successfully updated the trip info!";

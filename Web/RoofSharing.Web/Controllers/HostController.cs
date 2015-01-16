@@ -14,10 +14,33 @@ namespace RoofSharing.Web.Controllers
 {
     public class HostController : BaseController
     {
-
+        private const int PageSize = 2;
 
         public HostController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
+        }
+
+        public ActionResult Browse(string city = null, int page = 1)
+        {
+            var users = this.Data.Users.All();
+            List<UserCardViewModel> results;
+            if (!string.IsNullOrEmpty(city))
+            {
+                users = users.Where(user => user.LocationInfo.City == city);
+            }
+
+            users = users.Where(user => user.Id != this.CurrentUser.Id);
+
+            ViewBag.Pages = Math.Ceiling((double)users.Count() / PageSize);
+
+            results = users.OrderBy(x => x.Id)
+                           .Skip((page - 1) * PageSize)
+                           .Take(PageSize)
+                           .Project()
+                           .To<UserCardViewModel>()
+                           .ToList();
+            
+            return View(results);
         }
 
         [Authorize]
@@ -29,7 +52,7 @@ namespace RoofSharing.Web.Controllers
                 var hostNames = this.Data.Users.All().Where(u => u.Id == input.UserId).Select(x => x.FirstName + " " + x.LastName).FirstOrDefault();
                 if (hostNames == null)
                 {
-                    throw new HttpException(404, "User with such ID was not found!");
+                    return HttpNotFound();
                 }
 
                 var model = new HostInviteViewModel()

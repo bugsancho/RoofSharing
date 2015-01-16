@@ -55,10 +55,9 @@
                             </li>
                             <li>
                                 <div class=" widget-search">
-                                    @using (Html.BeginForm("Matches", "Trips", new { area = "" }, FormMethod.Post, null))
+                                    @using (Html.BeginForm("Browse", "Host", new { area = "" }, FormMethod.Get, null))
                                     {
-                                                                            @Html.AntiForgeryToken()
-                                                                            <input type="hidden" name="SearchedCity" id="SearchedCity" />
+                                                                            <input type="hidden" name="city" id="city" />
                                                                             <input type="search" id="location" placeholder="Where would you like to go?">
                                                                             <button class="search-btn" type="submit">
                                                                                 <i class="fa fa-search"></i>
@@ -211,7 +210,7 @@
 
         @Scripts.Render("~/bundles/bootstrap-theme")
         <script>
-            $(getGoogleAutocomplete('location', '#SearchedCity'));    
+            $(getGoogleAutocomplete('location', '#city'));    
         </script>
         @RenderSection("scripts", required: false)
 
