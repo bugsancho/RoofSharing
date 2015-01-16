@@ -223,6 +223,7 @@
     <Compile Include="Areas\Administration\ViewModels\UserHousingAdminViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\UserLocationAdminViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\UserPersonalityAdminViewModel.cs" />
+    <Compile Include="Hubs\SignalRNotifierServiceHub.cs" />
     <Compile Include="ViewModels\Profile\HousingViewModel.cs" />
     <Compile Include="ViewModels\Profile\LocationViewModel.cs" />
     <Compile Include="ViewModels\Profile\PersonalityViewModel.cs" />
@@ -924,6 +925,10 @@
     <ProjectReference Include="..\..\Data\RoofSharing.Data\RoofSharing.Data.csproj">
       <Project>{5fb9f6b7-c280-4c0e-b4aa-1a5979e31a51}</Project>
       <Name>RoofSharing.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Roofsharing.Services.Common\Roofsharing.Services.Common.csproj">
+      <Project>{2d74ff2e-9d27-4a16-b487-02b501bfe289}</Project>
+      <Name>Roofsharing.Services.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\RoofSharing.Web.Infrastructure\RoofSharing.Web.Infrastructure.csproj">
       <Project>{c6205bad-8dd0-49df-869b-2295cc02d861}</Project>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RoofSharing.Data;
+using Roofsharing.Services.Common.Notifiers;
 using RoofSharing.Web.ViewModels.Profile;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -13,7 +14,7 @@ namespace RoofSharing.Web.Controllers
 {
     public class ProfileController : BaseController
     {
-        public ProfileController(IRoofSharingData data) : base(data)
+        public ProfileController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
 

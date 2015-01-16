@@ -12,12 +12,15 @@ using Kendo.Mvc.UI;
 using RoofSharing.Data.Models;
 using AutoMapper;
 using RoofSharing.Data.Models.Profile;
+using Roofsharing.Services.Common.Notifiers;
 
 namespace RoofSharing.Web.Areas.Administration.Controllers
 {
     public class UsersPersonalityController : KendoGridAdminController
     {
-        public UsersPersonalityController(IRoofSharingData data) : base(data)
+
+
+        public UsersPersonalityController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
 

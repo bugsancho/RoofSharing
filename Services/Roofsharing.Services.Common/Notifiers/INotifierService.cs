@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RoofSharing.Web.Infrastructure.Notifier
+namespace Roofsharing.Services.Common.Notifiers
 {
     public interface INotifierService
     {

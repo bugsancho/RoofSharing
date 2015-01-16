@@ -22,7 +22,7 @@
 
 $(function () {
     // Declare a proxy to reference the hub.
-    var notifier = $.connection.signalRNotificationService;
+    var notifier = $.connection.signalRNotifierServiceHub;
     // Create a function that the hub can call to broadcast messages.
     notifier.client.errorMessage = function (msg) {
         toastr.error(msg);
@@ -36,4 +36,6 @@ $(function () {
     notifier.client.warningMessage = function (msg) {
         toastr.warning(msg);
     }
+
+    $.connection.hub.start();
 });

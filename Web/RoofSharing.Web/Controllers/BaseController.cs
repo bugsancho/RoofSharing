@@ -6,12 +6,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Roofsharing.Services.Common.Notifiers;
 
 namespace RoofSharing.Web.Controllers
 {
     public class BaseController : Controller
     {
         protected IRoofSharingData Data { get; set; }
+
+        public INotifierService Notifier { get; private set; }
 
         protected User CurrentUser { get; set; }
 
@@ -32,9 +35,10 @@ namespace RoofSharing.Web.Controllers
             base.Initialize(requestContext);
         }
 
-        public BaseController(IRoofSharingData data)
+        public BaseController(IRoofSharingData data, INotifierService notifier)
         {
             this.Data = data;
+            this.Notifier = notifier;
         }
     }
 }

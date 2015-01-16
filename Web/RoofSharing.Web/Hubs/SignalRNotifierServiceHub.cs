@@ -1,22 +1,26 @@
-﻿using Microsoft.AspNet.SignalR;
-using RoofSharing.Web.Infrastructure.Notifier;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using RoofSharing.Web.Infrastructure.Extensions;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
+using RoofSharing.Web.Infrastructure.SignalR;
+using Roofsharing.Services.Common.Notifiers;
 
-namespace RoofSharing.Web.Infrastructure.Notifier
+namespace RoofSharing.Web.Hubs
 {
-    public class SignalRNotificationService : Hub, INotifierService
+    public class SignalRNotifierServiceHub : Hub, INotifierService
     {
         private readonly static ConnectionMapping<string> connections =
             new ConnectionMapping<string>();
-
-         public void Notify( string message, NotificationMessageType messageType, string userName )
+        public SignalRNotifierServiceHub(IHubConnectionContext<dynamic> clients)
         {
+            this.Clients = clients;
+        }
 
+        public IHubConnectionContext<dynamic> Clients { get; private set; }
+
+        public void Notify(string message, NotificationMessageType messageType, string userName)
+        {
            foreach (var connectionId in connections.GetConnections(userName))
             {
                 switch (messageType)
@@ -37,7 +41,6 @@ namespace RoofSharing.Web.Infrastructure.Notifier
                 }
                
             }
-           
         }
 
         public override Task OnConnected()

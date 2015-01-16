@@ -12,12 +12,14 @@ using RoofSharing.Web.Areas.Administration.ViewModels;
 using Kendo.Mvc.UI;
 using RoofSharing.Data.Models;
 using RoofSharing.Data.Models.Profile;
+using Roofsharing.Services.Common.Notifiers;
 
 namespace RoofSharing.Web.Areas.Administration.Controllers
 {
      public class UsersHousingController : KendoGridAdminController
     {
-        public UsersHousingController(IRoofSharingData data) : base(data)
+
+        public UsersHousingController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
 

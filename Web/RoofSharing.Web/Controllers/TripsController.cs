@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RoofSharing.Data;
+using Roofsharing.Services.Common.Notifiers;
 using RoofSharing.Web.ViewModels.Trip;
 using AutoMapper.QueryableExtensions;
 using AutoMapper;
@@ -15,10 +16,12 @@ namespace RoofSharing.Web.Controllers
 {
     public class TripsController : BaseController
     {
-        public TripsController(IRoofSharingData data) : base(data)
+
+        
+        public TripsController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
-        
+
         // GET: Trips
         public ActionResult Index()
         {

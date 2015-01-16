@@ -4,14 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RoofSharing.Data;
+using Roofsharing.Services.Common.Notifiers;
 
 namespace RoofSharing.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController(IRoofSharingData data) : base(data)
+        public HomeController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
+
 
         public ActionResult Index()
         { 

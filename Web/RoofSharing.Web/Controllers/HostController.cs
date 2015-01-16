@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using RoofSharing.Data;
 using RoofSharing.Data.Models;
+using Roofsharing.Services.Common.Notifiers;
 using RoofSharing.Web.ViewModels.Host;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,9 @@ namespace RoofSharing.Web.Controllers
 {
     public class HostController : BaseController
     {
-        public HostController(IRoofSharingData data) : base(data)
+
+
+        public HostController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
 

@@ -62,6 +62,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -108,11 +111,9 @@
     <Compile Include="Mappings\AutoMapperConfig.cs" />
     <Compile Include="Mappings\IHaveCustomMappings.cs" />
     <Compile Include="Mappings\IMapFrom.cs" />
-    <Compile Include="Notifier\INotifierService.cs" />
-    <Compile Include="Notifier\NotificationMessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Notifier\SignalRNotificationService.cs" />
-    <Compile Include="Notifier\ConnectionMapping.cs" />
+    <Compile Include="SignalR\ConnectionMapping.cs" />
+    <Compile Include="SignalR\NinjectSignalRDependencyResolver.cs" />
     <Compile Include="ValidationAttributes\ActionOutputCacheAttribute.cs" />
     <Compile Include="ValidationAttributes\AjaxGetAttribute.cs" />
     <Compile Include="ValidationAttributes\AjaxOnlyAttribute.cs" />
@@ -130,6 +131,7 @@
     <Content Include="Scripts\jquery.signalR-2.2.0.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

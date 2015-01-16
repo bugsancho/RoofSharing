@@ -12,12 +12,13 @@ using Kendo.Mvc.UI;
 using RoofSharing.Data.Models;
 using AutoMapper;
 using RoofSharing.Data.Models.Profile;
+using Roofsharing.Services.Common.Notifiers;
 
 namespace RoofSharing.Web.Areas.Administration.Controllers
 {
     public class UsersLocationController : KendoGridAdminController
     {
-        public UsersLocationController(IRoofSharingData data) : base(data)
+        public UsersLocationController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
 

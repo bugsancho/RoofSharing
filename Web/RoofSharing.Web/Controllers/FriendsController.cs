@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using AutoMapper.QueryableExtensions;
 using RoofSharing.Data;
 using RoofSharing.Data.Models;
-using RoofSharing.Web.ViewModels;
-using RoofSharing.Web.ViewModels.Friends;
 using RoofSharing.Web.Infrastructure.ValidationAttributes;
-using AutoMapper.QueryableExtensions;
 using RoofSharing.Web.ViewModels.Account;
+using RoofSharing.Web.ViewModels.Friends;
+using Roofsharing.Services.Common.Notifiers;
 
 namespace RoofSharing.Web.Controllers
 {
@@ -17,9 +15,10 @@ namespace RoofSharing.Web.Controllers
     {
         private const string UserFriendshipName = "UserFriendship";
 
-        public FriendsController(IRoofSharingData data) : base(data)
+        public FriendsController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
+
 
         // GET: Friends
         public ActionResult Index()
@@ -41,7 +40,8 @@ namespace RoofSharing.Web.Controllers
             friendship.Status = FriendshipStatusType.Pending;
             friendship.FromUserId = this.CurrentUser.Id;
             friendship.ToUserId = userId;
-            var a = this.Data.SaveChanges();
+            this.Notifier.Notify("New Friend Request!", NotificationMessageType.Info, this.CurrentUser.UserName);
+            this.Data.SaveChanges();
 
             this.TempData[UserFriendshipName] = friendship;
 

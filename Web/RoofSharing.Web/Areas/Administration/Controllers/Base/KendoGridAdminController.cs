@@ -7,11 +7,11 @@
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
     using RoofSharing.Data;
+    using Roofsharing.Services.Common.Notifiers;
 
     public abstract class KendoGridAdminController : AdminController
     {
-        public KendoGridAdminController(IRoofSharingData data)
-            : base(data)
+        public KendoGridAdminController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
 

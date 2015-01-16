@@ -12,6 +12,7 @@ using RoofSharing.Data;
 using RoofSharing.Web.App_Start;
 using RoofSharing.Web.Infrastructure.Helpers;
 using RoofSharing.Data.Models;
+using Roofsharing.Services.Common.Notifiers;
 using RoofSharing.Web.ViewModels;
 using RoofSharing.Data.Models.Profile;
 
@@ -23,11 +24,11 @@ namespace RoofSharing.Web.Controllers
         private ApplicationUserManager _userManager;
         private const string DefaultProfilePictureUrl = "/Content/Images/Profile/default_profile_pic.jpg";
 
-        public AccountController(IRoofSharingData data) : base(data)
+        public AccountController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IRoofSharingData data) : base(data)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IRoofSharingData data, INotifierService notifier) : base(data,notifier)
         {
             UserManager = userManager;
             SignInManager = signInManager;

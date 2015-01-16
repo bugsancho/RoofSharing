@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RoofSharing.Web.Infrastructure.Notifier
+namespace RoofSharing.Web.Infrastructure.SignalR
 {
     public class ConnectionMapping<T>
     {
