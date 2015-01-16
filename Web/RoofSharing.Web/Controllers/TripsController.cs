@@ -74,11 +74,18 @@ namespace RoofSharing.Web.Controllers
         public ActionResult Create(ICollection<string> participants, PublicTripViewModel model)
         {
             //TODO Find a better solution for Kendo MultiSelect binding.
-            ModelState["Participants"].Errors.Clear();
+            if (ModelState.ContainsKey("Participants"))
+            {
+                ModelState["Participants"].Errors.Clear();
+            }
             if (ModelState.IsValid)
             {
                 var trip = Mapper.Map<PublicTrip>(model);
-                trip.Participants = this.Data.Users.All().Where(user => participants.Contains(user.Id)).ToList();
+                if (participants.Count != 0)
+                {
+                    trip.Participants = this.Data.Users.All().Where(user => participants.Contains(user.Id)).ToList();
+                }
+
                 this.Data.PublicTrips.Add(trip);
                 this.Data.SaveChanges();
                 TempData[GlobalConstants.SuccessMessage] = "Successfully created a new trip!";
@@ -106,11 +113,12 @@ namespace RoofSharing.Web.Controllers
             var trip = this.Data.PublicTrips.All().Where(tr => tr.Id == id).Project().To<PublicTripViewModel>().FirstOrDefault();
             if (trip == null)
             {
-                throw new HttpException(400, "Invalid Trip Id!");
+                return HttpNotFound("Invalid trip Id");
             }
+
             if (trip.HostId != this.CurrentUser.Id)
             {
-                throw new HttpException(403, "This trip is not initiated by you!");
+                return new HttpUnauthorizedResult("You can edit only trips that were initiated by you");
             }
             return View(trip);
         }
@@ -121,24 +129,24 @@ namespace RoofSharing.Web.Controllers
         {
             if (model.HostId != this.CurrentUser.Id)
             {
-                throw new HttpException(403, "This trip is not initiated by you!");
+                return new HttpUnauthorizedResult("You can edit only trips that were initiated by you");
             }
 
             //TODO Find a better solution for Kendo MultiSelect binding.
-            ModelState["Participants"].Errors.Clear();
+             if (ModelState.ContainsKey("Participants"))
+            {
+                ModelState["Participants"].Errors.Clear();
+            }
             if (ModelState.IsValid)
             {
-                var trip = Mapper.Map<PublicTrip>(model);
-                var tripInDb = this.Data.PublicTrips.Find(model.Id);
-                tripInDb.Description = trip.Description;
-                tripInDb.EndDate = trip.EndDate;
-                tripInDb.EndPoint = trip.EndPoint;
-                tripInDb.EndPointCity = trip.EndPointCity;
-                tripInDb.StartDate = trip.StartDate;
-                tripInDb.StartPoint = trip.StartPoint;
-                tripInDb.StartPointCity = trip.StartPointCity;
-                tripInDb.Participants = this.Data.Users.All().Where(user => participants.Contains(user.Id)).ToList();
-
+                var trip = this.Data.PublicTrips.Find(model.Id);
+                if (trip == null)
+                {
+                    return HttpNotFound("Invalid trip Id");
+                }
+                Mapper.Map(model, trip);
+                
+                trip.Participants = this.Data.Users.All().Where(user => participants.Contains(user.Id)).ToList();
 
                 this.Data.SaveChanges();
                 TempData[GlobalConstants.SuccessMessage] = "Successfully updated the trip info!";

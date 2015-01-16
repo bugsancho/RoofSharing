@@ -64,6 +64,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\KENDOUIMVC\2014.2.1008.545\Kendo.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
+      <HintPath>..\..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -513,6 +519,7 @@
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\count-to.js" />
     <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\Custom\SignalRNotifier.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
@@ -525,6 +532,8 @@
     <Content Include="Scripts\jquery.nicescroll.min.js" />
     <Content Include="Scripts\jquery.parallax.js" />
     <Content Include="Scripts\jquery.prettyPhoto.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Scripts\jquery.textillate.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -676,7 +685,6 @@
     <Content Include="Scripts\kendo\2014.2.1008\messages\kendo.messages.zh-CN.min.js" />
     <Content Include="Scripts\kendo\2014.2.1008\messages\kendo.messages.zh-HK.min.js" />
     <Content Include="Scripts\kendo\2014.2.1008\messages\kendo.messages.zh-TW.min.js" />
-    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\mediaelement-and-player.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -688,7 +696,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\script.js" />
-    <Content Include="Scripts\wow.min.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Shared\EditorTemplates\BoolNullable.cshtml" />

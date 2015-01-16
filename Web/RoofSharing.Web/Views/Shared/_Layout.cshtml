@@ -4,23 +4,19 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>@ViewBag.Title -RoofSharing</title>
-        @Styles.Render("~/Content/css")
         @Styles.Render("~/Content/css-theme")
-        @Styles.Render("~/Content/margo-theme")
 
-        <link rel="stylesheet" type="text/css" href="~/Content/colors/red.css" title="red" media="screen" />
+        @*For some reason Kendo Styles cannot be used in a bundle*@
+        <link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
 
         @Styles.Render()
         @RenderSection("styles", required: false)
-        @Scripts.Render("~/bundles/modernizr")
 
-        <!--This bundle was moved by the Telerik VS Extensions for compatibility reasons-->
+        @Scripts.Render("~/bundles/modernizr")
         @Scripts.Render("~/bundles/jquery")
-        <link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.common.min.css")" rel="stylesheet" type="text/css" />
-        <link href="@Url.Content("~/Content/kendo/2014.2.1008/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
-        <script src="@Url.Content("~/Scripts/kendo/2014.2.1008/kendo.all.min.js")"></script>
-        <script src="@Url.Content("~/Scripts/kendo/2014.2.1008/kendo.aspnetmvc.min.js")"></script>
-        <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+        @Scripts.Render("~/bundles/signalR")
+        @Scripts.Render("~/bundles/kendo-scripts")
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
         <script src="/Scripts/custom.js"></script>
 
@@ -102,14 +98,6 @@
                 @RenderBody()
 
             </div>
-            @Scripts.Render("~/bundles/bootstrap")
-            @Scripts.Render("~/bundles/bootstrap-theme")
-            @Scripts.Render("~/bundles/jqueryajax")
-
-            <script>
-                $(getGoogleAutocomplete('location', '#SearchedCity'));    
-            </script>
-            @RenderSection("scripts", required: false)
 
             <footer>
                 <div class="container">
@@ -197,9 +185,6 @@
                             <div class="col-md-6">
                                 <ul class="footer-nav">
                                     <li>
-                                        <a href="#">Sitemap</a>
-                                    </li>
-                                    <li>
                                         <a href="#">Privacy Policy</a>
                                     </li>
                                     <li>
@@ -222,6 +207,12 @@
                 <div class="dot2"></div>
             </div>
         </div>
+        
+        @Scripts.Render("~/bundles/bootstrap-theme")
+        <script>
+            $(getGoogleAutocomplete('location', '#SearchedCity'));    
+        </script>
+        @RenderSection("scripts", required: false)
 
     </body>
 
