@@ -1,13 +1,9 @@
 ﻿$(function () {
     // Declare a proxy to reference the hub.
-    var chat = $.connection.chatHub;
+    var chat = $.connection.signalRNotificationService;
     // Create a function that the hub can call to broadcast messages.
-    chat.client.addChatMessage = function (name) {
-        console.log(name);
+    chat.client.addChatMessage = function (msg) {
+        toastr.info(msg);
     }
-    // Start the connection.
-    $.connection.hub.start().done(function () {
-        chat.server.sendChatMessage("bugsancho@gmail.com", 6);
-        // Clear text box and reset focus for next comment.
-    });
+
 });

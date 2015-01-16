@@ -17,8 +17,9 @@
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/signalR")
         @Scripts.Render("~/bundles/kendo-scripts")
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+        <script src="~/signalr/hubs"></script>
         <script src="/Scripts/custom.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
         <meta name="description" content="Roof sharing" />
     </head>
@@ -207,7 +208,7 @@
                 <div class="dot2"></div>
             </div>
         </div>
-        
+
         @Scripts.Render("~/bundles/bootstrap-theme")
         <script>
             $(getGoogleAutocomplete('location', '#SearchedCity'));    

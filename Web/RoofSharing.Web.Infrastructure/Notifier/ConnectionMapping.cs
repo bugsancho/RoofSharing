@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoofSharing.Web.Infrastructure.SignalR
+namespace RoofSharing.Web.Infrastructure.Notifier
 {
     public class ConnectionMapping<T>
     {

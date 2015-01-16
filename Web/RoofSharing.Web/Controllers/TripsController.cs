@@ -18,7 +18,7 @@ namespace RoofSharing.Web.Controllers
         public TripsController(IRoofSharingData data) : base(data)
         {
         }
-
+        
         // GET: Trips
         public ActionResult Index()
         {
@@ -133,7 +133,7 @@ namespace RoofSharing.Web.Controllers
             }
 
             //TODO Find a better solution for Kendo MultiSelect binding.
-             if (ModelState.ContainsKey("Participants"))
+            if (ModelState.ContainsKey("Participants"))
             {
                 ModelState["Participants"].Errors.Clear();
             }

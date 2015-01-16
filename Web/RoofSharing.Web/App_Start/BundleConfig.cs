@@ -12,8 +12,8 @@ namespace RoofSharing.Web
                 "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/signalR").Include(
-                "~/Scripts/jquery.signalR-2.2.0.js",
-                "~/signalr/hubs"));
+                "~/Scripts/jquery.signalR-2.2.0.js"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryajax").Include(
                 "~/Scripts/jquery.unobtrusive-ajax.js"));
@@ -34,7 +34,8 @@ namespace RoofSharing.Web
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/script.js",
                 "~/Scripts/jquery.appear.js",
-                "~/Scripts/jquery.nicescroll.min.js"));
+                "~/Scripts/jquery.nicescroll.min.js",
+                "~/Scripts/toastr.min.js"));
             
             bundles.Add(new StyleBundle("~/Content/css-theme").Include(
                 "~/Content/bootstrap.css",
@@ -44,7 +45,8 @@ namespace RoofSharing.Web
                 "~/Content/responsive.css",
                 "~/Content/colors/red.css",
                 "~/Content/style.css",
-                "~/Content/site.css"));
+                "~/Content/site.css",
+                "~/Content/toastr.min.css"));
 
             //bundles.Add(new StyleBundle("~/Content/Kendo").Include(
             //    "~/Content/kendo/2014.2.1008/kendo.common.min.css",
@@ -52,7 +54,7 @@ namespace RoofSharing.Web
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

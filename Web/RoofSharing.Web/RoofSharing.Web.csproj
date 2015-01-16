@@ -269,6 +269,7 @@
     <Content Include="Content\Images\Profile\33a9bfd8-89dd-4498-98c6-e886191a3a74.jpg" />
     <Content Include="Content\Images\Profile\d076dd36-23de-4f82-99fd-be780de7ece1.JPG" />
     <Content Include="Content\Images\Profile\default_profile_pic.jpg" />
+    <Content Include="Content\Images\travel-world.jpg" />
     <Content Include="Content\Images\Traveling-Big-blurred.jpg" />
     <Content Include="Content\kendo\2014.2.1008\Black\editor.png" />
     <Content Include="Content\kendo\2014.2.1008\Black\imagebrowser.png" />
@@ -490,6 +491,8 @@
     <Content Include="Content\responsive.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -515,6 +518,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\count-to.js" />
@@ -697,6 +702,8 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\script.js" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Shared\EditorTemplates\BoolNullable.cshtml" />
     <Content Include="Views\Profile\Update.cshtml" />

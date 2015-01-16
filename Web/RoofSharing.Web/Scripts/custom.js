@@ -19,3 +19,21 @@
     });
 
 }
+
+$(function () {
+    // Declare a proxy to reference the hub.
+    var notifier = $.connection.signalRNotificationService;
+    // Create a function that the hub can call to broadcast messages.
+    notifier.client.errorMessage = function (msg) {
+        toastr.error(msg);
+    }
+    notifier.client.successMessage = function (msg) {
+        toastr.success(msg);
+    }
+    notifier.client.infoMessage = function (msg) {
+        toastr.info(msg);
+    }
+    notifier.client.warningMessage = function (msg) {
+        toastr.warning(msg);
+    }
+});

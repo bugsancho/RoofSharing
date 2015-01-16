@@ -108,9 +108,11 @@
     <Compile Include="Mappings\AutoMapperConfig.cs" />
     <Compile Include="Mappings\IHaveCustomMappings.cs" />
     <Compile Include="Mappings\IMapFrom.cs" />
+    <Compile Include="Notifier\INotifierService.cs" />
+    <Compile Include="Notifier\NotificationMessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SignalR\NotificationHub.cs" />
-    <Compile Include="SignalR\ConnectionMapping.cs" />
+    <Compile Include="Notifier\SignalRNotificationService.cs" />
+    <Compile Include="Notifier\ConnectionMapping.cs" />
     <Compile Include="ValidationAttributes\ActionOutputCacheAttribute.cs" />
     <Compile Include="ValidationAttributes\AjaxGetAttribute.cs" />
     <Compile Include="ValidationAttributes\AjaxOnlyAttribute.cs" />
