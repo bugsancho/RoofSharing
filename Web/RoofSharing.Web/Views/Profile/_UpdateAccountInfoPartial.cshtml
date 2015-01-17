@@ -1,0 +1,13 @@
+﻿@if (ViewBag.HasPassword)
+{
+
+    Html.RenderPartial("~/Views/Account/_ChangePasswordPartial.cshtml");
+}
+else
+{
+    Html.RenderPartial("~/Views/Account/_SetPasswordPartial.cshtml");
+}
+@ViewBag.HasPassword
+<div>
+    @Html.ActionLink("Back", "Index", "Profile", null, new { @class = "btn btn-info" })
+</div>

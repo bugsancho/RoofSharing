@@ -715,6 +715,7 @@
     <Content Include="Views\Shared\_UserHostCardPartial.cshtml" />
     <Content Include="Views\Trips\_PublicTripUserCardPartial.cshtml" />
     <Content Include="Views\Trips\Browse.cshtml" />
+    <Content Include="Views\Profile\_UpdateAccountInfoPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

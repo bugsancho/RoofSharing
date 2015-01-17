@@ -9,6 +9,7 @@ using Microsoft.Owin.Security;
 using RoofSharing.Data.Models;
 using RoofSharing.Web.App_Start;
 using RoofSharing.Web.ViewModels;
+using RoofSharing.Common;
 
 namespace RoofSharing.Web.Controllers
 {
@@ -230,7 +231,9 @@ namespace RoofSharing.Web.Controllers
                 {
                     await SignInAsync(user, isPersistent: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+
+                TempData[GlobalConstants.SuccessMessage] = "Password changed successfully!";
+                return RedirectToAction("Index", "Profile");
             }
             AddErrors(result);
             return View(model);
@@ -259,7 +262,9 @@ namespace RoofSharing.Web.Controllers
                     {
                         await SignInAsync(user, isPersistent: false);
                     }
-                    return RedirectToAction("Index", new { Message = ManageMessageId.SetPasswordSuccess });
+
+                    TempData[GlobalConstants.SuccessMessage] = "Password added successfully!";
+                    return RedirectToAction("Index", "Profile");
                 }
                 AddErrors(result);
             }
@@ -371,7 +376,7 @@ namespace RoofSharing.Web.Controllers
             RemovePhoneSuccess,
             Error
         }
-    
+        
         #endregion
     }
 }

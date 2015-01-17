@@ -114,6 +114,15 @@ namespace RoofSharing.Web.Controllers
             return PartialView(viewModel);
         }
 
+        [HttpGet]
+        [Authorize]
+        public ActionResult UpdateAccountInfo()
+        {
+            ViewData["HasPassword"] = !string.IsNullOrEmpty(this.CurrentUser.PasswordHash);
+
+            return PartialView("~/Views/Profile/_UpdateAccountInfoPartial.cshtml");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
