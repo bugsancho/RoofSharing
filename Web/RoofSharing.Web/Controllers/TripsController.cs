@@ -16,6 +16,8 @@ namespace RoofSharing.Web.Controllers
 {
     public class TripsController : BaseController
     {
+        private const int PageSize = 3;
+
         public TripsController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
@@ -26,6 +28,20 @@ namespace RoofSharing.Web.Controllers
             return View();
         }
         
+        [HttpGet]
+        public ActionResult Browse(int page = 1)
+        {
+            var trips = this.Data.PublicTrips.All()
+                            .OrderBy(x => x.Id)                            
+                            .Skip((page - 1) * PageSize)
+                            .Take(PageSize)
+                            .Project()
+                            .To<PublicTripUserCardViewModel>()
+                            .ToList();
+
+            ViewBag.Pages = Math.Ceiling((double)this.Data.PublicTrips.All().Count() / PageSize);
+            return View(trips);
+        }
 
         [Authorize]
         [HttpGet]

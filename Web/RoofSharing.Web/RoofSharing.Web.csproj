@@ -251,7 +251,7 @@
     <Compile Include="ViewModels\Host\HostInviteInputViewModel.cs" />
     <Compile Include="ViewModels\Host\HostInviteViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
-    <Compile Include="ViewModels\Trip\PlanTripViewModel.cs" />
+    <Compile Include="ViewModels\Trip\PublicTripUserCardViewModel.cs" />
     <Compile Include="ViewModels\Trip\PublicTripViewModel.cs" />
     <Compile Include="ViewModels\Host\UserCardViewModel.cs" />
     <Compile Include="ViewModels\Account\UserViewModel.cs" />
@@ -713,6 +713,8 @@
     <Content Include="Views\Trips\View.cshtml" />
     <Content Include="Views\Trips\Edit.cshtml" />
     <Content Include="Views\Shared\_UserHostCardPartial.cshtml" />
+    <Content Include="Views\Trips\_PublicTripUserCardPartial.cshtml" />
+    <Content Include="Views\Trips\Browse.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
