@@ -14,7 +14,7 @@
 
         public string Location { get; set; }
 
-        public string Gender { get; set; }
+        public Gender Gender { get; set; }
 
         public int? Age { get; set; }
 
@@ -41,6 +41,7 @@
                                                                          ((DateTime.Now.Month == t.PersonalityInfo.BirthDate.Value.Month) &&
                                                                           (DateTime.Now.Day < t.PersonalityInfo.BirthDate.Value.Day)) ? 1 : 0)))
                          .ForMember(m => m.Tagline, opt => opt.MapFrom(t => t.PersonalityInfo.Tagline))
+                         .ForMember(m => m.Gender, opt => opt.MapFrom(t => t.PersonalityInfo.Gender))
                          .ForMember(m => m.Occupation, opt => opt.MapFrom(t => t.PersonalityInfo.Occupation))
                          .ForMember(m => m.Education, opt => opt.MapFrom(t => t.PersonalityInfo.Education))
                          .ForMember(m => m.Hobby, opt => opt.MapFrom(t => t.PersonalityInfo.Hobbies))
