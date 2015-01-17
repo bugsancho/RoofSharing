@@ -24,13 +24,15 @@ namespace RoofSharing.Data.Models.Profile
         [StringLength(500)]
         public string Interests { get; set; }
 
-        public string TagLine { get; set; }
+        public string Tagline { get; set; }
 
         [StringLength(500)]
         public string Education { get; set; }
 
         [StringLength(500)]
         public string Occupation { get; set; }
+
+        public string Languages { get; set; }
         
         public virtual User User { get; set; }
     }

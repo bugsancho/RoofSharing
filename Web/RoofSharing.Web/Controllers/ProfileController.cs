@@ -10,18 +10,13 @@ using Roofsharing.Services.Notifiers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+
 namespace RoofSharing.Web.Controllers
 {
     public class ProfileController : BaseController
     {
         public ProfileController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
-        }
-
-        // GET: Profile
-        public ActionResult Index()
-        {
-            return View();
         }
 
         [HttpGet]
@@ -120,7 +115,7 @@ namespace RoofSharing.Web.Controllers
         [Authorize]
         public ActionResult UpdateAccountInfo()
         {
-          //TODO fix refresh error!
+            //TODO fix refresh error!
             ViewData["HasPassword"] = !string.IsNullOrEmpty(this.Data.Users.Find(this.CurrentUser.Id).PasswordHash);
 
             return PartialView("~/Views/Profile/_UpdateAccountInfoPartial.cshtml");
@@ -173,28 +168,24 @@ namespace RoofSharing.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Index(string userId = null)
         {
-            bool fullProfileAllowed = false;
-            string currentUserId = this.CurrentUser.Id;
-            string id = currentUserId;
-            if (userId != null)
+            var profileInfo = this.Data.Users.All()
+                                  .Where(x => x.Id == (userId ?? this.CurrentUser.Id))
+                                  .Project()
+                                  .To<ProfileOverviewViewModel>()
+                                  .FirstOrDefault();
+
+            bool isOwnProfile = true;
+            if (userId != null && userId != this.CurrentUser.Id)
             {
-                fullProfileAllowed = this.Data.Friendships.All().Any(f => ((f.FromUserId == currentUserId && f.ToUserId == userId) || (f.ToUserId == currentUserId && f.FromUserId == userId)) && f.Status == RoofSharing.Data.Models.FriendshipStatusType.Friends);
-                id = userId;
+                isOwnProfile = false;
             }
-            else
-            {
-                fullProfileAllowed = true;
-            }
-            var model = new ProfileInfoModel()
-            {
-                FullProfileAllowed = fullProfileAllowed || userId == currentUserId,
-                Id = id
-            };
-            
-            //var model = this.Data.Users.All().Where(u => u.Id == queryUserId).Project().To<ProfileSummaryViewModel>().FirstOrDefault();
-            return View("Index", null, model);
+
+            ViewBag.IsOwnProfile = isOwnProfile;
+
+            return View(profileInfo);
         }
 
         [ChildActionOnly]

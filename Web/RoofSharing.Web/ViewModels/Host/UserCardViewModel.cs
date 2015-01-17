@@ -29,7 +29,7 @@ namespace RoofSharing.Web.ViewModels.Host
             configuration.CreateMap<User, UserCardViewModel>()
                          .ForMember(m => m.Names, opt => opt.MapFrom(t => t.FirstName + " " + t.LastName))
                          .ForMember(m => m.Location, opt => opt.MapFrom(t => t.LocationInfo.City + ", " + t.LocationInfo.Country))
-                         .ForMember(m => m.Tagline, opt => opt.MapFrom(t => t.PersonalityInfo.TagLine))
+                         .ForMember(m => m.Tagline, opt => opt.MapFrom(t => t.PersonalityInfo.Tagline))
                          .ForMember(m => m.AcceptingGuestsStatus, opt => opt.MapFrom(t => t.HousingInfo.AcceptingGuestsStatus));
         }
     }

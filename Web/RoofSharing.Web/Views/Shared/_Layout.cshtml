@@ -47,7 +47,7 @@
                                 </ul>
                             </li>
                             <li class="drop">
-                                @Html.ActionLink("Trips", "Index", "Trips", new { area = "" }, null)
+                                @Html.ActionLink("Trips", "Browse", "Trips", new { area = "" }, null)
                                 <ul class="dropdown">
                                     <li>@Html.ActionLink("Browse Trips", "Browse", "Trips", new { area = "" }, null)</li>
                                     <li>@Html.ActionLink("Create Trip", "Create", "Trips", new { area = "" }, null)</li>
@@ -57,12 +57,11 @@
                                 <div class=" widget-search">
                                     @using (Html.BeginForm("Browse", "Host", new { area = "" }, FormMethod.Get, null))
                                     {
-                                                                            <input type="hidden" name="city" id="city" />
-                                                                            <input type="search" id="location" placeholder="Where would you like to go?">
-                                                                            <button class="search-btn" type="submit">
-                                                                                <i class="fa fa-search"></i>
-                                                                            </button>
-
+                                        <input type="hidden" name="city" id="city" />
+                                        <input type="search" id="location" placeholder="Where would you like to go?">
+                                        <button class="search-btn" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
                                     }
                                 </div>
                             </li>
@@ -71,7 +70,7 @@
                                                             <li>@Html.ActionLink("Admin", "Index", "AdminHome", new { area = "Administration" }, null)</li>
                             }
                         </ul>
-
+                        
                         @Html.Partial("_LoginPartial")
                     </div>
                 </div>
@@ -96,13 +95,13 @@
                                     </div>
                 }
                 @RenderBody()
-
+                
             </div>
-
+            
             <footer>
                 <div class="container">
                     <div class="row footer-widgets">
-
+                    
                         <!-- Start Subscribe & Social Links Widget -->
                         <div class="col-md-3">
                             <div class="footer-widget mail-subscribe-widget">
@@ -142,7 +141,7 @@
                                             <i class="fa fa-linkedin"></i>
                                         </a>
                                     </li>
-
+                                    
                                     <li>
                                         <a class="skype" href="http://www.skype.com">
                                             <i class="fa fa-skype"></i>
@@ -171,7 +170,7 @@
                             </div>
                         </div><!-- .col-md-3 -->
                         <!-- End Contact Widget -->
-
+                        
                     </div> <!-- .row -->
                     <!-- Start Copyright -->
                     <div class="copyright-section">
@@ -195,25 +194,25 @@
                         </div>
                     </div>
                     <!-- End Copyright -->
-
+                    
                 </div>
             </footer>
-
+            
         </div>
-
+        
         <div id="loader">
             <div class="spinner">
                 <div class="dot1"></div>
                 <div class="dot2"></div>
             </div>
         </div>
-
+        
         @Scripts.Render("~/bundles/bootstrap-theme")
         <script>
             $(getGoogleAutocomplete('location', '#city'));    
         </script>
         @RenderSection("scripts", required: false)
-
+        
     </body>
-
+    
 </html>
