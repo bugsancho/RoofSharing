@@ -27,6 +27,19 @@ textarea
     max-width: 280px;
 }
 
+.tweetline
+{
+    background: url(http://mymaplist.com/img/parallax/pinlayer2.png), url(http://mymaplist.com/img/parallax/pinlayer1.png), url(http://mymaplist.com/img/parallax/back.png);
+}
+             
+.vertical-offset-20
+{
+    padding-top: 100px;
+}
+.container-fluid
+{
+    padding: 0;
+} 
 .pac-container
 {
     z-index: 10000 !important;
@@ -34,17 +47,20 @@ textarea
 
 .border-shadow
 {
-    box-shadow: 0 3px 10px rgba(0,0,0,.23),0 3px 10px rgba(0,0,0,.16);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .23), 0 3px 10px rgba(0, 0, 0, .16);
 }
-.padding-right{
+.padding-right
+{
     padding-right: 10px;
 }
 
-.margin-btm-md{
+.margin-btm-md
+{
     margin-bottom: 20px;
 }
-.margin-left-md{
-    margin-left:50px;
+.margin-left-md
+{
+    margin-left: 50px;
 }
 
 .widget-search

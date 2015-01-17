@@ -7,7 +7,9 @@ using RoofSharing.Data;
 using RoofSharing.Data.Models.Profile;
 using RoofSharing.Web.ViewModels.Profile;
 using Roofsharing.Services.Notifiers;
-
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 namespace RoofSharing.Web.Controllers
 {
     public class ProfileController : BaseController
@@ -118,11 +120,12 @@ namespace RoofSharing.Web.Controllers
         [Authorize]
         public ActionResult UpdateAccountInfo()
         {
-            ViewData["HasPassword"] = !string.IsNullOrEmpty(this.CurrentUser.PasswordHash);
+          //TODO fix refresh error!
+            ViewData["HasPassword"] = !string.IsNullOrEmpty(this.Data.Users.Find(this.CurrentUser.Id).PasswordHash);
 
             return PartialView("~/Views/Profile/_UpdateAccountInfoPartial.cshtml");
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]

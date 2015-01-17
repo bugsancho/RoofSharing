@@ -883,7 +883,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Host\Invite.cshtml" />
     <Content Include="Views\Host\Invites.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
