@@ -17,13 +17,11 @@ namespace RoofSharing.Data.Models
         [Required]
         public string FromUserId { get; set; }
 
-        [ForeignKey("FromUserId")]
         public virtual User FromUser { get; set; }
         
         [Required]        
         public string ToUserId { get; set; }
-
-        [ForeignKey("ToUserId")]
+        
         public virtual User ToUser { get; set; }
     }
 }

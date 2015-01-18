@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using RoofSharing.Data;
 using RoofSharing.Data.Models;
+using RoofSharing.Web.Controllers.Base;
 using RoofSharing.Web.Infrastructure.ValidationAttributes;
 using RoofSharing.Web.ViewModels.Account;
 using RoofSharing.Web.ViewModels.Friends;

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RoofSharing.Data.Models
+﻿namespace RoofSharing.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
     public class HostInvitation
     {
         public int Id { get; set; }
@@ -26,6 +22,8 @@ namespace RoofSharing.Data.Models
 
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
+        
+        public InvitationStatusType Status { get; set; }
         
         [Range(0, 20, ErrorMessage = "You cannot plan a trip with more than {2} people")]
         public int NumberOfCompanions { get; set; }

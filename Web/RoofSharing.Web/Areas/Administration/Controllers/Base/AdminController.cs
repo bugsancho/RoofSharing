@@ -3,7 +3,7 @@
     using System.Web.Mvc;
     using RoofSharing.Common;
     using RoofSharing.Data;
-    using RoofSharing.Web.Controllers;
+    using RoofSharing.Web.Controllers.Base;
     using Roofsharing.Services.Notifiers;
 
     [Authorize(Roles = GlobalConstants.AdminRoleName)]

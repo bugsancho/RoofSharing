@@ -1,26 +1,29 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using RoofSharing.Data.Models;
-using RoofSharing.Web.App_Start;
-using RoofSharing.Common;
-using RoofSharing.Web.ViewModels.Manage;
-
-namespace RoofSharing.Web.Controllers
+﻿namespace RoofSharing.Web.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using RoofSharing.Common;
+    using RoofSharing.Data;
+    using RoofSharing.Data.Models;
+    using RoofSharing.Web.App_Start;
+    using RoofSharing.Web.Controllers.Base;
+    using RoofSharing.Web.ViewModels.Manage;
+    using Roofsharing.Services.Notifiers;
+
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
-        public ManageController()
+        public ManageController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
 
-        public ManageController(ApplicationUserManager userManager)
+        public ManageController(ApplicationUserManager userManager, IRoofSharingData data, INotifierService notifier) : base(data,notifier)
         {
             UserManager = userManager;
         }

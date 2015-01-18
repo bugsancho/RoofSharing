@@ -1,15 +1,13 @@
-﻿using RoofSharing.Data;
-using RoofSharing.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Roofsharing.Services.Notifiers;
-
-namespace RoofSharing.Web.Controllers
+﻿namespace RoofSharing.Web.Controllers.Base
 {
+    using System;
+    using System.Linq;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using RoofSharing.Data;
+    using RoofSharing.Data.Models;
+    using Roofsharing.Services.Notifiers;
+    
     public class BaseController : Controller
     {
         protected IRoofSharingData Data { get; set; }
@@ -17,11 +15,7 @@ namespace RoofSharing.Web.Controllers
         public INotifierService Notifier { get; private set; }
 
         protected User CurrentUser { get; set; }
-
-        //public BaseController() : this(new RoofSharingData(new RoofSharingDbContext()))
-        //{
-        //}
-
+        
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             if (requestContext.HttpContext.User.Identity.IsAuthenticated)

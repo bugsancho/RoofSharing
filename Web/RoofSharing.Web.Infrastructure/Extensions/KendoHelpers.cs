@@ -22,9 +22,9 @@
 
             return helper.Kendo()
                 .Grid<T>()
+                
                 .Name("grid")
                 .Columns(columns)
-                .ColumnMenu()
                 .Pageable(page => page.Refresh(true))
                 .Sortable()
                 .Groupable()
@@ -38,6 +38,7 @@
                         .Read(read => read.Action("Read", controllerName))
                         .Update(update => update.Action("Update", controllerName))
                         .Destroy(destroy => destroy.Action("Destroy", controllerName))
+                        
                         );
         }
     }

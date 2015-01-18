@@ -26,22 +26,30 @@ textarea
     /*background-color:lightblue !important;*/
     max-width: 280px;
 }
-
+.home-splash
+{
+    height: 1000px;
+    background: url("/Content/Images/travel-world.jpg") no-repeat content-box; 
+    background-size: cover;
+}
 .tweetline
 {
     background: url(http://mymaplist.com/img/parallax/pinlayer2.png), url(http://mymaplist.com/img/parallax/pinlayer1.png), url(http://mymaplist.com/img/parallax/back.png);
 }
-.display-label{
+.display-label
+{
 }
-.display-field{
+.display-field
+{
     /*font-size:15px;
     font-weight:500;*/
-    font-weight:bold;
+    font-weight: bold;
 }
          
-.heading{
-    font-size:30px;
-    font-weight:bold;
+.heading
+{
+    font-size: 30px;
+    font-weight: bold;
 }
 .vertical-offset-20
 {
@@ -64,8 +72,9 @@ textarea
 {
     padding-right: 10px;
 }
-.padding-left-sm{
-    padding-left:10px;
+.padding-left-sm
+{
+    padding-left: 10px;
 }
 
 .margin-btm-md

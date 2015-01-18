@@ -1,7 +1,6 @@
 ﻿namespace RoofSharing.Web.ViewModels.Host
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using AutoMapper;
     using RoofSharing.Data.Models;

@@ -7,6 +7,7 @@
     using AutoMapper.QueryableExtensions;
     using RoofSharing.Common;
     using RoofSharing.Data;
+    using RoofSharing.Web.Controllers.Base;
     using RoofSharing.Web.ViewModels.Profile;
     using Roofsharing.Services.Notifiers;
 

@@ -1,19 +1,19 @@
-﻿using AutoMapper;
-using RoofSharing.Data;
-using RoofSharing.Data.Models;
-using Roofsharing.Services.Common.Notifiers;
-using RoofSharing.Web.ViewModels.Host;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using AutoMapper.QueryableExtensions;
-using RoofSharing.Common;
-using Roofsharing.Services.Notifiers;
-
-namespace RoofSharing.Web.Controllers
+﻿namespace RoofSharing.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.Mvc;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using RoofSharing.Common;
+    using RoofSharing.Data;
+    using RoofSharing.Data.Models;
+    using RoofSharing.Web.Controllers.Base;
+    using RoofSharing.Web.ViewModels.Host;
+    using Roofsharing.Services.Common.Notifiers;
+    using Roofsharing.Services.Notifiers;
+
     public class HostController : BaseController
     {
         private const int PageSize = 2;
@@ -21,7 +21,7 @@ namespace RoofSharing.Web.Controllers
         public HostController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
-
+        
         public ActionResult Browse(string city = null, int page = 1)
         {
             var users = this.Data.Users.All();
@@ -97,7 +97,7 @@ namespace RoofSharing.Web.Controllers
 
                 string hostUserName = this.Data.Users.All().Where(x => x.Id == input.HostId).Select(x => x.UserName).FirstOrDefault();
                 this.Notifier.Notify(string.Format("{0} has sent you a request to host them!", this.CurrentUser.FirstName + " " + this.CurrentUser.LastName), NotificationMessageType.Info, hostUserName);
-                ViewData[GlobalConstants.SuccessMessage] = "You have successfully sent a host invitation to " + hostUserName;
+                TempData[GlobalConstants.SuccessMessage] = "You have successfully sent a host invitation to " + hostUserName;
 
                 return RedirectToAction("Index", "Home", new { area = string.Empty });
             }
@@ -109,8 +109,45 @@ namespace RoofSharing.Web.Controllers
         [HttpGet]
         public ActionResult Invites()
         {
-            var invites = this.Data.Invitations.All().Where(i => i.HostId == this.CurrentUser.Id).Project().To<HostInviteViewModel>().ToList();
+            var invites = this.Data.Invitations.All()
+                              .Where(i => i.HostId == this.CurrentUser.Id &&
+                                          i.Status == InvitationStatusType.Pending)
+                              .Project()
+                              .To<HostInviteRespondViewModel>()
+                              .ToList();
             return View(invites);
+        }
+
+        [Authorize]
+        public ActionResult Approve(int id)
+        {
+            var invitation = this.Data.Invitations.Find(id);
+            if (invitation.HostId != this.CurrentUser.Id)
+            {
+                TempData[GlobalConstants.ErrorMessage] = "You are not authorized to approve that invitation!";
+                return RedirectToAction("Invites");
+            }
+            invitation.Status = InvitationStatusType.Accepted;
+            this.Data.SaveChanges();
+
+            TempData[GlobalConstants.SuccessMessage] = "Invite approved successfully!";
+            return RedirectToAction("Invites");
+        }
+
+         [Authorize]
+        public ActionResult Reject(int id)
+        {
+            var invitation = this.Data.Invitations.Find(id);
+            if (invitation.HostId != this.CurrentUser.Id)
+            {
+                TempData[GlobalConstants.ErrorMessage] = "You are not authorized to reject that invitation!";
+                return RedirectToAction("Invites");
+            }
+            invitation.Status = InvitationStatusType.Denied;
+            this.Data.SaveChanges();
+
+            TempData[GlobalConstants.SuccessMessage] = "Invite rejected successfully!";
+            return RedirectToAction("Invites");
         }
     }
 }

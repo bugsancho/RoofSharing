@@ -1,56 +1,75 @@
-﻿@model IEnumerable<RoofSharing.Web.ViewModels.Host.HostInviteViewModel>
+﻿
+@model IEnumerable<RoofSharing.Web.ViewModels.Host.HostInviteRespondViewModel>
 
 @{
     ViewBag.Title = "Invites";
 }
 
-<h2>Invites</h2>
+<h2 class="classic-title">Invites</h2>
 
-<table class="table table-striped table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.HostNames)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumberOfCompanions)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Message)
-        </th>
-    </tr>
+@if (Model.Count() == 0)
+{
+    <h2 class="margin-btm-md">There are no more pending invitations</h2>
+}
+else {
 
-    @foreach (var item in Model)
-    {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HostNames)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumberOfCompanions)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Message)
-                </td>
-                <td>
-                    @{
-                        using (Html.BeginForm("Approve", "Host"))
-                        {
-                        }
-                    }
-                </td>
-            </tr>
-    }
-    
-</table>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GuestNames)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+               @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfCompanions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GuestNames)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumberOfCompanions)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Message)
+                        </td>
+                        <td>
+                            @{
+                                using (Html.BeginForm("Approve", "Host", FormMethod.Post))
+                                {
+                                                                    <input type="hidden" value="@item.Id" name="id" />
+                                                                    <button type="submit" class="btn btn-info">Approve</button>
+                                }
+
+                                using (Html.BeginForm("Reject", "Host", FormMethod.Post))
+                                {
+                                                                    <input type="hidden" value="@item.Id" name="id" />
+                                                                    <button type="submit" class="btn btn-danger">Reject</button>
+                                }
+                            }
+                        </td>
+                    </tr>
+        }
+    </table>
+}
+

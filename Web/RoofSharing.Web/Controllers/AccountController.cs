@@ -1,23 +1,22 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using RoofSharing.Data;
-using RoofSharing.Web.App_Start;
-using RoofSharing.Web.Infrastructure.Helpers;
-using RoofSharing.Data.Models;
-using RoofSharing.Data.Models.Profile;
-using RoofSharing.Web.ViewModels.Account;
-using Roofsharing.Services.Notifiers;
-
-namespace RoofSharing.Web.Controllers
+﻿namespace RoofSharing.Web.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using RoofSharing.Data;
+    using RoofSharing.Data.Models;
+    using RoofSharing.Data.Models.Profile;
+    using RoofSharing.Web.App_Start;
+    using RoofSharing.Web.Controllers.Base;
+    using RoofSharing.Web.Infrastructure.Helpers;
+    using RoofSharing.Web.ViewModels.Account;
+    using Roofsharing.Services.Notifiers;
+
     [Authorize]
     public class AccountController : BaseController
     { 

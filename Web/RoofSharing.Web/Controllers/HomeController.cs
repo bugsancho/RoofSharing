@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using RoofSharing.Data;
-using Roofsharing.Services.Notifiers;
-
-namespace RoofSharing.Web.Controllers
+﻿namespace RoofSharing.Web.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Web.Mvc;
+    using RoofSharing.Data;
+    using RoofSharing.Web.Controllers.Base;
+    using Roofsharing.Services.Notifiers;
+
     public class HomeController : BaseController
     {
         public HomeController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
         }
-
 
         public ActionResult Index()
         { 
@@ -32,7 +30,5 @@ namespace RoofSharing.Web.Controllers
 
             return View();
         }
-
-
     }
 }

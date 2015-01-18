@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using RoofSharing.Data;
-using RoofSharing.Web.ViewModels.Trip;
-using AutoMapper.QueryableExtensions;
-using AutoMapper;
-using RoofSharing.Data.Models;
-using RoofSharing.Web.ViewModels.Account;
-using RoofSharing.Common;
-using Roofsharing.Services.Notifiers;
-
-namespace RoofSharing.Web.Controllers
+﻿namespace RoofSharing.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.Mvc;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using RoofSharing.Common;
+    using RoofSharing.Data;
+    using RoofSharing.Data.Models;
+    using RoofSharing.Web.Controllers.Base;
+    using RoofSharing.Web.ViewModels.Trip;
+    using Roofsharing.Services.Notifiers;
+    
     public class TripsController : BaseController
     {
         private const int PageSize = 3;

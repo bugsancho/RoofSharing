@@ -14,7 +14,9 @@
         
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy}")]
         [Range(typeof(DateTime), "01/01/1900", "01/01/2000")]
+        [UIHint("ObjectWithDefaultValue")]
         public DateTime? BirthDate { get; set; }
 
         [Required]
@@ -27,20 +29,16 @@
         [StringLength(50, MinimumLength = 2)]
         public string LastName { get; set; }
 
-        [UIHint("MultiLineText")]
-        [UIHint("ObjectWithDefaultValue")]
+        [DataType(DataType.MultilineText)]
         public string Hobbies { get; set; }
 
-        [UIHint("MultiLineText")]
-        [UIHint("ObjectWithDefaultValue")]
+        [DataType(DataType.MultilineText)]
         public string Interests { get; set; }
 
-        [UIHint("MultiLineText")]
-        [UIHint("ObjectWithDefaultValue")]
+        [DataType(DataType.MultilineText)]
         public string Education { get; set; }
 
-        [UIHint("MultiLineText")]
-        [UIHint("ObjectWithDefaultValue")]
+        [DataType(DataType.MultilineText)]
         public string Occupation { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
