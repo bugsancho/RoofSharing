@@ -1,20 +1,21 @@
-﻿using RoofSharing.Data.Models;
-using RoofSharing.Web.Infrastructure.Mappings;
-using RoofSharing.Web.Infrastructure.ValidationAttributes;
-using RoofSharing.Web.ViewModels.Account;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace RoofSharing.Web.ViewModels.Trip
+﻿namespace RoofSharing.Web.ViewModels.Trip
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using RoofSharing.Data.Models;
+    using RoofSharing.Web.Infrastructure.Mappings;
+    using RoofSharing.Web.Infrastructure.ValidationAttributes;
+    using RoofSharing.Web.ViewModels.Account;
+    using System.Web.Mvc;
+    
     public class PublicTripViewModel : IMapFrom<PublicTrip>
     {
+        [HiddenInput]
         public int Id { get; set; }
         
+        [HiddenInput]
         public string HostId { get; set; }
 
         [Required]
@@ -22,6 +23,7 @@ namespace RoofSharing.Web.ViewModels.Trip
         public string StartPoint { get; set; }
 
         [Required]
+        [HiddenInput]
         public string StartPointCity { get; set; }
 
         [Required]
@@ -29,6 +31,7 @@ namespace RoofSharing.Web.ViewModels.Trip
         public string EndPoint { get; set; }
 
         [Required]
+        [HiddenInput]
         public string EndPointCity { get; set; }
         
         [DateTimeCombinedValidation("EndDate")]

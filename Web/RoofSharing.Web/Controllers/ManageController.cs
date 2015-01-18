@@ -8,8 +8,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RoofSharing.Data.Models;
 using RoofSharing.Web.App_Start;
-using RoofSharing.Web.ViewModels;
 using RoofSharing.Common;
+using RoofSharing.Web.ViewModels.Manage;
 
 namespace RoofSharing.Web.Controllers
 {

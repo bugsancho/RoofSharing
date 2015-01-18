@@ -1,14 +1,12 @@
-﻿using AutoMapper;
-using RoofSharing.Data.Models;
-using RoofSharing.Web.Infrastructure.Mappings;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-
-namespace RoofSharing.Web.ViewModels.Host
+﻿namespace RoofSharing.Web.ViewModels.Host
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using AutoMapper;
+    using RoofSharing.Data.Models;
+    using RoofSharing.Web.Infrastructure.Mappings;
+
     public class UserCardViewModel : IMapFrom<User>, IHaveCustomMappings
     {
         public string Id { get; set; }
@@ -16,10 +14,9 @@ namespace RoofSharing.Web.ViewModels.Host
         public string Names { get; set; }
 
         public string PictureUrl { get; set; }
-
-        [Required]
+        
         public string Location { get; set; }
-
+        
         public string Tagline { get; set; }
 
         public AcceptingGuestsStatusType AcceptingGuestsStatus { get; set; }

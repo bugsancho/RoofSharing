@@ -1,21 +1,22 @@
-﻿using AutoMapper;
-using RoofSharing.Data.Models;
-using RoofSharing.Web.Infrastructure.Mappings;
-using RoofSharing.Web.Infrastructure.ValidationAttributes;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-
-namespace RoofSharing.Web.ViewModels.Host
+﻿namespace RoofSharing.Web.ViewModels.Host
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using AutoMapper;
+    using RoofSharing.Data.Models;
+    using RoofSharing.Web.Infrastructure.Mappings;
+    using RoofSharing.Web.Infrastructure.ValidationAttributes;
+    using System.Web.Mvc;
+
     public class HostInviteViewModel : IMapFrom<HostInvitation>, IHaveCustomMappings
     {
         [Required]
+        [HiddenInput(DisplayValue = false)]
         public string HostId { get; set; }
         
         [Display(Name = "Host Names")]
+        [Editable(false)]
         public string HostNames { get; set; }
 
         [DataType(DataType.Date)]
