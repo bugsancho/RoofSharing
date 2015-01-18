@@ -1,31 +1,19 @@
-﻿@model Object
-@functions {
-public static bool ShouldShow(ModelMetadata metadata, ViewDataDictionary viewData)
-{
-    return metadata.ShowForDisplay &&
-           metadata.ModelType != typeof(System.Data.Entity.EntityState) &&
-           !metadata.IsComplexType &&
-           !viewData.TemplateInfo.Visited(metadata);
-}
+﻿@using RoofSharing.Web.Infrastructure.Helpers
 
-
-}
-
+@model Object
 @{
-
-    IEnumerable<ModelMetadata> properties = ModelMetadata.FromLambdaExpression(m => m, ViewData).Properties.Where(prop => ShouldShow(prop, ViewData));
-
-    foreach (var property in properties)
+    
+    foreach (var property in DisplayForModelHelpers.GetPropertiesToDisplay(ViewData))
     {
             <div class="row">
-                <div class="col-md-4 ">
+                <div class="col-md-4 text-center " >
                     @property.GetDisplayName()
                 </div>
                 @{
-                    <div class="col-md-4">
-                        @Html.DisplayFor(m => property.Model, property.TemplateHint)
+                    <div class="col-md-4 text-center display-field">
+                        @Html.Display(property.PropertyName)
                     </div>
-                                                    
+
                 }
             </div>
     }
