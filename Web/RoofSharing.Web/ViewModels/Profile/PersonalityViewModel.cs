@@ -17,7 +17,6 @@ namespace RoofSharing.Web.ViewModels.Profile
         
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "yyyy-MM-dd")]
         [Range(typeof(DateTime), "01/01/1900", "01/01/2000")]
         public DateTime? BirthDate { get; set; }
 

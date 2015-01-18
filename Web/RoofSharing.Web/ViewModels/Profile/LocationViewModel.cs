@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace RoofSharing.Web.ViewModels.Profile
 {
@@ -24,10 +25,12 @@ namespace RoofSharing.Web.ViewModels.Profile
 
         [Required]
         [UIHint("ObjectWithDefaultValue")]
+        [ScaffoldColumn(false)]
         public string Longitude { get; set; }
 
         [Required]
         [UIHint("ObjectWithDefaultValue")]
+        [ScaffoldColumn(false)]
         public string Latitude { get; set; }
 
         [Display(Name = "Tell us more about the location of your house")]

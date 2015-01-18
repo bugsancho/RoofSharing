@@ -60,7 +60,7 @@
 
                         @if (ViewBag.IsOwnProfile)
                         {
-                            @Html.ActionLink("Edit Profile", "Update", "Profile", null, new { @class = "btn btn-danger" })
+                                                    @Html.ActionLink("Edit Profile", "Update", "Profile", null, new { @class = "btn btn-danger" })
                         }
                         else
                         {
@@ -95,9 +95,9 @@
                 <div class="tabs-section">
 
                     <ul class="nav nav-tabs">
-                        <li>@Html.ActionLink("Location", "LocationProfile", "Profile", new { area = "", id = Model.Id }, new { data_toggle = "tabajax", data_target = "#Location-tab" })</li>
-                        <li>@Html.ActionLink("Housing", "HousingProfile", "Profile", new { area = "", id = Model.Id }, new { data_toggle = "tabajax", data_target = "#Housing-tab" })</li>
-                        <li>@Html.ActionLink("Personality", "PersonalityProfile", "Profile", new { area = "", id = Model.Id }, new { data_toggle = "tabajax", data_target = "#Personality-tab" })</li>
+                        <li>@Html.ActionLink("Location", "LocationProfile", "Profile", new { area = "", userId = Model.Id }, new { data_toggle = "tabajax", data_target = "#Location-tab" })</li>
+                        <li>@Html.ActionLink("Housing", "HousingProfile", "Profile", new { area = "", userId = Model.Id }, new { data_toggle = "tabajax", data_target = "#Housing-tab" })</li>
+                        <li>@Html.ActionLink("Personality", "PersonalityProfile", "Profile", new { area = "", userId = Model.Id }, new { data_toggle = "tabajax", data_target = "#Personality-tab" })</li>
 
                     </ul>
                     <div class="tab-content">

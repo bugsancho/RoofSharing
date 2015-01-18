@@ -31,6 +31,13 @@ textarea
 {
     background: url(http://mymaplist.com/img/parallax/pinlayer2.png), url(http://mymaplist.com/img/parallax/pinlayer1.png), url(http://mymaplist.com/img/parallax/back.png);
 }
+.display-label{
+}
+.display-field{
+    /*font-size:15px;
+    font-weight:500;*/
+    font-weight:bold;
+}
          
 .heading{
     font-size:30px;

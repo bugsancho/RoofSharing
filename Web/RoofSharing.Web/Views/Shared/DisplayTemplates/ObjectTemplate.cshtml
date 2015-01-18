@@ -1,0 +1,34 @@
+﻿@model Object
+@functions {
+public static bool ShouldShow(ModelMetadata metadata, ViewDataDictionary viewData)
+{
+    return metadata.ShowForDisplay &&
+           metadata.ModelType != typeof(System.Data.Entity.EntityState) &&
+           !metadata.IsComplexType &&
+           !viewData.TemplateInfo.Visited(metadata);
+}
+
+
+}
+
+@{
+
+    IEnumerable<ModelMetadata> properties = ModelMetadata.FromLambdaExpression(m => m, ViewData).Properties.Where(prop => ShouldShow(prop, ViewData));
+
+    foreach (var property in properties)
+    {
+            <div class="row">
+                <div class="col-md-4 ">
+                    @property.GetDisplayName()
+                </div>
+                @{
+                    <div class="col-md-4">
+                        @Html.DisplayFor(m => property.Model, property.TemplateHint)
+                    </div>
+                                                    
+                }
+            </div>
+    }
+
+}
+

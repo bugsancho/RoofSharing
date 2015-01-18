@@ -721,6 +721,8 @@
     <Content Include="Views\Trips\_PublicTripUserCardPartial.cshtml" />
     <Content Include="Views\Trips\Browse.cshtml" />
     <Content Include="Views\Profile\_UpdateAccountInfoPartial.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\BoolNullable.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ObjectTemplate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

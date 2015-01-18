@@ -1,19 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using RoofSharing.Data;
-using RoofSharing.Data.Models.Profile;
-using RoofSharing.Web.ViewModels.Profile;
-using Roofsharing.Services.Notifiers;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using RoofSharing.Common;
-
-namespace RoofSharing.Web.Controllers
+﻿namespace RoofSharing.Web.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Web.Mvc;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using RoofSharing.Common;
+    using RoofSharing.Data;
+    using RoofSharing.Web.ViewModels.Profile;
+    using Roofsharing.Services.Notifiers;
+
     public class ProfileController : BaseController
     {
         private const string ProfileUpdatedMessage = "Profile updated successfully!";
@@ -161,8 +157,7 @@ namespace RoofSharing.Web.Controllers
 
         public ActionResult HousingProfile(string userId)
         {
-            var user = this.Data.Users.All()
-                
+            var user = this.Data.Users.All()                
                            .Where(u => u.Id == userId)
                            .Select(u => u.HousingInfo)
                            .Project()
@@ -171,7 +166,7 @@ namespace RoofSharing.Web.Controllers
 
             return PartialView("~/Views/Profile/_HousingProfile.cshtml", user);
         }
-
+        
         public ActionResult LocationProfile(string userId)
         {
             var user = this.Data.Users.All()

@@ -1,56 +1,8 @@
 ﻿@model RoofSharing.Web.ViewModels.Profile.LocationViewModel
 
 <div>
-    <h4>Location Information</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Longitude)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AdditionalInfo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AdditionalInfo)
-        </dd>
-
-    </dl>
+    <h2 class="classic-title">Location Information</h2>
+    <div class="row">
+        @Html.DisplayForModel("ObjectTemplate")
+    </div>
 </div>

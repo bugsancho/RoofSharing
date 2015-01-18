@@ -1,8 +1,7 @@
-﻿using System.Web.Mvc;
-using System.Web.Routing;
-
-namespace RoofSharing.Web.Infrastructure.Extensions
+﻿namespace RoofSharing.Web.Infrastructure.Extensions
 {
+    using System.Web.Mvc;
+
     public static class HtmlHelperExtensions
     {
         public static MvcHtmlString Image(this HtmlHelper helper, string imgUrl, string alt, object htmlAttributes, int? width = null, int? height = null)
@@ -10,7 +9,7 @@ namespace RoofSharing.Web.Infrastructure.Extensions
             var attrs = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
 
             var tag = new TagBuilder("Img");
-
+            
             tag.Attributes.Add("src", imgUrl);
             tag.Attributes.Add("alt", alt);
 

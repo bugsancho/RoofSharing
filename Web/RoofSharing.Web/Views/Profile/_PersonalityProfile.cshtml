@@ -1,64 +1,8 @@
 ﻿@model RoofSharing.Web.ViewModels.Profile.PersonalityViewModel
 
 <div>
-    <h4>Personality Information</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hobbies)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hobbies)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Interests)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Interests)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Education)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Education)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Occupation)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Occupation)
-        </dd>
-
-    </dl>
+    <h2 class="classic-title">Personality Information</h2>
+    <div class="row">
+        @Html.DisplayForModel("ObjectTemplate")
+    </div>
 </div>
