@@ -113,7 +113,7 @@
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\KendoHelpers.cs" />
-    <Compile Include="Helpers\DisplayForModelHelpers.cs" />
+    <Compile Include="Helpers\ModelMetadataHelpers.cs" />
     <Compile Include="Helpers\ImgurPictureUploader.cs" />
     <Compile Include="Mappings\AutoMapperConfig.cs" />
     <Compile Include="Mappings\IHaveCustomMappings.cs" />

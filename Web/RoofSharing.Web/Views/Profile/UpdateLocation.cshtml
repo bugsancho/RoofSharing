@@ -1,19 +1,18 @@
 ﻿@model RoofSharing.Web.ViewModels.Profile.LocationViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Location";
 }
 
-<h2>Tell us where do you live!</h2>
+<h2 class="classic-title">Tell us where do you live!</h2>
 <p>
-    <i>*Note:</i> This info will only be visible to people you approve!
+    <i>*Note:</i> Your address will only be visible to people you approve!
 </p>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <div class="row">
         <div class="form-horizontal col-md-8">
-            <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })

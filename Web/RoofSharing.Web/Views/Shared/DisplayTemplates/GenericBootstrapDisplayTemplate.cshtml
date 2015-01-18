@@ -3,7 +3,7 @@
 @model Object
 @{
     
-    foreach (var property in DisplayForModelHelpers.GetPropertiesToDisplay(ViewData))
+    foreach (var property in ModelMetadataHelpers.GetPropertiesForDisplay(ViewData))
     {
             <div class="row">
                 <div class="col-md-4 text-center " >

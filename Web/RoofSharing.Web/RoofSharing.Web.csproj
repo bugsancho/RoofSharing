@@ -722,7 +722,9 @@
     <Content Include="Views\Trips\Browse.cshtml" />
     <Content Include="Views\Profile\_UpdateAccountInfoPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\BoolNullable.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\ObjectTemplate.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\GenericBootstrapDisplayTemplate.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\GenericBootstrapEditorTemplate.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
