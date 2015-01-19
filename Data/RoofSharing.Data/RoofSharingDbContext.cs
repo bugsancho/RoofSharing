@@ -12,8 +12,8 @@
     {
         public RoofSharingDbContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
-            //Database.SetInitializer(new DropCreateDatabaseAlways<RoofSharingDbContext>());
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<RoofSharingDbContext, Configuration>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<RoofSharingDbContext>());
+           // Database.SetInitializer(new MigrateDatabaseToLatestVersion<RoofSharingDbContext, Configuration>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
