@@ -2,14 +2,12 @@
 @{
     ViewBag.Title = "Register";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>Associate your @ViewBag.LoginProvider account.</h3>
+<h2 class="classic-title">Associate your @ViewBag.LoginProvider account.</h2>
 
 @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    <h4>Association Form</h4>
     @Html.ValidationSummary(false)
     @Html.Partial("_RegistrationPartial")
 

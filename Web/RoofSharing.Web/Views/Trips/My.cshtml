@@ -1,0 +1,71 @@
+﻿@model IEnumerable<RoofSharing.Web.ViewModels.Trip.PublicTripViewModel>
+
+@{
+    ViewBag.Title = "My trips";
+}
+
+<h2 class="classic-title">My Trips</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-warning margin-btm-md" })
+</p>
+
+@if (Model.Count() == 0)
+{
+    <h1 class="classic-title">You don't have any public trips planned yet!</h1>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StartPoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndPoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartPoint)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndPoint)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
+
+                        </td>
+                    </tr>
+        }
+    </table>
+
+    <div class="row margin-btm-md">
+        @for (int i = 1; i <= ViewBag.Pages; i++)
+        {
+            @Html.ActionLink(i.ToString(), "My", "Trips", new { page = i }, new { @class = "btn btn-danger" })
+        }
+    </div>
+}

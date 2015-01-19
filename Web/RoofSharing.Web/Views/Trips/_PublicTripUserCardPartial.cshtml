@@ -22,13 +22,13 @@
             <i class="fa fa-map-marker"></i> From @Html.DisplayFor(model => model.StartPoint)
         </div>
         <em> @Html.DisplayFor(model => model.Description)</em>
-        <div class="pull-right">
+        @*<div class="pull-right">
             @using (Html.BeginForm("Join", "Trip", new { area = string.Empty }, FormMethod.Get, null))
             {
                 <input type="hidden" name="userId" value="@Model.HostId" />
                 <input type="submit" value="Ask to Join" class="btn btn-lg btn-info" />
             }
-        </div>
+        </div>*@
     </div>
 </div>
 

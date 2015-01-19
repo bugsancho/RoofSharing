@@ -24,6 +24,7 @@
 
         [Required]
         [HiddenInput]
+        [ScaffoldColumn(false)]
         public string StartPointCity { get; set; }
 
         [Required]
@@ -32,6 +33,7 @@
 
         [Required]
         [HiddenInput]
+        [ScaffoldColumn(false)]
         public string EndPointCity { get; set; }
         
         [DateTimeCombinedValidation("EndDate")]

@@ -15,7 +15,7 @@
     
     public class TripsController : BaseController
     {
-        private const int PageSize = 3;
+        private const int PageSize = 4;
 
         public TripsController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
@@ -42,6 +42,23 @@
             return View(trips);
         }
 
+        [HttpGet]
+        [Authorize]
+        public ActionResult My(int page = 1)
+        {
+            var trips = this.Data.PublicTrips.All()
+                            .Where(x => x.HostId == this.CurrentUser.Id)
+                            .OrderBy(x => x.Id)                            
+                            .Skip((page - 1) * PageSize)
+                            .Take(PageSize)
+                            .Project()
+                            .To<PublicTripViewModel>()
+                            .ToList();
+
+            ViewBag.Pages = Math.Ceiling((double)this.Data.PublicTrips.All().Count() / PageSize);
+            return View(trips);
+        }
+
         [Authorize]
         [HttpGet]
         public ActionResult Create()
@@ -51,6 +68,28 @@
                 HostId = this.CurrentUser.Id
             };
             return View(model);
+        }
+
+        [Authorize]
+        public ActionResult Delete(int id)
+        {
+            var owner = this.Data.PublicTrips.All().Where(tr => tr.Id == id).Select(tr => tr.HostId).FirstOrDefault();
+
+            if (owner == null)
+            {
+                return HttpNotFound("Invalid trip Id");
+            }
+
+            if (owner != this.CurrentUser.Id)
+            {
+                return new HttpUnauthorizedResult("You can delete only trips that were initiated by you");
+            }
+
+            this.Data.PublicTrips.Delete(id);
+            this.Data.SaveChanges();
+
+            TempData[GlobalConstants.SuccessMessage] = "Successfully deleted a trip!";
+            return RedirectToAction("My");
         }
 
         [Authorize]
