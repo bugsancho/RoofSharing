@@ -741,6 +741,8 @@
     <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\HostInviteViewModel.cshtml" />
+    <Content Include="Views\Host\SentInvites.cshtml" />
+    <Content Include="Views\Host\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -904,7 +906,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Host\Invite.cshtml" />
-    <Content Include="Views\Host\Invites.cshtml" />
+    <Content Include="Views\Host\ReceivedInvites.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />

@@ -79,7 +79,15 @@ namespace RoofSharing.Data
 
         public int SaveChanges()
         {
-            return this.Context.SaveChanges();
+            try
+            {
+                return this.Context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            
         }
 
         private IRepository<T> GetRepository<T>() where T : class

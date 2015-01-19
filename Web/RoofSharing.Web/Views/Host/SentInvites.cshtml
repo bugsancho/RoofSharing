@@ -1,0 +1,59 @@
+﻿@model IEnumerable<RoofSharing.Web.ViewModels.Host.HostInviteViewModel>
+
+@{
+    ViewBag.Title = "SentInvites";
+}
+
+<h2 class="classic-title">Sent Invitations</h2>
+@if (Model.Count() == 0)
+{
+    <h2 class="margin-btm-md">You havent sent any invitations yet!</h2>
+}
+else
+{
+    <table class="table table-responsive table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HostNames)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfCompanions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th></th>
+        </tr>
+    
+        @foreach (var item in Model)
+        {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HostNames)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumberOfCompanions)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Message)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-danger" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-info" })
+                        </td>
+                    </tr>
+        }
+    </table>
+}

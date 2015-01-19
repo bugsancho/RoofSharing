@@ -107,7 +107,19 @@
 
         [Authorize]
         [HttpGet]
-        public ActionResult Invites()
+        public ActionResult SentInvites()
+        {
+            var invites = this.Data.Invitations.All()
+                              .Where(i => i.GuestId == this.CurrentUser.Id)
+                              .Project()
+                              .To<HostInviteViewModel>()
+                              .ToList();
+            return View(invites);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult ReceivedInvites()
         {
             var invites = this.Data.Invitations.All()
                               .Where(i => i.HostId == this.CurrentUser.Id &&
@@ -116,6 +128,81 @@
                               .To<HostInviteRespondViewModel>()
                               .ToList();
             return View(invites);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var owner = this.Data.Invitations.All()
+                            .Where(i => i.Id == id)
+                            .Select(x => x.GuestId)
+                            .FirstOrDefault();
+
+            if (owner != this.CurrentUser.Id)
+            {
+                return RedirectToAction("SentInvites");
+            }
+
+            var invite = this.Data.Invitations.All()
+                             .Where(i => i.Id == id)
+                             .Project()
+                             .To<HostInviteViewModel>()
+                             .FirstOrDefault();
+
+            return View(invite);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(HostInviteViewModel input)
+        {
+            if (input.HostId == this.CurrentUser.Id)
+            {
+                TempData[GlobalConstants.ErrorMessage] = "You cannot send a host invitation to yourself!";
+                return RedirectToAction("SentInvites");
+            }
+
+            if (ModelState.IsValid)
+            {
+                var invite = this.Data.Invitations.All()
+                                 .Where(i => i.Id == input.Id)
+                                 .FirstOrDefault();
+
+                Mapper.Map(input, invite);
+
+                this.Data.SaveChanges();    
+
+                string hostUserName = this.Data.Users.All().Where(x => x.Id == input.HostId).Select(x => x.UserName).FirstOrDefault();
+                this.Notifier.Notify(string.Format("{0} has updated his request to host them!", this.CurrentUser.FirstName + " " + this.CurrentUser.LastName), NotificationMessageType.Info, hostUserName);
+                TempData[GlobalConstants.SuccessMessage] = "You have successfully updated your invitation to " + hostUserName;
+
+                return RedirectToAction("SentInvites", new { area = string.Empty });
+            }
+            
+            return View(input);
+        }
+
+        [Authorize]
+        public ActionResult Delete(int id)
+        {
+            var owner = this.Data.Invitations.All()
+                            .Where(i => i.Id == id)
+                            .Select(x => x.GuestId)
+                            .FirstOrDefault();
+
+            if (owner != this.CurrentUser.Id)
+            {
+                TempData[GlobalConstants.ErrorMessage] = "You don't have permissions to delete that invitation!";
+                return RedirectToAction("SentInvites");
+            }
+
+            this.Data.Invitations.Delete(id);
+            this.Data.SaveChanges();
+
+            TempData[GlobalConstants.SuccessMessage] = "Invitation deleted successfully!";
+            return RedirectToAction("SentInvites");
         }
 
         [Authorize]
@@ -131,10 +218,10 @@
             this.Data.SaveChanges();
 
             TempData[GlobalConstants.SuccessMessage] = "Invite approved successfully!";
-            return RedirectToAction("Invites");
+            return RedirectToAction("ReceievedInvites");
         }
 
-         [Authorize]
+        [Authorize]
         public ActionResult Reject(int id)
         {
             var invitation = this.Data.Invitations.Find(id);
@@ -147,7 +234,7 @@
             this.Data.SaveChanges();
 
             TempData[GlobalConstants.SuccessMessage] = "Invite rejected successfully!";
-            return RedirectToAction("Invites");
+            return RedirectToAction("ReceievedInvites");
         }
     }
 }
