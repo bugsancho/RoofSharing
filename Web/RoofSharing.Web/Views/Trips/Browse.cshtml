@@ -4,12 +4,18 @@
     ViewBag.Title = "Browse Public Trips";
 }
 
-<h2 class="classic-title">Browse Public Trips @ViewBag.Pages</h2>
+<h2 class="classic-title">Browse Public Trips</h2>
 <div class="row">
-    @foreach (var user in Model)
-    {
-        Html.RenderPartial("_PublicTripUserCardPartial", user);
-    }
+    <div class="col-md-8">
+        @foreach (var user in Model)
+        {
+            Html.RenderPartial("_PublicTripUserCardPartial", user);
+        }
+    </div>
+    <div class=" col-md-3 border-shadow margin-left-md">
+        <h2 class="classic-title">Or plan your own trip</h2>
+        @Html.ActionLink("Plan Public Trip", "Create", "Trips", null, new { @class = "btn btn-danger" })
+    </div>
 </div>
 
 <div class="row margin-btm-md">

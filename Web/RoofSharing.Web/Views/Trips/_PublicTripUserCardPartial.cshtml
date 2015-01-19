@@ -8,9 +8,13 @@
         @Html.FacebookImage(Model.PictureUrl, "Profile Picture", null, 100, 100)
     </div>
     <div class="com-md-9">
-        <h2 class="pull-right text-info">@Model.Id -Placeholder-</h2>
+        <div class="pull-right text-info">
+            <h3>@Model.TravellersCount Travelers </h3>
+            <p><i class="fa fa-calendar"></i> From @Model.StartDate.ToString("dd MMMM yyy")</p>
+            <p><i class="fa fa-calendar-o"></i> To @Model.EndDate.ToString("dd MMMM yyy")</p>
+        </div>
         <h2 class="text-info">@Html.ActionLink(Model.Names, "Index", "Profile", new { area = "", userId = Model.HostId }, new { @class = "text-info" })</h2>
-        
+
         <div>
             <i class="fa fa-suitcase"></i> Visiting @Html.DisplayFor(model => model.EndPoint)
         </div>
@@ -19,20 +23,10 @@
         </div>
         <em> @Html.DisplayFor(model => model.Description)</em>
         <div class="pull-right">
-            @if (User.Identity.IsAuthenticated)
+            @using (Html.BeginForm("Join", "Trip", new { area = string.Empty }, FormMethod.Get, null))
             {
-                Html.RenderAction("FriendPartial", "Friends", new
-                {
-                    area = string.Empty,
-                    userId = Model.HostId
-                });
-            }
-        </div>
-        <div class="pull-right">
-            @using (Html.BeginForm("Invite", "Host", new { area = string.Empty }, FormMethod.Get, null))
-            {
-                            <input type="hidden" name="userId" value="@Model.HostId" />
-                            <input type="submit" value="Offer to host them" class="btn btn-lg btn-black" />
+                <input type="hidden" name="userId" value="@Model.HostId" />
+                <input type="submit" value="Ask to Join" class="btn btn-lg btn-info" />
             }
         </div>
     </div>
