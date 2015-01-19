@@ -9,6 +9,9 @@
 
     public class HousingViewModel : IMapFrom<UserHousingInfo>
     {
+        [Display(Name="Guest status")]
+        public AcceptingGuestsStatusType AcceptingGuestsStatus { get; set; }
+
         [Display(Name = "Preferred traveller gender")]        
         [UIHint("ObjectWithDefaultValue")]
         public Gender? PreferredGender { get; set; }

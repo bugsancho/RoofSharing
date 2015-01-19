@@ -16,6 +16,7 @@ namespace RoofSharing.Web.Controllers
     public class FriendsController : BaseController
     {
         private const string UserFriendshipName = "UserFriendship";
+        private const int DefaultUserIdLength = 36;
 
         public FriendsController(IRoofSharingData data, INotifierService notifier) : base(data, notifier)
         {
@@ -26,9 +27,14 @@ namespace RoofSharing.Web.Controllers
         {
             return View();
         }
-        
+
         public ActionResult FriendPartial(string userId)
         {
+            if (userId.Length < DefaultUserIdLength)
+            {
+                throw new ArgumentException("userId");
+            }
+
             var friendship = this.GetFriendshipViewModel(userId);
             return PartialView("_FriendPartial", friendship);
         }
@@ -140,6 +146,7 @@ namespace RoofSharing.Web.Controllers
                     ////        this.CurrentUser.Friendships.Add(friendship);
                     ////this.Data.Users.Find(userId).Friendships.Add(friendship);
                     this.Data.Friendships.Add(friendship);
+                    this.Data.SaveChanges();
                 }
             }
 

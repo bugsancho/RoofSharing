@@ -24,14 +24,14 @@
                 Html.RenderAction("FriendPartial", "Friends", new
                 {
                     area = string.Empty,
-                    userId = Model.Id
+                    userId = Model.HostId
                 });
             }
         </div>
         <div class="pull-right">
             @using (Html.BeginForm("Invite", "Host", new { area = string.Empty }, FormMethod.Get, null))
             {
-                            <input type="hidden" name="userId" value="@Model.Id" />
+                            <input type="hidden" name="userId" value="@Model.HostId" />
                             <input type="submit" value="Offer to host them" class="btn btn-lg btn-black" />
             }
         </div>

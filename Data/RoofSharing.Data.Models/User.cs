@@ -1,20 +1,16 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using RoofSharing.Data.Models.Profile;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RoofSharing.Data.Models
+﻿namespace RoofSharing.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using RoofSharing.Data.Models.Profile;
+    
     public class User : IdentityUser
     {
-
-
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -41,6 +37,5 @@ namespace RoofSharing.Data.Models
         public virtual UserHousingInfo HousingInfo { get; set; }
 
         public virtual PersonalityInfo PersonalityInfo { get; set; }
-
     }
 }

@@ -14,14 +14,20 @@
             MemberInfo member = enumType.GetMember(enumValue)[0];
 
             var attrs = member.GetCustomAttributes(typeof(DisplayAttribute), false);
-            var outString = ((DisplayAttribute)attrs[0]).Name;
-
-            if (((DisplayAttribute)attrs[0]).ResourceType != null)
+           
+            if (attrs.Count() != 0)
             {
-                outString = ((DisplayAttribute)attrs[0]).GetName();
+                var outString = ((DisplayAttribute)attrs[0]).Name;
+
+                if (((DisplayAttribute)attrs[0]).ResourceType != null)
+                {
+                    outString = ((DisplayAttribute)attrs[0]).GetName();
+                }
+
+                return outString;
             }
 
-            return outString;
+            return value.ToString();
         }
     }
 }

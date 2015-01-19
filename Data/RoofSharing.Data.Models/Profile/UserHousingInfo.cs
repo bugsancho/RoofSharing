@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RoofSharing.Data.Models;
-
-namespace RoofSharing.Data.Models.Profile
+﻿namespace RoofSharing.Data.Models.Profile
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using RoofSharing.Data.Models;
+
     public class UserHousingInfo
     {
         [Key,ForeignKey("User")]

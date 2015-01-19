@@ -743,6 +743,7 @@
     <Content Include="Views\Shared\EditorTemplates\HostInviteViewModel.cshtml" />
     <Content Include="Views\Host\SentInvites.cshtml" />
     <Content Include="Views\Host\Edit.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

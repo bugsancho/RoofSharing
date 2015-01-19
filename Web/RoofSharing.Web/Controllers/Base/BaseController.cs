@@ -20,7 +20,9 @@
         {
             if (requestContext.HttpContext.User.Identity.IsAuthenticated)
             {
-                this.CurrentUser = Data.Users.Find(requestContext.HttpContext.User.Identity.GetUserId());
+                var userId = requestContext.HttpContext.User.Identity.GetUserId();
+
+                this.CurrentUser = Data.Users.Find(userId);
                 if (this.CurrentUser != null)
                 {
                     this.ViewData["DisplayName"] = CurrentUser.FirstName;
