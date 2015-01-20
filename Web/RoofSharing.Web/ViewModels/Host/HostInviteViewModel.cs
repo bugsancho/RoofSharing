@@ -27,13 +27,14 @@
         [Display(Name = "Start Date")]
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy}")] 
-        public DateTime StartDate { get; set; }
+         [DataType(DataType.Date)]
+        public DateTime? StartDate { get; set; }
         
         [Display(Name = "End Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy}")]
         [Required]
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         [Display(Name = "How many people will you be traveling with?")]
         [Range(0, 20, ErrorMessage = "You cannot plan a trip with more than {2} people")]
