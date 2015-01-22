@@ -5,13 +5,32 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-3 ">
             <div class="row border-shadow">
-                @Html.FacebookImage(@Model.PictureUrl, "Profile img", new { @class = "" }, 300)
+
+                @if (ViewBag.IsOwnProfile)
+                {
+
+                    @:  <a href="~/Profile/ChangePicture" data-modal="true">
+                }
+                    @Html.FacebookImage(@Model.PictureUrl, "Profile img", new { @class = "" }, 300)
+
+                 @if (ViewBag.IsOwnProfile)
+                 {
+                         
+                    @: </a>
+                 }
+
             </div>
             <div class="row margin-btm-md"></div>
             <div class="row margin-btm-md border-shadow padding-left-sm">
@@ -82,14 +101,14 @@
                                         <i class="fa fa-map-marker"></i> @Model.Location
                                     </p>
                 }
-                
+
                 @if (!string.IsNullOrEmpty(Model.Tagline))
                 {
                                     <p>
                                         <i class="fa fa-quote-left"></i> <i>@Model.Tagline</i>
                                     </p>
                 }
-                
+
             </div>
             <div class="row">
                 <div class="tabs-section">
@@ -115,23 +134,13 @@
     @Scripts.Render("~/bundles/jqueryajax")
 
     <script>
-        $('[data-toggle="tabajax"]').click(function (e) {
-            var $this = $(this),
-                loadurl = $this.attr('href'),
-                targ = $this.attr('data-target');
-        
-            $.get(loadurl, function (data) {
-                $(targ).html(data);
-            });
-        
-            $this.tab('show');
-            return false;
-        });
-        
+        $(setupModal('#myModal', '#myModalContent'));
+        $(setupAjaxTabs());
+    
         $(function () {
             $('[data-target="#Location-tab"]').click();
-        })
+        })       
     </script>
 }
-
+    
 

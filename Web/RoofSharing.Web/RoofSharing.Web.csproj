@@ -745,6 +745,7 @@
     <Content Include="Views\Host\Edit.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <Content Include="Views\Trips\My.cshtml" />
+    <Content Include="Views\Profile\_ChangePicturePartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

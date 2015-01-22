@@ -1,0 +1,28 @@
+﻿@using RoofSharing.Web.Infrastructure.Extensions;
+
+@model string
+<h2 class="classic-title">Change Your Profile Picture</h2>
+<div class="text-center">
+    @Html.FacebookImage(Model, "profile image", new { @class = "margin-btm-md", id = "current-profile-picture" }, 300)
+</div>
+@using (Html.BeginForm("ChangePicture", "Profile", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.Label("Choose another picture", new { @class = "col-md-4 control-label" })
+        <div class="col-md-6">
+            <input type="file" value="Upload profile picture" name="uploadedPicture" id="uploaded-picture" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-6">
+            <input type="submit" class="btn btn-default" value="Save" />
+        </div>
+    </div>
+
+}
+<script>
+
+    $(previewPicture("#uploaded-picture", "#current-profile-picture"));
+    
+    
+</script>

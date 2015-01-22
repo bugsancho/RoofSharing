@@ -1,5 +1,4 @@
 ﻿function getGoogleAutocomplete(visibleElement, hidenElement, type) {
-
     var input = document.getElementById(visibleElement);
     var options = {
         types: type || ['(cities)']
@@ -17,9 +16,77 @@
             }
         }
     });
+}
+function previewPicture(imageFileInput, displayTarget) {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
+            reader.onload = function (e) {
+                $(displayTarget).attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(imageFileInput).change(function () {
+        readURL(this);
+    });
 }
 
+function setupModal(modalSelector, modalContentSelector) {
+    $.ajaxSetup({ cache: false });
+
+    $("a[data-modal]").on("click", function (e) {
+        $(modalContentSelector).load(this.href, function () {
+            $(modalSelector).modal({
+                                       keyboard: true
+                                   }, 'show');
+
+            bindForm(this);
+        });
+
+        return false;
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $.ajax({
+                       url: this.action,
+                       type: this.method,
+                       data: new FormData(this),
+                       processData: false,
+                       contentType: false,
+                       success: function (result) {
+                           if (result.success) {
+                               $(modalSelector).modal('hide');
+                               //Refresh
+                               location.reload();
+                           } else {
+                               $(modalContentSelector).html(result);
+                               bindForm();
+                           }
+                       }
+                   });
+            return false;
+        });
+    }
+}
+
+function setupAjaxTabs() {
+    $('[data-toggle="tabajax"]').click(function (e) {
+        var $this = $(this),
+            loadurl = $this.attr('href'),
+            targ = $this.attr('data-target');
+
+        $.get(loadurl, function (data) {
+            $(targ).html(data);
+        });
+
+        $this.tab('show');
+        return false;
+    });
+}
 $(function () {
     // Declare a proxy to reference the hub.
     var notifier = $.connection.signalRNotifierServiceHub;

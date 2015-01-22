@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Web;
     using System.Web.Mvc;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
@@ -10,6 +11,7 @@
     using RoofSharing.Web.Controllers.Base;
     using RoofSharing.Web.ViewModels.Profile;
     using Roofsharing.Services.Notifiers;
+    using RoofSharing.Web.Infrastructure.Helpers;
 
     public class ProfileController : BaseController
     {
@@ -144,6 +146,40 @@
             }
             
             return View(personalityInfo);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult ChangePicture()
+        {
+            string pictureUrl = this.CurrentUser.PictureUrl;
+
+            return PartialView("_ChangePicturePartial", pictureUrl);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult ChangePicture(HttpPostedFileBase uploadedPicture)
+        {
+            if (uploadedPicture != null)
+            {
+                try
+                {
+                    this.CurrentUser.PictureUrl = ImgurPictureUploader.HandlePostedPicture(uploadedPicture);
+                    this.Data.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    //TempData[GlobalConstants.ErrorMessage] = "There was a problem uploading your image!";
+                    return RedirectToAction("ChangePicture");
+                }
+            }
+            else
+            {
+                return RedirectToAction("ChangePicture");
+            }
+            
+            return Json(new { success = "True" });
         }
 
         [HttpGet]
