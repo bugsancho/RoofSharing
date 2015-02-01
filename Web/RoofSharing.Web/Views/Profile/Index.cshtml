@@ -21,7 +21,7 @@
                 @if (ViewBag.IsOwnProfile)
                 {
 
-                    @:  <a href="~/Profile/ChangePicture" data-modal="true">
+                    @:  <a href="/Profile/ChangePicture" data-modal="true">
                 }
                     @Html.FacebookImage(@Model.PictureUrl, "Profile img", new { @class = "" }, 300)
 
