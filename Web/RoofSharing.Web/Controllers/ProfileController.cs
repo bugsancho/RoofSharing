@@ -12,6 +12,7 @@
     using RoofSharing.Web.ViewModels.Profile;
     using Roofsharing.Services.Notifiers;
     using RoofSharing.Web.Infrastructure.Helpers;
+    using RoofSharing.Web.Infrastructure.Extensions;
 
     public class ProfileController : BaseController
     {

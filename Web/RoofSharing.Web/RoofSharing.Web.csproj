@@ -224,6 +224,7 @@
     <Compile Include="Areas\Administration\ViewModels\UserLocationAdminViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\UserPersonalityAdminViewModel.cs" />
     <Compile Include="Controllers\Base\KendoGridController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Hubs\SignalRNotifierServiceHub.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
@@ -746,6 +747,7 @@
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <Content Include="Views\Trips\My.cshtml" />
     <Content Include="Views\Profile\_ChangePicturePartial.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -930,7 +932,7 @@
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_BlankLayout.cshtml" />
     <Content Include="Views\Shared\_FriendPartial.cshtml" />
