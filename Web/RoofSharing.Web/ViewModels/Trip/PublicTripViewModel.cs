@@ -4,12 +4,12 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
+    using System.Web.Mvc;
     using RoofSharing.Data.Models;
     using RoofSharing.Web.Infrastructure.Mappings;
     using RoofSharing.Web.Infrastructure.ValidationAttributes;
     using RoofSharing.Web.ViewModels.Account;
-    using System.Web.Mvc;
-    
+
     public class PublicTripViewModel : IMapFrom<PublicTrip>
     {
         [HiddenInput]

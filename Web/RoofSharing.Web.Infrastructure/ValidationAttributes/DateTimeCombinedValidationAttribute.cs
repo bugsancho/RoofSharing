@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RoofSharing.Web.Infrastructure.ValidationAttributes
+﻿namespace RoofSharing.Web.Infrastructure.ValidationAttributes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Web.Mvc;
+
     public class DateTimeCombinedValidationAttribute : ValidationAttribute
     {
         public DateTimeCombinedValidationAttribute(params string[] propertyNames)
@@ -16,15 +15,21 @@ namespace RoofSharing.Web.Infrastructure.ValidationAttributes
 
         public string[] PropertyNames { get; private set; }
         
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        //public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
+        //{
+        //    // TODO: Implement this method
+        //    return null;
+        //    throw new NotImplementedException();
+        //}
+
+        protected override ValidationResult IsValid(object startingDate, ValidationContext validationContext)
         {
             var properties = this.PropertyNames.Select(validationContext.ObjectType.GetProperty);
             var values = properties.Select(p => p.GetValue(validationContext.ObjectInstance, null)).OfType<DateTime>();
             DateTime valueAsDateTime;
-
             try
             {
-                valueAsDateTime = (DateTime)value;
+                valueAsDateTime = (DateTime)startingDate;
             }
             catch (Exception)
             {
@@ -33,7 +38,7 @@ namespace RoofSharing.Web.Infrastructure.ValidationAttributes
 
             if (valueAsDateTime < DateTime.Now)
             {
-                return new ValidationResult("Start Date cannot be in the past!");
+                return new ValidationResult(string.Format("{0} cannot be in the past!", validationContext.DisplayName));
             }
             foreach (var val in values)
             {
